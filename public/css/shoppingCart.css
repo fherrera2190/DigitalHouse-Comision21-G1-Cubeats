@@ -1,5 +1,5 @@
 .body__shoppingCart {
-  background-color: var(--colorCeleste);
+  background-color: var(--bodyColor);
   color: #fff;
   font-family: var(--tipografiaCuBeats);
 }

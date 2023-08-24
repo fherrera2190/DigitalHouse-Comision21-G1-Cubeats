@@ -1,7 +1,16 @@
 const { readFileSync, existsSync, writeFileSync } = require('fs');
+const path = require('path')
 const leerJson = () => {
 
 }
-module.exports = {
+const escribirJson = () => {
 
+}
+const exists = () => {
+
+}
+module.exports = {
+    leerJson,
+    escribirJson,
+    exists,
 }

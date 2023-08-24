@@ -1,11 +1,12 @@
 [
     {
-        "id": 1,
+        "productId": 1,
+        "userId": 1,
         "name": "One More Time",
-        "category": "Fresh house•disco",
+        "category": "Rock",
         "description": "",
         "image": null,
-        "beat":"OneMoreTime.mp3",
+        "beat": "OneMoreTime.mp3",
         "price": 300,
         "like": 100000
     }

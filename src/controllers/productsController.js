@@ -7,5 +7,6 @@ module.exports = {
         const products = leerJson(productsFilePath);
         return res.render('products', { products });
     },
-    detail: require('./products/detail')
+    detail: require('./products/detail'),
+    addProduct: require('./products/addProduct')
 }

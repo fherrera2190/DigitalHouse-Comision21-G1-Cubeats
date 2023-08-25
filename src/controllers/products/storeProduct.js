@@ -4,6 +4,6 @@ const { leerJson } = require('../../data/index');
 
 module.exports = (req, res) => {
     const products = leerJson();
-    console.log(products)
+    console.log(req.file)
     return res.redirect('/');
 }

@@ -4,6 +4,5 @@ const { leerJson } = require('../../data/index');
 
 module.exports = (req, res) => {
     const categories = leerJson(categoriesFilePath);
-    console.log(categories);
     return res.render('createBeats', { categories });
 }

@@ -5,9 +5,6 @@ module.exports = {
     admin: (req, res) => {
         res.render('admin');
     },
-    addProduct: (req, res) => {
-        res.render('createBeats');
-    },
     editProduct: (req, res) => {
         res.render('editBeat');
     }

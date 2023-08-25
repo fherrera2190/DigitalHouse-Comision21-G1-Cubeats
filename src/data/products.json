@@ -5,7 +5,7 @@
         "name": "One More Time",
         "category": "Rock",
         "description": "",
-        "image": null,
+        "image": "electro.jpeg",
         "beat": "OneMoreTime.mp3",
         "price": 300,
         "like": 100000
@@ -16,7 +16,7 @@
         "name": "Kachorro DJ",
         "category": "Cumbia",
         "description": "",
-        "image": null,
+        "image": "kachorro.jpeg",
         "beat": " ",
         "price": 400,
         "like": 80000
@@ -27,7 +27,7 @@
         "name": "Classical",
         "category": "Clasico",
         "description": "",
-        "image": null,
+        "image": "classical.jpeg",
         "beat": " ",
         "price": 500,
         "like": 5000
@@ -38,7 +38,7 @@
         "name": "Ariel Garramunda",
         "category": "Rock",
         "description": "",
-        "image": null,
+        "image": "ariel.jpeg",
         "beat": " ",
         "price": 300,
         "like": 880000
@@ -49,7 +49,7 @@
         "name": "Ibiza Rockefeller",
         "category": "Remix",
         "description": "",
-        "image": null,
+        "image": "ibiza.jpeg",
         "beat": " ",
         "price": 500,
         "like": 2000
@@ -60,7 +60,7 @@
         "name": "Bust-a-mood",
         "category": "Jazz",
         "description": "",
-        "image": null,
+        "image": "jazz.jpeg",
         "beat": " ",
         "price": 500,
         "like": 27000
@@ -71,7 +71,7 @@
         "name": "Celebrate",
         "category": "Electro",
         "description": "",
-        "image": null,
+        "image": "celebrate.jpeg",
         "beat": " ",
         "price": 100,
         "like": 25000
@@ -82,7 +82,7 @@
         "name": "Relax",
         "category": "Remix",
         "description": "",
-        "image": null,
+        "image": "relax.jpeg",
         "beat": " ",
         "price": 250,
         "like": 35000
@@ -93,7 +93,7 @@
         "name": "Giorgio Gaber",
         "category": "Jazz",
         "description": "",
-        "image": null,
+        "image": "gaber.jpg",
         "beat": " ",
         "price": 400,
         "like": 20100

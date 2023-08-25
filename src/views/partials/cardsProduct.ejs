@@ -1,6 +1,6 @@
 <div class="card">
   <div class="card__image-holder">
-    <img class="card__image" src="/img/<% image ? image:'default-image.png' %>" alt="dj" />
+    <img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" />
   </div>
   <div class="card-title">
     <a href="#" class="toggle-info btn">
@@ -8,7 +8,7 @@
       <span class="right"></span>
     </a>
     <h2>
-      Electro-Cardi-B
+    <%= name %>
       <small><%=category%></small>
     </h2>
   </div>

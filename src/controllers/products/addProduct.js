@@ -1,5 +1,9 @@
-const { leerJson, escribirJson, exists } = require('../../data/index');
+const path = require('path');
+const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
+const { leerJson } = require('../../data/index');
 
-module.exports = (req,res) => {
-    return res.render('createBeats')
+module.exports = (req, res) => {
+    const categories = leerJson(categoriesFilePath);
+    console.log(categories);
+    return res.render('createBeats', { categories });
 }

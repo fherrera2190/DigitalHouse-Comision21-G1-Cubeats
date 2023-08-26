@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head', { title : 'CuBeats' }) %>
+
+<body class="admin">
+  <!-- Header -->
+  <%- include('./partials/header.ejs') %>
+  <!-- Main body -->
+  <main id="admin__main">
+    <!-- Tajetas -->
+
+    <section class="admin-main__panel">
+      <hr>
+      <h1>Panel admin</h1>
+      <hr>
+      <% products.forEach(({image,name,category})=> { %>
+      <div class="product-detail">
+        <div class="product-detail__card">
+          <div class="card-img">
+            <img src="/img/products/<%=image ? image : 'default-image.png' %>" alt="">
+          </div>
+          <div class="card__info">
+            <h3 class="card__title"><%=name %></h3>
+            <p class="card__description">#<%=category %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </section>
+  </main>
+  <!-- footer -->
+  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials//scripts.ejs') %>
+</body>
+
+</html>

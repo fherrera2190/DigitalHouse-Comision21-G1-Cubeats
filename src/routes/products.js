@@ -11,7 +11,7 @@ router.get('/detail/:id', productsController.detail);
 router.get('/add', productsController.addProduct);
 router.post('/add', upload.fields([{ name: "image", maxCount: 1 }, { name: "beat", maxCount: 1 }]), productsController.storeProduct);
 router.get('/edit/:id', productsController.editbeat); 
-//router.put('/edit/:id', productsController.update); 
+router.put('/edit/:id', productsController.update); 
 
 module.exports = router;
 

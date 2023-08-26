@@ -19,7 +19,8 @@ module.exports = (req, res) => {
         description: req.body.description,
         image: req.files.image ? req.files["image"][0].filename : null,
         beat: req.files["beat"][0].filename,
-        price: req.body.price
+        price: req.body.price,
+        like:0
     }
     products.push(newProduct);
     escribirJson(productsFilePath, products);

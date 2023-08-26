@@ -1,6 +1,11 @@
+const path = require('path');
+const productsFilePath = path.join(__dirname, '../data/products.json');
+const { leerJson } = require('../data/index');
+
 module.exports = {
     index: (req, res) => {
-        res.render('index');
+        const products = leerJson(productsFilePath);
+        return res.render('index', { products });
     },
     admin: (req, res) => {
         res.render('admin');

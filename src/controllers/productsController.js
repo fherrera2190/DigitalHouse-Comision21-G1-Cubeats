@@ -8,5 +8,6 @@ module.exports = {
         return res.render('products', { products });
     },
     detail: require('./products/detail'),
-    addProduct: require('./products/addProduct')
+    addProduct: require('./products/addProduct'),
+    editbeat : require('./products/editbeat')
 }

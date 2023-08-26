@@ -97,16 +97,5 @@
           "beat": " ",
           "price": 400,
           "like": 20100
-     },
-     {
-          "productId": 10,
-          "name": "Deja Vu",
-          "userId": 1,
-          "category": "Rock",
-          "description": "La canción 'Déjà Vu' de Iron Maiden, del álbum 'The Book of Souls' (2015), explora la sensación de familiaridad y reflexión a través de la voz única de Bruce Dickinson y poderosos acordes, creando una experiencia musical que perdura.",
-          "image": "1693030967470_avatar_beat_.jpg",
-          "beat": "1693030967406_beat_.mp3",
-          "price": "2000",
-          "like": 0
      }
 ]

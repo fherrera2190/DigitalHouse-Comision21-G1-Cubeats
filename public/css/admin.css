@@ -23,3 +23,52 @@
 .admin-main__panel h1 {
     color: darkgray;
 }
+
+.admin-main__panel .card-img {
+    display: flex;
+    justify-content: center;
+}
+
+.admin-main__panel .product-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-main__menu {
+    display: flex;
+    justify-content: space-around;
+}
+
+.admin-main__menu i {
+    padding: 20px;
+    font-size: 2rem;
+    color: darkgray;
+}
+
+.admin-main__bar-menu {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    align-items: center;
+}
+
+.admin-main__bar-menu a {
+    color: darkgray;
+    font-size: 1rem;
+}
+
+.product-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: darkgray;
+}
+
+.product-info img {
+    width: 200px;
+    height: 150px;
+}
+
+.admin__main .button-delete{
+    background: none;
+}

@@ -10,5 +10,6 @@ module.exports = {
     detail: require('./products/detail'),
     addProduct: require('./products/addProduct'),
     storeProduct: require('./products/storeProduct'),
-    searchProduct: require('./products/search')
+    searchProduct: require('./products/search'),
+    deleteProduct: require('./products/deleteProduct')
 }

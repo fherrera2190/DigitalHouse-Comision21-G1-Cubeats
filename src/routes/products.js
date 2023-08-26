@@ -10,7 +10,7 @@ router.get('/search', productsController.searchProduct);
 router.get('/detail/:id', productsController.detail);
 router.get('/add', productsController.addProduct);
 router.post('/add', upload.fields([{ name: "image", maxCount: 1 }, { name: "beat", maxCount: 1 }]), productsController.storeProduct);
-
+router.delete('/delete/:id', productsController.deleteProduct);
 
 module.exports = router;
 

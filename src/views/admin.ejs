@@ -5,10 +5,8 @@
 <body class="admin">
   <!-- Header -->
   <%- include('./partials/header.ejs') %>
-  <!-- Main body -->
+  <!-- Admin body -->
   <main id="admin__main">
-    <!-- Tajetas -->
-
     <section class="admin-main__panel">
       <hr>
       <div class="admin-main__bar-menu">
@@ -28,7 +26,9 @@
         </p>
         <div class="admin-main__menu">
           <a href="/products/edit/<%=productId %>"><i class="fa-solid fa-pen-to-square"></i></a>
-          <a href="/products/delete/<%=productId %>"><i class="fa-solid fa-trash"></i></a>
+          <form action="/products/delete/<%=productId %>?_method=DELETE" method="post">
+            <button class="button-delete" type="submit"><i class="fa-solid fa-trash"></i></button>
+          </form>
         </div>
       </div>
       <% }) %>

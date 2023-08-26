@@ -11,19 +11,24 @@
 
     <section class="admin-main__panel">
       <hr>
-      <h1>Panel admin</h1>
+      <div class="admin-main__bar-menu">
+        <h1>Panel admin</h1>
+        <form action="/search" method="GET" class="header-search">
+          <input name="keywords" class="header-search__input" type="text" placeholder="Search product">
+          <button type="submit" class="header-search__button"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+        <a href="/products/add">Add Product<i class="fa-solid fa-plus"></i></a>
+      </div>
       <hr>
-      <% products.forEach(({image,name,category})=> { %>
-      <div class="product-detail">
-        <div class="product-detail__card">
-          <div class="card-img">
-            <img src="/img/products/<%=image ? image : 'default-image.png' %>" alt="">
-          </div>
-          <div class="card__info">
-            <h3 class="card__title"><%=name %></h3>
-            <p class="card__description">#<%=category %>
-            </p>
-          </div>
+      <% products.forEach(({productId,image,name,category})=> { %>
+      <div class="product-info">
+        <img src="/img/products/<%=image ? image : 'default-image.png' %>" alt="">
+        <h3 class="card__title"><%=name %></h3>
+        <p class="card__description">#<%=category %>
+        </p>
+        <div class="admin-main__menu">
+          <a href="/products/edit/<%=productId %>"><i class="fa-solid fa-pen-to-square"></i></a>
+          <a href="/products/delete/<%=productId %>"><i class="fa-solid fa-trash"></i></a>
         </div>
       </div>
       <% }) %>

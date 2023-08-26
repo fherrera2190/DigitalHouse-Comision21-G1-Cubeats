@@ -12,4 +12,11 @@ module.exports = {
         console.log(products)
         return res.render('admin', { products });
     },
+    search: (req, res) => {
+        const keywords = req.query.keywords.toLowerCase();
+        const products = leerJson(productsFilePath);
+        const results = products.filter(({ name, category }) => name.toLowerCase().includes(keywords) || category.toLowerCase().includes(keywords));
+        console.log(products)
+        return res.render('admin', { products: results });
+    }
 }

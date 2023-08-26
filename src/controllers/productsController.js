@@ -9,5 +9,7 @@ module.exports = {
     },
     detail: require('./products/detail'),
     addProduct: require('./products/addProduct'),
+    storeProduct: require('./products/storeProduct'),
+    searchProduct: require('./products/search'),
     editbeat : require('./products/editbeat')
 }

@@ -12,13 +12,11 @@
     margin: 20px auto;
     flex-grow: 1;
     color: darkgray;
-
 }
 
 .createBeats-main__section {
     width: 80%;
     margin: 0 auto;
-
 }
 
 .createBeat-form__datos {
@@ -41,7 +39,6 @@
     display: flex;
     flex-direction: column;
     margin: 20px auto;
-    background-color: #1F1B24;
     background-color: #1F1B24;
     padding: 40px;
     max-width: 800px;

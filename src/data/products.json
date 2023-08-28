@@ -6,7 +6,7 @@
           "category": "Rock",
           "description": "",
           "image": "electro.jpeg",
-          "beat": "OneMoreTime.mp3",
+          "beat": "b1Prueba.mp3",
           "price": 300,
           "like": 100000
      },
@@ -17,7 +17,7 @@
           "category": "Cumbia",
           "description": "",
           "image": "kachorro.jpeg",
-          "beat": " ",
+          "beat": "b2Prueba.mp3",
           "price": 400,
           "like": 80000
      },
@@ -28,18 +28,18 @@
           "category": "Clasico",
           "description": "",
           "image": "classical.jpeg",
-          "beat": " ",
+          "beat": "b3Prueba.mp3",
           "price": 500,
           "like": 5000
      },
      {
           "productId": 4,
           "userId": 4,
-          "name": "Ariel Garramunda",
-          "category": "Rock",
-          "description": "",
-          "image": "ariel.jpeg",
-          "beat": " ",
+          "name": "Me gustas much",
+          "category": "Rock\r\n                                        ",
+          "description": "Un temaso",
+          "image": "1693265030358_avatar_beat_.jpg",
+          "beat": "b4Prueba.mp3",
           "price": 300,
           "like": 880000
      },
@@ -50,7 +50,7 @@
           "category": "Remix",
           "description": "",
           "image": "ibiza.jpeg",
-          "beat": " ",
+          "beat": "b5Prueba.mp3",
           "price": 500,
           "like": 2000
      },
@@ -61,7 +61,7 @@
           "category": "Jazz",
           "description": "",
           "image": "jazz.jpeg",
-          "beat": " ",
+          "beat": "b6Prueba.mp3",
           "price": 500,
           "like": 27000
      },
@@ -72,7 +72,7 @@
           "category": "Electro",
           "description": "",
           "image": "celebrate.jpeg",
-          "beat": " ",
+          "beat": "b7Prueba.mp3",
           "price": 100,
           "like": 25000
      },
@@ -83,7 +83,7 @@
           "category": "Remix",
           "description": "",
           "image": "relax.jpeg",
-          "beat": " ",
+          "beat": "b8Prueba.mp3",
           "price": 250,
           "like": 35000
      },
@@ -94,7 +94,7 @@
           "category": "Jazz",
           "description": "",
           "image": "gaber.jpg",
-          "beat": " ",
+          "beat": "b9Prueba.mp3",
           "price": 400,
           "like": 20100
      }

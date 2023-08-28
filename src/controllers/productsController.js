@@ -12,6 +12,6 @@ module.exports = {
     storeProduct: require('./products/storeProduct'),
     searchProduct: require('./products/search'),
     deleteProduct: require('./products/deleteProduct'),
-    editbeat : require('./products/editbeat'),
+    editProduct : require('./products/editProduct'),
     update : require('./products/update')
 }

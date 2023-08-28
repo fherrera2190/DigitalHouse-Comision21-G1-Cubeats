@@ -1,21 +1,32 @@
-const { readJSON, writeJSON } = require("../../data");
+const { leerJson, existsSync, escribirJson, unlinkSync } = require("../../data");
+const path = require('path');
+const productsFilePath = path.join(__dirname, '../../data/products.json');
 
-module.exports = (req,res) => {
-    const {name, price, category, description} = req.body;
-    const products = readJSON('products.json');
 
-    const productsModify = products.map(product => {
-        if(product.productId === req.params.productId){
-            product.name = name.trim()
-            product.description = description.trim()
-            product.price = +price
-            product.category = category
+module.exports = (req, res) => {
+    const { title, price, category, description } = req.body;
+    const products = leerJson(productsFilePath);
+    console.log(req.files.image);
+
+    const productModify = products.find(product => product.productId === +req.params.id)
+    if (productModify) {
+        productModify.name = title.trim()
+        productModify.description = description
+        productModify.price = +price
+        productModify.category = category
+        if (req.files.image) {
+            existsSync(`./public/img/products/${productModify.image}`) && unlinkSync(`./public/img/products/${productModify.image}`);
+            productModify.image = req.files.image[0].filename
         }
-            
-        return product
-    })
-    
-    writeJSON(productsModify, 'products.json')
-    
+        if (req.files.beat) {
+            existsSync(`./public/audio/${productModify.beat}`) && unlinkSync(`./public/audio/${productModify.beat}`);
+            productModify.beat = req.files.beat[0].filename
+        }
+    }
+
+    console.log(productModify);
+
+    escribirJson(productsFilePath, products)
+
     return res.redirect('/')
 }

@@ -10,12 +10,9 @@ router.get('/search', productsController.searchProduct);
 router.get('/detail/:id', productsController.detail);
 router.get('/add', productsController.addProduct);
 router.post('/add', upload.fields([{ name: "image", maxCount: 1 }, { name: "beat", maxCount: 1 }]), productsController.storeProduct);
-<<<<<<< HEAD
-router.get('/edit/:id', productsController.editbeat); 
-router.put('/edit/:id', productsController.update); 
-=======
+router.put('/edit/:id', upload.fields([{ name: "image", maxCount: 1 }, { name: "beat", maxCount: 1 }]), productsController.update);
+router.get('/edit/:id', productsController.editProduct); 
 router.delete('/delete/:id', productsController.deleteProduct);
->>>>>>> develop
 
 module.exports = router;
 

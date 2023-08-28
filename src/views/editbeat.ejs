@@ -14,13 +14,12 @@
                             <label for="title">Title:</label>
                             <input type="text" name="title" id="title" value="<%= name %>" required>
                             <label for="category">Category:</label>
-                            <select type="" name="category" id="category" > 
-                               <option value="<%= category.name %>"></option>
-                               <% categories.forEach(category=> { %>
-                                <option <%=category.name===category && 'selected' %> value="<%= category.name %>
-                                        "><%= category.name %>
-                                </option>
-                                <% }) %>
+                            <select name="category"  id="category" required> 
+                                <% categories.forEach(item=> { %>
+                                    <option <%=item.name===category && 'selected' %> value="<%= item.name %>
+                                            "><%= item.name %>
+                                    </option>
+                                    <% }) %>
                             </select>
                             <label for="price">Precio:</label>
                             <input type="text" name="price" id="price" value="<%= price %>" required>

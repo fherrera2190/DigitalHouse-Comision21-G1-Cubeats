@@ -1,14 +1,12 @@
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../../data/products.json');
-const { leerJson, escribirJson } = require('../../data/index');
+const { leerJson, escribirJson, existsSync, unlinkSync } = require('../../data/index');
 
 module.exports = (req, res) => {
     const products = leerJson(productsFilePath);
-    const obj = req.files.image;
-    //console.log(req.body)
-    // console.log(req.files)
-    // console.log(req.fileValidation)
+
     if (!req.files.beat) {
+        existsSync(`./public/img/products/${req.files.image[0].filename}`) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
         return res.redirect('/products/add');
     }
     const newProduct = {
@@ -17,10 +15,10 @@ module.exports = (req, res) => {
         userId: 1,
         category: req.body.category,
         description: req.body.description,
-        image: req.files.image ? req.files["image"][0].filename : null,
-        beat: req.files["beat"][0].filename,
+        image: req.files.image ? req.files.image[0].filename : null,
+        beat: req.files.beat[0].filename,
         price: req.body.price,
-        like:0
+        like: 0
     }
     products.push(newProduct);
     escribirJson(productsFilePath, products);

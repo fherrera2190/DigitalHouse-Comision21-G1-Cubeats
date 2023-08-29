@@ -1,14 +1,14 @@
-<div class="card">
+<div class="card card_t<%=productId %>">
   <div class="card__image-holder">
-    <img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" />
+    <a href="/products/detail/<%=productId %>"><img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" /></a>
   </div>
-  <div class="card-title">
-    <a href="#" class="toggle-info btn">
+  <div id="t<%=productId %>" class="card-title">
+    <a class="toggle-info btn">
       <span class="left"></span>
       <span class="right"></span>
     </a>
     <h2>
-    <%= name %>
+      <%= name %>
       <small><%=category%></small>
     </h2>
   </div>

@@ -13,7 +13,7 @@
 }
 
 .product__main .main__container {
-  background-color: #1F1B24;
+  background-color: #1f1b24;
   padding: 25px;
   width: 90%;
   margin: 20px auto;
@@ -61,20 +61,22 @@
 .product-detail__card {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 20px 0;
+  height: 100%;
 }
 
 .card-img {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 120px;
+  height: 120px;
 }
 
 .card-img img {
-  width: 90px;
-  height: 90px;
+  width: 120px;
+  height: 120px;
 }
 
 .card__info {
@@ -94,6 +96,7 @@
 .card__menu {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   margin-top: 20px;
 }
@@ -101,10 +104,11 @@
 .card__favoriteButton {
   background: none;
   border: none;
-  background-color: #FF7597;
+  background-color: #ff7597;
   color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 0;
+  width: 100px;
   white-space: nowrap;
 }
 
@@ -115,10 +119,11 @@
 .card__cartButton {
   background: none;
   border: none;
-  background-color: #FF7597;
+  background-color: #ff7597;
   color: white;
   border-radius: 5px;
-  padding: 5px;
+  padding: 5px 0;
+  width: 100px;
   white-space: nowrap;
 }
 
@@ -130,35 +135,6 @@
 .card__reproductor audio {
   width: 100%;
   margin: 20px 0;
-}
-
-@media (min-width:481px) {
-
-  .product-detail__card {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-  }
-
-  .card-img {
-    flex-grow: 0;
-  }
-
-  .card__info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    flex-grow: 1;
-  }
-
-  .card__menu {
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: max-content;
-  }
 }
 
 @media (min-width: 769px) {
@@ -191,30 +167,24 @@
   }
 
   .product-detail__card {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
     width: 100%;
-    gap: 30px;
-
-  }
-
-  .card__info {
-    width: max-content;
-  }
-
-  .card-img {
-    width: none;
   }
 
   .card__menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    margin-top: 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    margin: 0;
   }
-
-  .card__menu button {
-    width: 90px;
+  .card__cartButton {
+    margin-top: 20px;
   }
-
   .card__reproductor {
     width: 100%;
   }

@@ -1,3 +1,3 @@
 module.exports = {
-    index: (req, res) => res.render('shoppingCart') 
+    index: (req, res) => res.render('cart') 
 }

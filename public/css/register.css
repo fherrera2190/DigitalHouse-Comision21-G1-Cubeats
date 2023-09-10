@@ -1,14 +1,33 @@
 .register {
-  background: linear-gradient(135deg, #4366B4, #FC3AD7);
+  background: linear-gradient(135deg, #4366B4, var(--colorLila));
   width: 100vw;
   height: 100vh;
   color: black;
   font-family: var(--tipografiaCuBeats);
 }
 
-.register__main {
+.register__goHome {
+  padding-top: 10px;
+  align-self: self-start;
+}
+
+.register__goHome i {
+  color: #fff;
+  padding: 10px;
+  font-size: 2rem;
+  background-color: var(--navBackrground);
+  border-radius: 10px;
+}
+.register__form-container {
+  flex-grow: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.register__main {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   width: 90%;
   height: 100%;
@@ -22,29 +41,28 @@
   align-items: center;
   border: 1px solid gray;
   background-color: #fff;
-  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  width: 100%;
+  max-width: 450px;
   position: relative;
 }
 
 .register__form h2 {
-  padding-top: 60px;
+  padding-top: 45px;
 }
-
-.form-container {
+.register__form-body {
   width: 80%;
-  /* padding-bottom: 50px; */
+  padding-bottom: 10px;
 }
 
-.form__logo {
+.register__form-logo {
   position: absolute;
-  top: -50px;
+  top: -45px;
 }
 
-.form__logo img {
-  width: 100px;
-  height: 100px;
+.register__form-logo img {
+  width: 90px;
+  height: 90px;
 }
 
 .register__form label {
@@ -60,184 +78,29 @@
 
 .register__form input {
   padding: 10px;
-  margin: 10px 0;
+  margin: 15px 0;
   width: 100%;
   border-radius: 5px;
   border: 1px solid gray;
+  outline: none;
 }
 
 .register__form button {
   width: 100%;
   border: none;
   border-radius: 5px;
-  background-color: #4366B4;
+  background-color: var(--colorCeleste);
   color: white;
   padding: 10px;
-  margin-bottom: 10px;
-}
-
-button[type="reset"] {
-  background-color: grey;
-}
-
-.form-container p {
-  padding-top: 20px;
-}
-
-
-
-
-
-
-
-/* BOTON AYUDA */
-
-.help a {
-  text-decoration: none;
-  color: grey
-}
-
-.help a:hover {
-  transform: scale(1.1);
-  transition: all 0.3 ease-in-out;
-}
-
-.help {
-  text-align: right;
-  margin: 5px auto;
-  width: 40%;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #fff;
-  border-radius: 20px/50px;
-  background-clip: padding-box;
-}
-
-/* .help-toggle {
-  font-size: 1em;
-  padding: 10px;
-  color: #fff;
-  border: 2px solid #06D85F;
-  border-radius: 20px/50px;
-  text-decoration: none;
+  margin-bottom: 20px;
   cursor: pointer;
-  transition: all 0.3s ease-out;
-} */
-.help-toggle:hover {
-  color: #fff;
-  background-color: #4366B4;
-  border-radius: 10px;
-  padding: 3px;
+}
+.register__form-body p {
+  padding-top: 20px;
+  text-align: center;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-
-.popup .close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
+.register__form-body a {
   text-decoration: none;
-  color: #333;
-}
-
-.popup .close:hover {
-  color: #06D85F;
-}
-
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-
-.goHome {
-  padding-top: 10px;
-  align-self: self-start;
-}
-
-.goHome i {
-  position: relative;
-  right: auto;
-  color: #fff;
-  padding: 10px;
-  font-size: 2rem;
-  background-color: var(--navBackrground);
-  border-radius: 10px;
-}
-
-/* MEDIA QUERIES */
-
- @media (min-width:701px) {
-  .register__form{
-    width: 450px;
-  }
-  
- }
-@media (min-width: 460px) and (max-width: 700px) {
-  .box {
-    width: 70%;
-  }
-
-  .popup {
-    width: 70%;
-  }
-  div.goHome {
-    position: fixed;
-    left: 10px;
-  }
-
-  .goHome i{
-    position: fixed;
-    left: 10px;
-    right: auto;
-  }
-}
-
-@media (max-width: 459px) {
-  .register__form {
-    width: 450px;
-    margin-top: 7vh;
-  }
-  div.goHome {
-    position: fixed;
-    left: 10px;
-  }
-
-  .goHome i{
-    position: fixed;
-    left: 10px;
-    right: auto;
-  }
+  color: blue;
 }

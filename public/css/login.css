@@ -3,7 +3,7 @@
   width: 100vw;
   height: 100vh;
   color: black;
-  font-family: "Kanit", "Source Sans Pro", sans-serif;
+  font-family: var(--tipografiaCuBeats);
 }
 
 .login__goHome {
@@ -50,7 +50,7 @@
 }
 
 .login__form h2 {
-  padding-top: 50px;
+  padding-top: 45px;
 }
 
 .login__form-body {
@@ -81,7 +81,7 @@
 
 .login__form input {
   padding: 10px;
-  margin: 20px 0;
+  margin: 15px 0;
   width: 100%;
   border-radius: 5px;
   border: 1px solid gray;

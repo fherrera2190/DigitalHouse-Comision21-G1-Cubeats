@@ -4,11 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
+const userSessionCheck = require('./middlewares/userSessionCheck');
 
 
 
@@ -23,8 +25,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '..', 'public')));
-app.use(methodOverride('_method'));
 
+app.use(methodOverride('_method'));
+app.use(session({
+  secret : "CuBeatsX100pre",
+  resave : true,
+  saveUninitialized :true
+}));
+
+app.use(userSessionCheck);
 //Config routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

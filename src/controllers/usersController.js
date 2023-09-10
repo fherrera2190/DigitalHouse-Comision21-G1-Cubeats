@@ -5,4 +5,6 @@ module.exports = {
     processLogin: require('./users/processLogin'),
     register: require('./users/register'),
     processRegister: require('./users/processRegister'),
+    update: require('./users/update'),
+    logout: require('./users/logout')
 }

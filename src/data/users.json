@@ -6,7 +6,7 @@
         "email": "fherrera@gmail.com",
         "description": "lorem ipsum",
         "password": "abc1234",
-        "category": "admin",
+        "role": "admin",
         "image": null,
         "cover": null
     },
@@ -16,8 +16,8 @@
         "lastname": "Cartier",
         "email": "maxicartier87@gmail.com",
         "description": "lorem ipsum",
-        "password": "defg5678",
-        "category": "admin",
+        "password": "123123",
+        "role": "admin",
         "image": null,
         "cover": null
     },
@@ -28,7 +28,7 @@
         "email": "juanma91@gmail.com",
         "description": "lorem ipsum",
         "password": "defg5678",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -39,7 +39,7 @@
         "email": "Juanferquintero@gmail.com",
         "description": "lorem ipsum",
         "password": "riv8787",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -50,7 +50,7 @@
         "email": "maxilopez@gmail.com",
         "description": "lorem ipsum",
         "password": "lorem5656",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -61,7 +61,7 @@
         "email": "cala14@gmail.com",
         "description": "lorem ipsum",
         "password": "cala2514",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -72,7 +72,7 @@
         "email": "ellocodelaviola@gmail.com",
         "description": "lorem ipsum",
         "password": "airbag65",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -83,7 +83,7 @@
         "email": "capu97@gmail.com",
         "description": "lorem ipsum",
         "password": "diego22elloco",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -94,7 +94,7 @@
         "email": "kiricocho@gmail.com",
         "description": "lorem ipsum",
         "password": "gatorade96",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -105,7 +105,7 @@
         "email": "estoesfa2023@gmail.com",
         "description": "lorem ipsum",
         "password": "adad2552",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -116,7 +116,7 @@
         "email": "andrecito87@gmail.com",
         "description": "lorem ipsum",
         "password": "yirayira1994",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     },
@@ -127,7 +127,7 @@
         "email": "intoxicados_14@gmail.com",
         "description": "lorem ipsum",
         "password": "viejaslocas23",
-        "category": "user",
+        "role": "user",
         "image": null,
         "cover": null
     }

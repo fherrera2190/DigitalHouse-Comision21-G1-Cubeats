@@ -1,7 +1,7 @@
 .login {
   background: linear-gradient(135deg, #4366B4, var(--colorLila));
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   color: black;
   font-family: var(--tipografiaCuBeats);
 }
@@ -9,6 +9,7 @@
 .login__goHome {
   padding-top: 10px;
   align-self: self-start;
+  margin-bottom: 45px;
 }
 
 .login__goHome i {

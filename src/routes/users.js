@@ -2,11 +2,12 @@ var express = require('express');
 const { login, processLogin } = require('../controllers/usersController');
 const usersController = require('../controllers/usersController');
 const loginValidator = require('../validations/loginValidator');
+const registerValidator = require('../validations/registerValidator');
 var router = express.Router();
 
 /* User Register */
 router.get('/register', usersController.register);
-router.post('/register', usersController.processRegister);
+router.post('/register', registerValidator, usersController.processRegister);
 
 /* Login Register */
 router.get('/login', login);

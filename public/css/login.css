@@ -1,6 +1,6 @@
 .login {
   background: linear-gradient(135deg, #4366B4, var(--colorLila));
-  width: 100vw;
+  width:100%;
   min-height: 100vh;
   color: black;
   font-family: var(--tipografiaCuBeats);

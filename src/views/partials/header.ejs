@@ -24,7 +24,9 @@
         <nav class="header-nav-menu">
           <ul class="header-nav-menu__itemlist">
             <li class="itemlist__li"><a href="/products">All Beats</a></li>
+            <% if (locals.userLogged && locals.userLogged.role ==='admin') { %>
             <li class="itemlist__li"><a href="/admin">Admin Panel</a></li>
+            <% } %>
           </ul>
           <ul class="header-nav-menu__itemlist">
             <li class="itemlist__li"><a href="/users/register"><%= locals.userLogged.username %></a></li>
@@ -40,7 +42,6 @@
         <nav class="header-nav-menu">
           <ul class="header-nav-menu__itemlist">
             <li class="itemlist__li"><a href="/products">All Beats</a></li>
-            <li class="itemlist__li"><a href="/admin">Admin Panel</a></li>
           </ul>
           <ul class="header-nav-menu__itemlist">
             <li class="itemlist__li"><a href="/users/register">Sign up</a></li>

@@ -135,15 +135,15 @@
      },
      {
           "userId": 13,
-          "username": "MaxiCartier",
+          "username": "ferbeoulve2",
           "name": null,
           "lastname": null,
-          "email": "maxicartier@gmail.com",
+          "email": "herrera.fernando12091@gmail.com",
           "description": null,
           "image": null,
           "cover": null,
-          "role": "user",
-          "password": "$2a$10$wN5qel6qe0SbfBpbldFenuERqxVx0Qg3CHUz5E/gwKWLgxA7DE.he",
-          "date": "2023-09-13T23:08:53.900Z"
+          "role": "admin",
+          "password": "$2a$10$qUL89p7FJLrvc46OJPl2cOQ5Evw9x3vBfgwNHha17pSdcvuLrpqd2",
+          "date": "2023-09-13T22:54:55.814Z"
      }
 ]

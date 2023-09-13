@@ -22,10 +22,18 @@ module.exports = (req, res) => {
             date: new Date
         }
         req.session.userLogged = {
+            username: newUser.username,
+            image: newUser.image
         }
+        req.body.checkbox !== undefined && res.cookie('userLogged', req.session.userLogged, {
+            maxAge: 10000 * 60
+        });
         users.push(newUser);
         escribirJson(usersFilePath, users);
-        res.redirect('/');
+        res.render('userStep2register', {
+            username: newUser.username,
+            email: newUser.email
+        });
     } else {
         res.render('register', {
             errors: errors.mapped(),

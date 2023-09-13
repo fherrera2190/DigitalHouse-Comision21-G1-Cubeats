@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head', { title : 'Detalle del Producto' }) %>
+
+<body class="productDetail">
+  <%- include('./partials/header.ejs') %>
+  <main class="product__main">
+    <div class="main__container">
+      <div class="profile-info">
+        <div class="profile-autor">
+          <div class="autor-info">
+            <div class="autor-profile">
+              <img src="/img/product.jpg" alt="">
+            </div>
+            <h3 class="autor-name">Autor-Name</h3>
+            <div class="autor-redes">
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="autor-page-cover">
+          <img class="profile-bg__img" src="https://d369yr65ludl8k.cloudfront.net/30535/0567f803-1de1-4b15-ba7d-1e62d9c0b03a.jpg" alt="">
+        </div>
+      </div>
+      <hr>
+
+    </div>
+  </main>
+  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials/scripts.ejs') %>
+</body>
+
+</html>

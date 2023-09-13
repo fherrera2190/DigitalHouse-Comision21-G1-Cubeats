@@ -1,7 +1,7 @@
 [
      {
           "userId": 1,
-          "username": "ferbeoulve",
+          "username": "ferbeoulv2e",
           "name": "Fernando",
           "lastname": "Herrera",
           "email": "fherrera@gmail.com",
@@ -134,7 +134,7 @@
      },
      {
           "userId": 13,
-          "username": "ferbeoulve3",
+          "username": "ferbeoulve2",
           "name": null,
           "lastname": null,
           "email": "herrera.fernando1209@gmail.com",
@@ -142,20 +142,7 @@
           "image": null,
           "cover": null,
           "role": "user",
-          "password": "$2a$10$epaIVnrP/gHngkIeu.tmTeY6nfX6agomObSecb7Zsakalfwnd4giC",
-          "date": "2023-09-12T05:22:50.121Z"
-     },
-     {
-          "userId": 14,
-          "username": "feasda",
-          "name": null,
-          "lastname": null,
-          "email": "herrera2223.fernando1209@gmail.com",
-          "description": null,
-          "image": null,
-          "cover": null,
-          "role": "user",
-          "password": "$2a$10$cvqyxb06OX8bbdzh3mUqPOEBmFiichib7UuNYi8nGZw/nUmrfiUfW",
-          "date": "2023-09-12T05:23:04.001Z"
+          "password": "$2a$10$iwKbmYSdIGpjmOHJK4W9AuKMRjLipGekrmhBz7LD1qAA6PKKz6CjK",
+          "date": "2023-09-12T17:39:32.843Z"
      }
 ]

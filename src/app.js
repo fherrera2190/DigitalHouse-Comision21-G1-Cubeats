@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const cartRouter = require('./routes/cart');
 const userSessionCheck = require('./middlewares/userSessionCheck');
+const cookieCheck = require('./middlewares/cookieCheck');
 
 
 
@@ -33,6 +34,7 @@ app.use(session({
   saveUninitialized :true
 }));
 
+app.use(cookieCheck);
 app.use(userSessionCheck);
 //Config routes
 app.use('/', indexRouter);

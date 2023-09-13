@@ -11,19 +11,38 @@
       <a href="/"><i class="fa-solid fa-left-long"></i></a>
     </div>
     <div class="register__form-container">
-      <form action="/register" class="register__form" method="post">
+      <form action="/users/register" class="register__form" method="post">
         <div class="register__form-logo">
           <img src="/img/logotransparente.png" alt="Logo">
         </div>
         <h2>Register</h2>
         <div class="register__form-body">
-          <input type="text" placeholder="User Name" name="userName" id="userName" required />
-          <input type="text" placeholder="Name" name="name" id="name" required />
-          <input type="text" placeholder="Surname" name="surname" id="surname" required />
-          <input type="email" placeholder="Email" name="email" id="email" required />
-          <input type="password" placeholder="Password" name="password" id="password" required />
-          <input type="password" placeholder="Repat password" name="password2" id="password2" required />
-          <label><input type="checkbox" id="Terminos" value="terminos"><span>Accept <a href="http://">terms and conditions</a></span></label>
+          <div class="register__form-input">
+            <input type="text" placeholder="Username" name="username" id="username" value="<%= locals.old && (locals.old.username && locals.old.username) %>" required />
+            <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.username&&errors.username.msg%></small>
+            <% } %>
+          </div>
+          <div class="register__form-input">
+            <input type="email" placeholder="Email" name="email" id="email" value="<%= locals.old && (locals.old.email && locals.old.email)%>" required />
+            <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.email&&errors.email.msg%></small>
+            <% } %>
+          </div>
+          <div class="register__form-input">
+            <input class="register__form-password" type="password" placeholder="Password" name="password" id="password" required />
+            <input type="password" placeholder="Repeat password" name="password2" id="password2" required />
+            <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.password&&errors.password.msg%></small><br>
+            <small class="small-error"><%=errors.password2&&errors.password2.msg%></small>
+            <% } %>
+          </div>
+          <div class="register__form-input">
+            <label><input type="checkbox" id="terminos" name="terminos"><span>Accept <a href="http://">terms and conditions</a></span></label>
+            <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.terminos&&errors.terminos.msg%></small>
+            <% } %>
+          </div>
           <button type="submit">Register</button>
         </div>
       </form>

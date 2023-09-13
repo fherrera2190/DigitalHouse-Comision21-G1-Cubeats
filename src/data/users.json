@@ -132,5 +132,18 @@
           "role": "user",
           "image": null,
           "cover": null
+     },
+     {
+          "userId": 13,
+          "username": "MaxiCartier",
+          "name": null,
+          "lastname": null,
+          "email": "maxicartier@gmail.com",
+          "description": null,
+          "image": null,
+          "cover": null,
+          "role": "user",
+          "password": "$2a$10$wN5qel6qe0SbfBpbldFenuERqxVx0Qg3CHUz5E/gwKWLgxA7DE.he",
+          "date": "2023-09-13T23:08:53.900Z"
      }
 ]

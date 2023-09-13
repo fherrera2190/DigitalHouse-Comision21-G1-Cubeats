@@ -8,7 +8,6 @@ var router = express.Router();
 /* User Register */
 router.get('/register', usersController.register);
 router.post('/register', registerValidator, usersController.processRegister);
-
 /* Login Register */
 router.get('/login', login);
 router.post('/login', loginValidator, processLogin);

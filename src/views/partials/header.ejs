@@ -19,6 +19,23 @@
         </div>
       </div>
       <div class="header-top-right">
+        <% if (locals.userLogged) { %>
+        <a class="header-top-right__mobileButton" href="/users/profile"><%= locals.userLogged.username %></a>
+        <nav class="header-nav-menu">
+          <ul class="header-nav-menu__itemlist">
+            <li class="itemlist__li"><a href="/products">All Beats</a></li>
+            <li class="itemlist__li"><a href="/admin">Admin Panel</a></li>
+          </ul>
+          <ul class="header-nav-menu__itemlist">
+            <li class="itemlist__li"><a href="/users/register"><%= locals.userLogged.username %></a></li>
+            <li class="itemlist__li"><a href="/users/logout">Logout</a></li>
+          </ul>
+          <ul class="header-nav-menu__itemlist">
+            <li class="itemlist__li"><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+          </ul>
+        </nav>
+        <% }else{ %>
         <a class="header-top-right__mobileButton" href="/users/register">SIGN UP</a>
         <nav class="header-nav-menu">
           <ul class="header-nav-menu__itemlist">
@@ -34,6 +51,7 @@
             </li>
           </ul>
         </nav>
+        <% } %>
       </div>
     </div>
     <div class="header-bottom">

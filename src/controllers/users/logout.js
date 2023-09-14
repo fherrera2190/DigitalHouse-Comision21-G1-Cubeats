@@ -1,5 +1,5 @@
 module.exports = (req, res) => {
     req.session.destroy();
-    res.clearCookie('userLogged');
+    res.clearCookie('CuBeatsX100pre');
     res.redirect('/');
 }

@@ -109,3 +109,8 @@
   text-decoration: none;
   color: blue;
 }
+
+.register__form-input .small-error {
+  color: red;
+  font-size: 12px;
+}

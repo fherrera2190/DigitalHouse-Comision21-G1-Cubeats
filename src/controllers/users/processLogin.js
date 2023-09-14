@@ -9,12 +9,16 @@ module.exports = (req, res) => {
 
     if (errors.isEmpty()) {
         const users = leerJson(usersFilePath);
-        const { userId, name, role } = users.find(user => user.email === req.body.email)
+        const { userId, username, role } = users.find(user => user.email === req.body.email)
         req.session.userLogged = {
             userId, 
-            name, 
+            username, 
             role 
         }
+
+        req.body.remember !== undefined && res.cookie('CuBeatsX100pre' ,req.session.userLogged,{
+            maxAge : 1000 * 60 * 5
+        })
             
         return res.redirect('/')
     }else{

@@ -19,6 +19,9 @@
                 <div class="login__form-body">
                     <input type="email" placeholder="E-mail" name="email" id="email" required/>
                     <input type="password" placeholder="Password" name="password" id="password" required/>
+                    <% if (locals.errors) { %>
+                        <small class="small-error"><%=errors.password&&errors.password.msg%></small>
+                        <% } %>
                     <label><input type="checkbox" id="remember" name="remember" value="recordarme"><span>Remember me</span></label>
                     <button type="submit">LOG IN</button>
                     <hr>

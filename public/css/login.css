@@ -110,7 +110,7 @@
   color: blue;
 }
 
-.register__form-input .small-error {
+.login__form-body .small-error {
   color: red;
   font-size: 12px;
 }

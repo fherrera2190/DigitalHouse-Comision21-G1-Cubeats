@@ -21,8 +21,13 @@ module.exports = (req, res) => {
         })
             
         return res.redirect('/')
+        
     }else{
-        return res.send(errors.mapped())
+
+        res.render('login', {
+            errors: errors.mapped(),
+            old: req.body
+        });
     }
 
 }

@@ -17,7 +17,10 @@
                 </div>
                 <h2>LOG IN</h2>
                 <div class="login__form-body">
-                    <input type="email" placeholder="E-mail" name="email" id="email" required/>
+                    <input type="email" placeholder="E-mail" name="email" id="email" value="<%= locals.old && (locals.old.email && locals.old.email)%>"/>
+                    <% if (locals.errors) { %>
+                    <small class="small-error"><%=errors.email&&errors.email.msg%></small>
+                    <% } %>
                     <input type="password" placeholder="Password" name="password" id="password" required/>
                     <% if (locals.errors) { %>
                         <small class="small-error"><%=errors.password&&errors.password.msg%></small>

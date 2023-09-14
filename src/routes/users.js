@@ -13,7 +13,7 @@ router.get('/login', login);
 router.post('/login', loginValidator, processLogin);
 
 /* User Profile */
-router.get('/profile', usersController.profile);
+router.get('/profile/:username', usersController.profile);
 router.put('/update', usersController.update);
 
 /* User Logout */

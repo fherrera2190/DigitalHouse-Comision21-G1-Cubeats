@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head', { title : 'User profile' }) %>
+
+<body class="profile">
+  <%- include('./partials/header.ejs') %>
+  <main class="profile__main">
+    <div class="main__container">
+      <div class="row ">
+        <div class="col-md-3 ">
+          <div class="d-flex flex-column align-items-center ">
+            <div class="autor-profile mb-3">
+              <img src="/img/product.jpg" alt="">
+            </div>
+            <label for="avatar" class="form-label btn btn-primary">Change Avatar
+              <input class="input-button" id="avatar" name="avatar" type="file">
+            </label>
+            <p class="fs-4">Ferbeoulve</p>
+            <div class="d-flex w-100 justify-content-around  fs-4 profile__redes">
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 autor-page-cover">
+          <img class="profile-bg__img" src="https://d369yr65ludl8k.cloudfront.net/30535/0567f803-1de1-4b15-ba7d-1e62d9c0b03a.jpg" alt="">
+          <div class="d-flex mt-1 justify-content-end">
+            <label class="btn btn-primary">
+              Change cover
+              <input type="file" class="input-button">
+            </label>
+          </div>
+          <hr>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials/scripts.ejs') %>
+</body>
+
+</html>

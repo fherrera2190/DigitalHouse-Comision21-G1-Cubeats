@@ -1,0 +1,37 @@
+.profile {
+    font-family: var(--tipografiaCuBeats), sans-serif;
+    background-color: #121212;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    color: darkgrey;
+}
+
+.profile .profile__main {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.profile__main .main__container {
+    background-color: #1f1b24;
+    padding: 25px;
+    width: 90%;
+    margin: 20px auto;
+}
+
+.autor-profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile__redes a {
+    color: darkgrey;
+}
+.profile .autor-page-cover{
+    max-height: 150px;
+}
+.input-button[type="file"]{
+    display: none;
+}

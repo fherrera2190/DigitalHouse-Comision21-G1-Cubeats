@@ -21,11 +21,6 @@ module.exports = (req, res) => {
             password: bcrypt.hashSync(req.body.password.trim(), 10),
             date: new Date
         }
-        req.session.userLogged = {
-            username: newUser.username,
-            image: newUser.image,
-            role:newUser.role
-        }
         users.push(newUser);
         escribirJson(usersFilePath, users);
         res.redirect('/');

@@ -135,28 +135,15 @@
      },
      {
           "userId": 13,
-          "username": "ferbeoulve2",
+          "username": "ferbeoulve23",
           "name": null,
           "lastname": null,
-          "email": "herrera.fernando12091@gmail.com",
-          "description": null,
-          "image": null,
-          "cover": null,
-          "role": "admin",
-          "password": "$2a$10$qUL89p7FJLrvc46OJPl2cOQ5Evw9x3vBfgwNHha17pSdcvuLrpqd2",
-          "date": "2023-09-13T22:54:55.814Z"
-     },
-     {
-          "userId": 14,
-          "username": "maxicartier",
-          "name": null,
-          "lastname": null,
-          "email": "maxicartier@gmail.com",
+          "email": "herrera.fernando120923@gmail.com",
           "description": null,
           "image": null,
           "cover": null,
           "role": "user",
-          "password": "$2a$10$2sqNSOsHPhPSS/L/RhvD6eBdNYJlrl0UKBRHmK4UWIUz.leKFNhzi",
-          "date": "2023-09-13T23:56:39.839Z"
+          "password": "$2a$10$kURAMAnyx2YgPcmuLVe/YOHAdV8wgw.GzUolMsPE2pPcJhtzNJPO.",
+          "date": "2023-09-15T02:54:25.126Z"
      }
 ]

@@ -37,13 +37,13 @@
             <small class="small-error"><%=errors.password2&&errors.password2.msg%></small>
             <% } %>
           </div>
-          <div class="register__form-input">
+          <div class="register__form-input mt-4">
             <label><input type="checkbox" id="terminos" name="terminos"><span>Accept <a href="http://">terms and conditions</a></span></label>
             <% if (locals.errors) { %>
             <small class="small-error"><%=errors.terminos&&errors.terminos.msg%></small>
             <% } %>
           </div>
-          <button type="submit">Register</button>
+          <button class="mb-4" type="submit">Register</button>
         </div>
       </form>
     </div>

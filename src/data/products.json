@@ -12,7 +12,7 @@
      },
      {
           "productId": 2,
-          "userId": 2,
+          "userId": 1,
           "name": "Kachorro DJ",
           "category": "Electro",
           "description": "",
@@ -23,7 +23,7 @@
      },
      {
           "productId": 3,
-          "userId": 3,
+          "userId": 1,
           "name": "Classical",
           "category": "Clasico",
           "description": "",
@@ -34,7 +34,7 @@
      },
      {
           "productId": 4,
-          "userId": 4,
+          "userId": 1,
           "name": "Me gustas much",
           "category": "Rock",
           "description": "Un temaso",
@@ -45,7 +45,7 @@
      },
      {
           "productId": 5,
-          "userId": 5,
+          "userId": 1,
           "name": "Ibiza Rockefeller",
           "category": "Remix",
           "description": "",
@@ -56,7 +56,7 @@
      },
      {
           "productId": 6,
-          "userId": 6,
+          "userId": 2,
           "name": "Bust-a-mood",
           "category": "Jazz",
           "description": "",
@@ -67,7 +67,7 @@
      },
      {
           "productId": 7,
-          "userId": 7,
+          "userId": 2,
           "name": "Celebrate",
           "category": "Electro",
           "description": "",
@@ -78,7 +78,7 @@
      },
      {
           "productId": 8,
-          "userId": 8,
+          "userId": 2,
           "name": "Relax",
           "category": "Remix",
           "description": "",
@@ -89,7 +89,7 @@
      },
      {
           "productId": 9,
-          "userId": 9,
+          "userId": 2,
           "name": "Giorgio Gaber",
           "category": "Jazz",
           "description": "",

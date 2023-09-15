@@ -12,7 +12,7 @@ module.exports = (req, res) => {
     const newProduct = {
         productId: products[products.length - 1].productId + 1,
         name: req.body.title,
-        userId: 1,
+        userId: req.session.userLogged.userId,
         category: req.body.category,
         description: req.body.description,
         image: req.files.image ? req.files.image[0].filename : null,
@@ -22,5 +22,6 @@ module.exports = (req, res) => {
     }
     products.push(newProduct);
     escribirJson(productsFilePath, products);
-    return res.redirect('/');
+    console.log(req.session.userLogged.userId)
+    res.redirect('/');
 }

@@ -6,7 +6,7 @@
           "lastname": null,
           "email": "herrera.fernando1209@gmail.com",
           "description": "Ferbeoulve Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptatum voluptas magnam inventore aperiam similique est rem enim, voluptatem ducimus id quod debitis sit excepturi amet ab repellendus unde sed incidunt deleniti omnis adipisci. Veniam doloribus consequatur enim quibusdam ratione modi corrupti fuga? Quod, totam voluptates quasi corporis accusamus illo.",
-          "image": null,
+          "image": "admin.png",
           "cover": null,
           "role": "admin",
           "password": "$2a$10$qhwsiSLC4u18Msxx/i4O2OC6wMLXOObigalahvL2p6b5XWfr31LOu",

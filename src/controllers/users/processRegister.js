@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const { leerJson, escribirJson } = require('../../data/index');
 const path = require('path');
 const usersFilePath = path.join(__dirname, '../../data/users.json');
+
+//Controlar estoy para mejorar performance si puede ir deentro del IF,ahora no hay tiempo
 const users = leerJson(usersFilePath);
 
 module.exports = (req, res) => {

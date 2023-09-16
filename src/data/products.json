@@ -97,5 +97,16 @@
           "beat": "b9Prueba.mp3",
           "price": 400,
           "like": 20100
+     },
+     {
+          "productId": 10,
+          "name": "1231ddd",
+          "userId": 3,
+          "category": "Remix",
+          "description": "123213343543",
+          "image": null,
+          "beat": "1694884059832_beat_.mp3",
+          "price": "3343",
+          "like": 0
      }
 ]

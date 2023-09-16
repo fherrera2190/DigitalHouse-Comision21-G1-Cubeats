@@ -2,60 +2,61 @@
 <html lang="en">
 <%- include('./partials/head', { title : 'Detalle del Producto' }) %>
 
-  <body class="productDetail">
-    <%- include('./partials/header.ejs') %>
-      <main class="product__main">
-        <div class="main__container">
-          <div class="profile-info">
-            <div class="profile-autor">
-              <div class="autor-info">
-                <div class="autor-profile">
-                  <img src="/img/product.jpg" alt="">
-                </div>
-                <h3 class="autor-name">Autor-Name</h3>
-                <div class="autor-redes">
-                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                  <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
-                  <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
-                  <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-              </div>
+<body class="productDetail">
+  <%- include('./partials/header.ejs') %>
+  <main class="product__main">
+    <div class="main__container">
+      <div class="profile-info">
+        <div class="profile-autor">
+          <div class="autor-info">
+            <div class="autor-profile">
+              <img src="/img/users/<%= user.image ? user.image: 'default-image.png' %>" alt="">
             </div>
-            <div class="autor-page-cover">
-              <img class="profile-bg__img"
-                src="https://d369yr65ludl8k.cloudfront.net/30535/0567f803-1de1-4b15-ba7d-1e62d9c0b03a.jpg" alt="">
+            <h3 class="autor-name"><%= user.username%> </h3>
+            <div class="d-flex justify-content-center my-3">
+              <a class="btn btn-primary" href="/users/profile/<%= user.username %>">Profile</a>
             </div>
-          </div>
-          <hr>
-          <div class="product-detail">
-            <div class="product-detail__card">
-              <div class="card-img">
-                <img src="/img/products/<%=image ? image : 'default-image.png' %>" alt="">
-              </div>
-              <div class="card__info">
-                <h3 class="card__title">
-                  <%=name %>
-                </h3>
-                <p class="card__description">#<%=category %>
-                </p>
-              </div>
-              <div class="card__menu">
-                <button class="card__favoriteButton"><span>
-                    <%= like %>
-                  </span><i class="fa-regular fa-heart"></i></button>
-                <button class="card__cartButton"><span>$<%= price %> </span><i
-                    class="fa-solid fa-cart-shopping"></i></button>
-              </div>
-            </div>
-            <div class="card__reproductor">
-              <audio src="/audio/<%=beat %>" controls autoplay></audio>
+            <div class="autor-redes">
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href="#"><i class="fa-brands fa-square-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-tiktok"></i></a>
             </div>
           </div>
         </div>
-      </main>
-      <%- include('./partials/footer.ejs') %>
-        <%- include('./partials/scripts.ejs') %>
-  </body>
+        <div class="autor-page-cover">
+          <img class="profile-bg__img" src="/img/users/<%= user.cover ? user.cover: 'defaultcover.jpg' %>" alt="">
+        </div>
+      </div>
+      <hr>
+      <div class="product-detail">
+        <div class="product-detail__card">
+          <div class="card-img">
+            <img src="/img/products/<%=image ? image : 'default-image.png' %>" alt="">
+          </div>
+          <div class="card__info">
+            <h3 class="card__title">
+              <%=name %>
+            </h3>
+            <p class="card__description">#<%=category %>
+            </p>
+          </div>
+          <div class="card__menu">
+            <button class="card__favoriteButton"><span>
+                <%= like %>
+              </span><i class="fa-regular fa-heart"></i></button>
+            <button class="card__cartButton"><span>$<%= price %> </span><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+        </div>
+        <div class="card__reproductor">
+          <audio src="/audio/<%=beat %>" controls autoplay></audio>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials/scripts.ejs') %>
+</body>
 
 </html>

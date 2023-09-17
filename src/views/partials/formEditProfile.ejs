@@ -24,23 +24,39 @@
                     <input class="form-control form-control-sm d-none " name="image" id="image" type="file"></label>
                 </div>
               </div>
+              <small class="d-flex justify-content-center text-danger my-3 ms-2">
+                <%= locals.errors && (errors.image && errors.image.msg) %>
+              </small>
               <div class="autor-page-cover d-block  mt-3 position-relative">
                 <img class="profile-bg__img img-fluid" src="/img/users/<%= userDatos.cover||'defaultcover.jpg' %>" alt="">
                 <label class="btn btn-primary position-absolute bottom-0 end-0 mb-3" for="cover"> Change cover
                   <input class="d-none" name="cover" id="cover" type="file">
                 </label>
               </div>
-
+              <small class="d-flex justify-content-center text-danger my-3 ms-2">
+                <%= locals.errors && (errors.cover && errors.cover.msg) %>
+              </small>
               <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="<%= userDatos.name  %>">
               </div>
+              <small class="d-flex justify-content-center text-danger ms-2">
+                <%= locals.errors && (errors.name && errors.name.msg) %>
+              </small>
               <div class="mb-3">
                 <label for="lastname" class="form-label">Last Name</label>
                 <input type="text" class="form-control" name="lastname" id="lastname" value="<%= userDatos.lastname%>">
               </div>
+              <small class="d-flex justify-content-center text-danger ms-2">
+                <%= locals.errors && (errors.lastname && errors.lastname.msg) %>
+              </small>
               <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
+                <div class="d-flex flex-column align-items-start flex-md-row align-items-md-center gap-md-3 ">
+                  <label for="description" class="form-label">Description</label>
+                  <small class="text-danger mb-3 mb-md-0">
+                    <%= locals.errors && (errors.description && errors.description.msg) %>
+                  </small>
+                </div>
                 <textarea class="form-control" name="description" id="description"></textarea>
                 <div class="invalid-feedback">
                 </div>

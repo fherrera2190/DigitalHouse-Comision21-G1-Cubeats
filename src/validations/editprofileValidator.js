@@ -1,0 +1,27 @@
+const { check, body } = require("express-validator");
+
+module.exports = [
+    check("name")
+        .notEmpty().withMessage("Debe ingresar un apellido")
+        .isAlpha("es-ES").withMessage("Solo letras"),
+    check("lastname")
+        .notEmpty().withMessage("Debe ingresar un apellido")
+        .isAlpha("es-ES").withMessage("Solo letras"),
+    check("description")
+        .notEmpty().withMessage("Debe ingresar un apellido")
+        .isLength({ min: 20, max: 500, }).withMessage('Debe tener entre 20 y 500 caracteres'),
+    body('image')
+        .custom((value, { req }) => {
+            if (req.cualquiera) {
+                return false
+            }
+            return true
+        }).withMessage(`Tipo de archivo no permitido`),
+    body('cover')
+        .custom((value, { req }) => {
+            if (req.cualquiera) {
+                return false
+            }
+            return true
+        }).withMessage(`Tipo de archivo no permitido`)
+];

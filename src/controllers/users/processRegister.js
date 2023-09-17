@@ -13,8 +13,8 @@ module.exports = (req, res) => {
         const newUser = {
             userId: users[users.length - 1].userId + 1,
             username: req.body.username.trim(),
-            name: null,
-            lastname: null,
+            name: "",
+            lastname: "",
             email: req.body.email.trim(),
             description: null,
             image: null,

@@ -1,0 +1,56 @@
+  <% if (locals.errors) { %>
+
+  <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: block;" aria-modal="true" role="dialog">
+    <% }else{ %>
+
+    <div class="modal fade " id="exampleModal" tabindex="-1" style="display: none;" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+      <% } %>
+
+      <div class="modal-dialog ">
+        <div class="modal-content bg-dark ">
+          <div class="modal-header" data-bs-theme="dark">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+            <a type="button" class="btn-close white  " aria-label="Close" href="/users/profile/<%=locals.userLogged.username%>"></a>
+          </div>
+          <div class="modal-body">
+            <form action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT" method="POST" enctype="multipart/form-data">
+              <div class="d-flex flex-column flex-lg-row gap-lg-3  align-items-center justify-content-center ">
+                <div class="autor-profile">
+                  <img src="/img/users/<%= userDatos.image||'default-image.png' %>" alt="">
+                </div>
+                <div class="my-3">
+                  <label for="image" class="form-label btn btn-primary">Change image
+                    <input class="form-control form-control-sm d-none " name="image" id="image" type="file"></label>
+                </div>
+              </div>
+              <div class="autor-page-cover d-block  mt-3 position-relative">
+                <img class="profile-bg__img img-fluid" src="/img/users/<%= userDatos.cover||'defaultcover.jpg' %>" alt="">
+                <label class="btn btn-primary position-absolute bottom-0 end-0 mb-3" for="cover"> Change cover
+                  <input class="d-none" name="cover" id="cover" type="file">
+                </label>
+              </div>
+
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name="name" id="name" value="<%= userDatos.name  %>">
+              </div>
+              <div class="mb-3">
+                <label for="lastname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastname" id="lastname" value="<%= userDatos.lastname%>">
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description"></textarea>
+                <div class="invalid-feedback">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <a type="button" class="btn btn-secondary" href="/users/profile/<%=locals.userLogged.username%>">Close</a>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

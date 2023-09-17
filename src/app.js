@@ -1,26 +1,23 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
-
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const productsRouter = require('./routes/products');
-const cartRouter = require('./routes/cart');
+const indexRouter = require('./routes/index.routes');
+const usersRouter = require('./routes/users.routes');
+const productsRouter = require('./routes/products.routes');
+const cartRouter = require('./routes/cart.routes');
 const userSessionCheck = require('./middlewares/userSessionCheck');
 const cookieCheck = require('./middlewares/cookieCheck');
-
-
-
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//Middleware globales
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,9 +29,10 @@ app.use(session({
   resave : true,
   saveUninitialized :true
 }));
-
 app.use(cookieCheck);
 app.use(userSessionCheck);
+
+
 //Config routes
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

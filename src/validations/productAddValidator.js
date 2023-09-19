@@ -23,6 +23,11 @@ module.exports = [
     })
     .withMessage("El precio debe ser positivo"),
 
+    check("description").isLength({
+      min: 20,
+      max: 500,
+    }).withMessage('Debe tener entre 20 y 500 caracteres'),
+
     body('beat')
     .custom((value,{req}) => {
         if(req.files.beat){

@@ -7,15 +7,15 @@
   <%- include('./partials/header.ejs') %>
   <main class="createBeats__main">
     <section class="">
-      <h1>Subir Beat</h1>
+      <h1>New Beat</h1>
       <hr>
       <form action="/products/add" method="post" class="createBeat__form" enctype="multipart/form-data">
         <div class="createBeat-form__datos">
           <label for="title">Title:</label>
-          <input type="text" name="title" id="title" value="<%= locals.old && (old.title && old.title ) %>" >
+          <input type="text" name="title" id="title" value="<%= locals.old && (old.title && old.title ) %>">
           <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.title&&errors.title.msg%></small>
-            <% } %>
+          <small class="small-error"><%=errors.title&&errors.title.msg%></small>
+          <% } %>
           <label for="category">Category:</label>
           <select name="category" id="category">
             <option value="" selected hidden>Select Category</option>
@@ -24,36 +24,39 @@
             <% }) %>
           </select>
           <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.category&&errors.category.msg%></small>
-            <% } %>
+          <small class="small-error"><%=errors.category&&errors.category.msg%></small>
+          <% } %>
           <label for="price">Price:</label>
           <input type="text" name="price" id="price" value="<%= locals.old && (old.price && old.price ) %>">
           <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.price&&errors.price.msg%></small>
-            <% } %>
-          <div class="createBeats__audio-upload-inputFile">
-            <div>
-              <i class="fa-solid fa-music"></i>
-            </div>
-        
-            <input class="createBeats__image-upload-inputFile" type="file" placeholder="Upload Image" name="beat" id="beat">
+          <small class="small-error"><%=errors.price&&errors.price.msg%></small>
+          <% } %>
+          <div class="createBeats__audio-upload-inputFile d-flex flex-column">
+            <label class="position-relative btn btn-primary d-flex gap-4 align-items-center " for="beat"> <i class="fa-solid fa-music"></i>Upload Beat
+              <input class="d-none position-absolute " type="file" name="beat" id="beat">
+            </label>
             <% if (locals.errors) { %>
-              <small class="small-error"><%=errors.beat&&errors.beat.msg%></small>
-              <% } %>
+            <small class="small-error"><%=errors.beat&&errors.beat.msg%></small>
+            <% } %>
           </div>
         </div>
         <div class="createBeats__image-upload">
           <h3>Beat Image</h3>
           <img src="/img/products/default-image.png" alt="Image-beat">
-          <input class="createBeats__image-upload-inputFile" type="file" placeholder="Upload Beat" name="image" id="image">
+          <label class="btn btn btn-primary position-relative createBeats__audio-upload-inputFile" for="image">
+            Upload Beat Image
+            <input class="position-absolute d-none " type="file" name="image" id="image">
+          </label>
+          <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.image&&errors.image.msg%></small>
+            <% } %>
         </div>
         <div class="createBeat-form__description">
           <label for="description">Description:</label>
-          <textarea name="description" id="description" cols="20" rows="5" 
-          class="<%= locals.errors && (errors.description && 'is-invalid') %>"><%= locals.old && (old.description && old.description ) %></textarea>
+          <textarea name="description" id="description" cols="20" rows="5" class="<%= locals.errors && (errors.description && 'is-invalid') %>"><%= locals.old && (old.description && old.description ) %></textarea>
           <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.description&&errors.description.msg%></small>
-            <% } %>
+          <small class="small-error"><%=errors.description&&errors.description.msg%></small>
+          <% } %>
         </div>
         <div class="createBeat-form__buttons">
           <button class="createBeat-form__button--cancelar">Cancel</button>

@@ -5,8 +5,11 @@ const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
 const { leerJson, escribirJson, existsSync, unlinkSync } = require('../../data/index');
 
 module.exports = (req, res) => {
-
     const errors = validationResult(req);
+
+
+    // console.log(req.files.image[0].mimetype);
+
     if (errors.isEmpty()) {
         const products = leerJson(productsFilePath);
         if (!req.files.beat) {

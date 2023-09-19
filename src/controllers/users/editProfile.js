@@ -6,8 +6,6 @@ const users = leerJson(usersFilePath);
 const products = leerJson(productsFilePath);
 const { validationResult } = require('express-validator');
 
-
-
 module.exports = (req, res) => {
     const errors = validationResult(req);
     const users = leerJson(usersFilePath);
@@ -15,14 +13,23 @@ module.exports = (req, res) => {
         userModify = users.find(user => user.username === req.params.username)
         userModify.name = req.body.name.trim();
         userModify.lastname = req.body.lastname.trim();
-        userModify.image = req.files.image ? req.files.image[0].filename : userModify.image;
-        userModify.cover = req.files.cover ? req.files.cover[0].filename : userModify.cover;
+        if (req.files.image) {
+            existsSync(`./public/img/users/${userModify.image}`) && unlinkSync(`./public/img/users/${userModify.image}`);
+            userModify.image = req.files.image[0].filename;
+        } 
+        if (req.files.cover) {
+            existsSync(`./public/img/users/${userModify.cover}`) && unlinkSync(`./public/img/users/${userModify.cover}`);
+            userModify.cover = req.files.cover[0].filename;
+        } 
         userModify.description = req.body.description.trim();
         escribirJson(usersFilePath, users);
         return res.redirect(`/`);
     }
+
+    if (req.files.image) existsSync(`./public/img/users/${req.files.image[0].filename}`) && unlinkSync(`./public/img/users/${req.files.image[0].filename}`);
+    if (req.files.cover) existsSync(`./public/img/users/${req.files.cover[0].filename}`) && unlinkSync(`./public/img/users/${req.files.cover[0].filename}`);
     const userFind = users.find(user => user.username === req.params.username.trim());
-    console.log(errors.mapped())
+
     if (!userFind) {
         console.log('Usuario no encontrado');
         return res.redirect('/'); //Mandar a 404 con msj user No exists
@@ -41,7 +48,7 @@ module.exports = (req, res) => {
         return res.render('profile', {
             products: productsFilter,
             userDatos,
-            errors:errors.mapped()
+            errors: errors.mapped()
         });
     }
 }

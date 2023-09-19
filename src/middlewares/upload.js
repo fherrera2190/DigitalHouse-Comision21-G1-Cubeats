@@ -31,10 +31,8 @@ const extensionFilter = (req, file, cb) => {
         file.mimetype == "image/jpeg" ||
         file.mimetype == "image/jpg"
     ) {
-        req.fileValidation = 'OK'
         cb(null, true);
     } else {
-        req.fileValidation = 'Tipo de archivo no permitido'
         cb(null, false);
     }
 }

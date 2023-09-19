@@ -18,20 +18,20 @@
         <h2>Register</h2>
         <div class="register__form-body">
           <div class="register__form-input">
-            <input type="text" placeholder="Username" name="username" id="username" value="<%= locals.old && (locals.old.username && locals.old.username) %>" required />
+            <input type="text" placeholder="Username" name="username" id="username" value="<%= locals.old && (locals.old.username && locals.old.username) %>"/>
             <% if (locals.errors) { %>
             <small class="small-error"><%=errors.username&&errors.username.msg%></small>
             <% } %>
           </div>
           <div class="register__form-input">
-            <input type="email" placeholder="Email" name="email" id="email" value="<%= locals.old && (locals.old.email && locals.old.email)%>" required />
+            <input type="email" placeholder="Email" name="email" id="email" value="<%= locals.old && (locals.old.email && locals.old.email)%>"/>
             <% if (locals.errors) { %>
             <small class="small-error"><%=errors.email&&errors.email.msg%></small>
             <% } %>
           </div>
           <div class="register__form-input">
-            <input class="register__form-password" type="password" placeholder="Password" name="password" id="password" required />
-            <input type="password" placeholder="Repeat password" name="password2" id="password2" required />
+            <input class="register__form-password" type="password" placeholder="Password" name="password" id="password"/>
+            <input type="password" placeholder="Repeat password" name="password2" id="password2"/>
             <% if (locals.errors) { %>
             <small class="small-error"><%=errors.password&&errors.password.msg%></small><br>
             <small class="small-error"><%=errors.password2&&errors.password2.msg%></small>

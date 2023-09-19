@@ -3,61 +3,60 @@
 
 <%- include('./partials/head.ejs',{title:'Edit Beat'}) %>
 
-    <body class="createBeats">
-        <%- include('./partials/header.ejs') %>
-            <main class="createBeats__main">
-                <section class="">
-                    <h1>Editar Beat</h1>
-                    <hr>
-                    <form class="createBeat__form" action="/products/edit/<%= productId %>?_method=PUT" method="POST" enctype="multipart/form-data">
-                        <div class="createBeat-form__datos">
-                            <label for="title">Title:</label>
-                            <input type="text" name="title" id="title" value="<%= name %>">
-                            <% if (locals.errors) { %>
-                                <small class="small-error"><%=errors.title&&errors.title.msg%></small>
-                                <% } %>
-                            <label for="category">Category:</label>
-                            <select name="category"  id="category" required> 
-                                <% categories.forEach(item=> { %>
-                                    <option <%=item.name===category && 'selected' %> value="<%= item.name %>"><%= item.name %>
-                                    </option>
-                                    <% }) %>
-                            </select>
-                            <% if (locals.errors) { %>
-                                <small class="small-error"><%=errors.category&&errors.category.msg%></small>
-                                <% } %>
-                            <label for="price">Precio:</label>
-                            <input type="text" name="price" id="price" value="<%= price %>">
-                            <% if (locals.errors) { %>
-                                <small class="small-error"><%=errors.price&&errors.price.msg%></small>
-                                <% } %>
-                            <div class="createBeats__audio-upload-inputFile">
-                                <div>
-                                    <i class="fa-solid fa-music"></i>
-                                </div>
-                                <input class="createBeats__image-upload-inputFile" type="file"
-                                    placeholder="Subir Beat" name="beat" id="beat">
-                            </div>
-                        </div>
-                        <div class="createBeats__image-upload">
-                            <h3>Beat Image</h3>
-                            <img src="/img/products/<%= image || 'product.jpg' %>" alt="Image-beat">
-                            <input class="createBeats__image-upload-inputFile" type="file" placeholder="Subir Imagen"
-                                name="image" id="image">
-                        </div>
-                        <div class="createBeat-form__description">
-                            <label for="description">Descripción:</label>
-                            <textarea name="description" id="description" cols="20" rows="4"><%= description %></textarea>
-                        </div>
+<body class="createBeats">
+  <%- include('./partials/header.ejs') %>
+  <main class="createBeats__main">
+    <section class="">
+      <h1>Editar Beat</h1>
+      <hr>
+      <form class="createBeat__form" action="/products/edit/<%= productId %>?_method=PUT" method="POST" enctype="multipart/form-data">
+        <div class="createBeat-form__datos">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" value="<%= name %>">
+          <% if (locals.errors) { %>
+          <small class="small-error"><%=errors.title&&errors.title.msg%></small>
+          <% } %>
+          <label for="category">Category:</label>
+          <select name="category" id="category">
+            <% categories.forEach(item=> { %>
+            <option <%=item.name===category && 'selected' %> value="<%= item.name %>"><%= item.name %>
+            </option>
+            <% }) %>
+          </select>
+          <% if (locals.errors) { %>
+          <small class="small-error"><%=errors.category&&errors.category.msg%></small>
+          <% } %>
+          <label for="price">Precio:</label>
+          <input type="text" name="price" id="price" value="<%= price %>">
+          <% if (locals.errors) { %>
+          <small class="small-error"><%=errors.price&&errors.price.msg%></small>
+          <% } %>
+          <div class="createBeats__audio-upload-inputFile">
+            <div>
+              <i class="fa-solid fa-music"></i>
+            </div>
+            <input class="createBeats__image-upload-inputFile" type="file" placeholder="Subir Beat" name="beat" id="beat">
+          </div>
+        </div>
+        <div class="createBeats__image-upload">
+          <h3>Beat Image</h3>
+          <img src="/img/products/<%= image || 'product.jpg' %>" alt="Image-beat">
+          <input class="createBeats__image-upload-inputFile" type="file" placeholder="Subir Imagen" name="image" id="image">
+        </div>
+        <div class="createBeat-form__description">
+          <label for="description">Descripción:</label>
+          <textarea name="description" id="description" cols="20" rows="4"><%= description %></textarea>
+        </div>
 
-                        <div class="createBeat-form__buttons">
-                            <button class="createBeat-form__button--cancelar">Cancelar</button>
-                            <button class="createBeat-form__button--enviar" type="submit">Save changes</button>
-                        </div>
-                    </form>
-                </section>
-            </main>
-            <%- include('./partials/footer.ejs')%>
-            <%- include('./partials//scripts.ejs') %>
-    </body>
+        <div class="createBeat-form__buttons">
+          <button class="createBeat-form__button--cancelar">Cancelar</button>
+          <button class="createBeat-form__button--enviar" type="submit">Save changes</button>
+        </div>
+      </form>
+    </section>
+  </main>
+  <%- include('./partials/footer.ejs')%>
+  <%- include('./partials//scripts.ejs') %>
+</body>
+
 </html>

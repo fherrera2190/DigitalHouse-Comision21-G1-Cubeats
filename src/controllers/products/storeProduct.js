@@ -34,11 +34,6 @@ module.exports = (req, res) => {
         (req.files.image && existsSync(`./public/img/products/${req.files.image[0].filename}`)) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
         (req.files.beat && existsSync(`./public/audio/${req.files.beat[0].filename}`)) && unlinkSync(`./public/audio/${req.files.beat[0].filename}`);
 
-        if (req.files.beat) {
-            req.files.beat.forEach(file => {
-                existsSync(`./public/audio/${file.filename}`) && unlinkSync(`./public/audio/${file.filename}`)
-            })
-        }
         return res.render('createBeats', {
             categories,
             errors: errors.mapped(),

@@ -1,4 +1,4 @@
-const {validationResult} = require('express-validator');
+const { validationResult } = require('express-validator');
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../../data/products.json');
 const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
@@ -7,7 +7,7 @@ const { leerJson, escribirJson, existsSync, unlinkSync } = require('../../data/i
 module.exports = (req, res) => {
 
     const errors = validationResult(req);
-    if(errors.isEmpty()){
+    if (errors.isEmpty()) {
         const products = leerJson(productsFilePath);
         if (!req.files.beat) {
             existsSync(`./public/img/products/${req.files.image[0].filename}`) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
@@ -28,27 +28,21 @@ module.exports = (req, res) => {
         escribirJson(productsFilePath, products);
         console.log(req.session.userLogged.userId)
         res.redirect('/');
-    }else{
+    } else {
         const categories = leerJson(categoriesFilePath);
-        
 
-        (req.files.beat && existsSync(`./public/audio/${req.files.beat[0].filename }`)) && unlinkSync(`./public/audio/${req.files.beat[0].filename }`);
+        (req.files.image && existsSync(`./public/img/products/${req.files.image[0].filename}`)) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
+        (req.files.beat && existsSync(`./public/audio/${req.files.beat[0].filename}`)) && unlinkSync(`./public/audio/${req.files.beat[0].filename}`);
 
-        if(req.files.beat) {
+        if (req.files.beat) {
             req.files.beat.forEach(file => {
                 existsSync(`./public/audio/${file.filename}`) && unlinkSync(`./public/audio/${file.filename}`)
             })
-        } 
-
-          return res.render('createBeats',{
-                categories,
-                
-                errors : errors.mapped(),
-                old : req.body
-            })
+        }
+        return res.render('createBeats', {
+            categories,
+            errors: errors.mapped(),
+            old: req.body
+        })
     }
-
-    
-
-  
 }

@@ -136,4 +136,8 @@
         gap: 30px;
         justify-content: flex-end;
     }
+    .createBeats__main .small-error {
+        color: red;
+        font-size: 12px;
+      }
 }

@@ -13,6 +13,9 @@
         <div class="createBeat-form__datos">
           <label for="title">Title:</label>
           <input type="text" name="title" id="title">
+          <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.title&&errors.title.msg%></small>
+            <% } %>
           <label for="category">Category:</label>
           <select name="category" id="category">
             <option value="" selected hidden>Select Category</option>
@@ -20,13 +23,23 @@
             <option value="<%=category.name %>"><%=category.name %></option>
             <% }) %>
           </select>
+          <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.category&&errors.category.msg%></small>
+            <% } %>
           <label for="price">Price:</label>
           <input type="text" name="price" id="price">
+          <% if (locals.errors) { %>
+            <small class="small-error"><%=errors.price&&errors.price.msg%></small>
+            <% } %>
           <div class="createBeats__audio-upload-inputFile">
             <div>
               <i class="fa-solid fa-music"></i>
             </div>
+        
             <input class="createBeats__image-upload-inputFile" type="file" placeholder="Upload Image" name="beat" id="beat">
+            <% if (locals.errors) { %>
+              <small class="small-error"><%=errors.beat&&errors.beat.msg%></small>
+              <% } %>
           </div>
         </div>
         <div class="createBeats__image-upload">
@@ -37,6 +50,7 @@
         <div class="createBeat-form__description">
           <label for="description">Description:</label>
           <textarea name="description" id="description" cols="20" rows="5"></textarea>
+        
         </div>
         <div class="createBeat-form__buttons">
           <button class="createBeat-form__button--cancelar">Cancel</button>

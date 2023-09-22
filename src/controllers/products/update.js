@@ -2,15 +2,18 @@ const { leerJson, existsSync, escribirJson, unlinkSync } = require("../../data")
 const { validationResult } = require("express-validator");
 const path = require('path');
 const productsFilePath = path.join(__dirname, '../../data/products.json');
+const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
 
 
 module.exports = (req, res) => {
     const errors = validationResult(req);
-    const { title, price, category, description } = req.body;
+    //const { title, price, category, description } = req.body;
+    console.log(req.body)
     const products = leerJson(productsFilePath);
     console.log(req.files.image);
     
-    if (errors.isEmpty()) { // toda la logica que teníamos la metí adentro de este if
+    if (errors.isEmpty()) { 
+        const { title, price, category, description } = req.body;// toda la logica que teníamos la metí adentro de este if
         const productModify = products.find(product => product.productId === +req.params.id)
         if (productModify) {
             productModify.name = title.trim()
@@ -41,8 +44,11 @@ module.exports = (req, res) => {
             })
         }
 
-        return res.render('editBeats', {
+       const product = products.find(product => product.productId === +req.params.id)
+
+        return res.render('editbeat', {
             categories,
+            ...product,
             errors: errors.mapped(),
             old: req.body
         })

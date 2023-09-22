@@ -100,13 +100,13 @@
      },
      {
           "productId": 13,
-          "name": "sadasdsa",
+          "name": "fffffffff",
           "userId": 3,
           "category": "Remix",
           "description": "sadasdsasadasdsasadasdsasadasdsasadasdsasadasdsasadasdsasadasdsasadasdsasadasdsasadasdsa",
           "image": "1695099294465_avatar_beat_.jpg",
           "beat": "1695099294398_beat_.mp3",
-          "price": "223223",
+          "price": 223223,
           "like": 0
      }
 ]

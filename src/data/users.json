@@ -28,10 +28,10 @@
      {
           "userId": 3,
           "username": "maxi2023",
-          "name": "Fernando",
-          "lastname": "Herrera",
+          "name": "Maxi",
+          "lastname": "Cartier",
           "email": "maxi2023@gmail.com",
-          "description": "HerreraHerreraHerreraHerreraHerreraHerreraHerreraHerrera",
+          "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quod vitae, natus sunt tempora reiciendis nulla error accusamus illum tempore doloremque harum! Esse maxime porro ut, sapiente quia voluptas facere.",
           "image": "1695096964819_maxi2023_image_.jpg",
           "cover": "1695096978426_maxi2023_cover_.jpg",
           "role": "user",

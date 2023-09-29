@@ -25,7 +25,7 @@ module.exports = (req, res) => {
         }
         users.push(newUser);
         escribirJson(usersFilePath, users);
-        res.redirect('/');
+        res.redirect('/users/login');
     } else {
         res.render('register', {
             errors: errors.mapped(),

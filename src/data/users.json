@@ -37,5 +37,18 @@
           "role": "user",
           "password": "$2a$10$PQwhJMDyhf3ulPqRQTzyauW64kn0P1XmmkoeJsvL/P/LDypM2.eaW",
           "date": "2023-09-15T20:03:09.829Z"
+     },
+     {
+          "userId": 4,
+          "username": "maxi2024",
+          "name": "Maxi",
+          "lastname": "Cartier",
+          "email": "maxi2024@gmail.com",
+          "description": "s´dflksfldslfsdpfl+pldaspáds",
+          "image": "1695954165880_maxi2024_image_.jpg",
+          "cover": null,
+          "role": "user",
+          "password": "$2a$10$F3cuHaavbX1/JebdECLgwObp2WjEF66iZS.lqi3sTwxXaoLkbRGgi",
+          "date": "2023-09-29T02:19:51.975Z"
      }
 ]

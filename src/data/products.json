@@ -108,5 +108,16 @@
           "beat": "1695099294398_beat_.mp3",
           "price": 223223,
           "like": 0
+     },
+     {
+          "productId": 14,
+          "name": "asdasdasd",
+          "userId": 4,
+          "category": "Remix",
+          "description": "Editado por segunda vez",
+          "image": "1695954357221_avatar_beat_.jpg",
+          "beat": "1695954357096_beat_.mp3",
+          "price": 4455,
+          "like": 0
      }
 ]

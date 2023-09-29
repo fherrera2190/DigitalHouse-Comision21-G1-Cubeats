@@ -4,19 +4,20 @@
   background-color: var(--bodyColor);
   font-family: "Kanit", "Source Sans Pro", sans-serif;
 }
-
-.swipper img {
-  width: 100%;
+.index__banner  {
+  height:500px;
+}
+.index__banner img {
+  height: 500px;
+}
+.banner__mobile {
+  display: none;
 }
 
 #home {
   min-height: 100vh;
   position: relative;
   z-index: 10000;
-}
-
-.banner__mobile {
-  display: none
 }
 
 a.btn {
@@ -206,9 +207,14 @@ div.card.show div.flap2 {
   transition: all 0.3s 0.2s ease-out;
 }
 
-@media (max-width:459px) {
-
+@media (max-width: 480px) {
   div.cards {
     margin-top: 10px;
+  }
+  .index__banner  {
+    height:250px;
+  }
+  .index__banner img {
+    height:250px;
   }
 }

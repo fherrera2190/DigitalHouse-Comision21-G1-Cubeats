@@ -6,7 +6,8 @@ const users = leerJson(usersFilePath);
 const products = leerJson(productsFilePath);
 
 module.exports = (req, res) => {
-    const userFind = users.find(user => user.username === req.params.username.trim());
+    console.log(req.params.username);
+    const userFind = users.find(user => user.username === req.params.username);
     if (!userFind) {
         console.log('Usuario no encontrado');
         return res.redirect('/'); //Mandar a 404 con msj user No exists

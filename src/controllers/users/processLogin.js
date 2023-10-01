@@ -6,7 +6,7 @@ const usersFilePath = path.join(__dirname, '../../data/users.json');
 
 module.exports = (req, res) => {
     const errors = validationResult(req);
-
+    
     if (errors.isEmpty()) {
         const users = leerJson(usersFilePath);
         const { userId, username, role } = users.find(user => user.email === req.body.email)

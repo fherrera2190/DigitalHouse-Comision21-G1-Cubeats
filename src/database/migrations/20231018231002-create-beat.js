@@ -46,8 +46,7 @@ module.exports = {
           model: {
             tableName: "Users"
           }
-        },
-        allowNull: false
+        }
       },
       licenceId: {
         type: Sequelize.INTEGER,
@@ -55,8 +54,7 @@ module.exports = {
           model: {
             tableName: "Licences"
           }
-        },
-        allowNull: false
+        }
       },
       createdAt: {
         allowNull: false,

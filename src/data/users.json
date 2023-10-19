@@ -8,7 +8,7 @@
           "description": "Ferbeoulve Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptatum voluptas magnam inventore aperiam similique est rem enim, voluptatem ducimus id quod debitis sit excepturi amet ab repellendus unde sed incidunt deleniti omnis adipisci. Veniam doloribus consequatur enim quibusdam ratione modi corrupti fuga? Quod, totam voluptates quasi corporis accusamus illo.",
           "image": "admin.png",
           "cover": null,
-          "role": "admin",
+          "role": 1,
           "password": "$2a$10$qhwsiSLC4u18Msxx/i4O2OC6wMLXOObigalahvL2p6b5XWfr31LOu",
           "date": "2023-09-13T21:54:46.931Z"
      },
@@ -21,7 +21,7 @@
           "description": "Ferbeoulve23 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptatum voluptas magnam inventore aperiam similique est rem enim, voluptatem ducimus id quod debitis sit excepturi amet ab repellendus unde sed incidunt deleniti omnis adipisci. Veniam doloribus consequatur enim quibusdam ratione modi corrupti fuga? Quod, totam voluptates quasi corporis accusamus illo.",
           "image": null,
           "cover": null,
-          "role": "user",
+          "role": 3,
           "password": "$2a$10$kURAMAnyx2YgPcmuLVe/YOHAdV8wgw.GzUolMsPE2pPcJhtzNJPO.",
           "date": "2023-09-15T02:54:25.126Z"
      },
@@ -34,7 +34,7 @@
           "description": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam quod vitae, natus sunt tempora reiciendis nulla error accusamus illum tempore doloremque harum! Esse maxime porro ut, sapiente quia voluptas facere.",
           "image": "1695096964819_maxi2023_image_.jpg",
           "cover": "1695096978426_maxi2023_cover_.jpg",
-          "role": "user",
+          "role": 3,
           "password": "$2a$10$PQwhJMDyhf3ulPqRQTzyauW64kn0P1XmmkoeJsvL/P/LDypM2.eaW",
           "date": "2023-09-15T20:03:09.829Z"
      },
@@ -47,47 +47,8 @@
           "description": "s´dflksfldslfsdpfl+pldaspáds",
           "image": "1695954165880_maxi2024_image_.jpg",
           "cover": null,
-          "role": "user",
+          "role": 2,
           "password": "$2a$10$F3cuHaavbX1/JebdECLgwObp2WjEF66iZS.lqi3sTwxXaoLkbRGgi",
           "date": "2023-09-29T02:19:51.975Z"
-     },
-     {
-          "userId": 5,
-          "username": "asdasdasdasasd",
-          "name": "",
-          "lastname": "",
-          "email": "asdasdasdasasd@gmail.com",
-          "description": null,
-          "image": null,
-          "cover": null,
-          "role": "user",
-          "password": "$2a$10$NCeheS01EDqqyuA.gMEgNeaQ8WfbQflPSTXJVMbFGTyfCPr6uI19G",
-          "date": "2023-09-29T15:37:46.293Z"
-     },
-     {
-          "userId": 6,
-          "username": "probando2021",
-          "name": "",
-          "lastname": "",
-          "email": "probando2021@gmail.com",
-          "description": null,
-          "image": null,
-          "cover": null,
-          "role": "user",
-          "password": "$2a$10$n7j4UdDnRlv58rTbYct0I.k8rkd60SD1s4LzwPvv02QsKD7Buj30y",
-          "date": "2023-09-29T18:39:31.941Z"
-     },
-     {
-          "userId": 7,
-          "username": "probando2022",
-          "name": "",
-          "lastname": "",
-          "email": "probando2022@gmail.com",
-          "description": null,
-          "image": null,
-          "cover": null,
-          "role": "user",
-          "password": "$2a$10$flVtly1pyOFFPWacyE29le1Dvz5HEHGBsAq1YTtWBVmMSTGNs/NCW",
-          "date": "2023-09-29T18:40:19.986Z"
      }
 ]

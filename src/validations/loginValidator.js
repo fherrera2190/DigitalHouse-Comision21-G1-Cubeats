@@ -1,25 +1,30 @@
-const {check, body} = require("express-validator");
-const {leerJson} = require("../data");
-const {compareSync} = require("bcryptjs");
-const path = require('path');
-
-
+const { check, body } = require("express-validator");
+const { leerJson } = require("../data");
+const { compareSync } = require("bcryptjs");
+const path = require("path");
+const db = require("../database/models");
 
 module.exports = [
-    check("email")
+  check("email")
     .notEmpty()
     .withMessage("Ingresar el email es obligatorio")
     .isEmail()
     .withMessage("Formato inválido"),
 
-    body("password")
-    .custom((value, {req}) => {
-        const users = leerJson(require('path').join(__dirname, '../data/users.json'));
-        const user = users.find(user => user.email === req.body.email);
-        if(!user || !compareSync(value, user.password)){
-            return false
+  body("password")
+    .custom(async (value, { req }) => {
+      console.log(value);
+      const user = await db.User.findOne({
+        where: {
+          email: req.body.email
         }
-            return true
-    }).withMessage('Credenciales inválidas')
-
+      });
+      console.log(user.password);
+      if (!user || !compareSync(value, user.password)) {
+        console.log("Entre aca");
+        return false;
+      }
+      return true;
+    })
+    .withMessage("Credenciales inválidas")
 ];

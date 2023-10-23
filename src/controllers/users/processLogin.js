@@ -1,33 +1,35 @@
-const { validationResult } = require('express-validator');
-const { leerJson } = require('../../data/index');
-const path = require('path');
-const usersFilePath = path.join(__dirname, '../../data/users.json');
+const { validationResult } = require("express-validator");
+const db = require("../../database/models");
 
-
-module.exports = (req, res) => {
-    const errors = validationResult(req);
-    
+module.exports = async (req, res) => {
+  const errors = validationResult(req);
+  console.log(errors.isEmpty());
+  try {
     if (errors.isEmpty()) {
-        const users = leerJson(usersFilePath);
-        const { userId, username, role } = users.find(user => user.email === req.body.email)
-        req.session.userLogged = {
-            userId, 
-            username, 
-            role 
+      const user = await db.User.findOne({
+        where: {
+          email: req.body.email
         }
+      });
+      req.session.userLogged = {
+        userId: user.id,
+        username: user.username,
+        role: user.role
+      };
 
-        req.body.remember !== undefined && res.cookie('CuBeatsX100pre' ,req.session.userLogged,{
-            maxAge : 1000 * 60 * 5
-        })
-            
-        return res.redirect('/')
-        
-    }else{
-
-        res.render('login', {
-            errors: errors.mapped(),
-            old: req.body
+      req.body.remember !== undefined &&
+        res.cookie("CuBeatsX100pre", req.session.userLogged, {
+          maxAge: 1000 * 60 * 5
         });
-    }
 
-}
+      return res.redirect("/");
+    } else {
+      res.render("login", {
+        errors: errors.mapped(),
+        old: req.body
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};

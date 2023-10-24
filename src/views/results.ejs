@@ -2,29 +2,29 @@
 <html lang="es">
 <%- include('./partials/head', { title : 'CuBeats - Search' }) %>
 
-  <body class="body__index">
-    <!-- Header -->
-    <%- include('./partials/header.ejs') %>
-      <!-- Main body -->
-      <main id="home">
-        <!-- Tajetas -->
+<body class="body__index">
+  <!-- Header -->
+  <%- include('./partials/header.ejs') %>
+  <!-- Main body -->
+  <main id="home">
+    <!-- Tajetas -->
 
-        <div class="cards">
-          <% if (products.length>0) { %>
-            <h1>Results</h1>
+    <div class="cards">
+      <% if (products.length>0) { %>
+      <h1>Results</h1>
 
-            <% products.forEach(product=> { %>
-            <%- include('./partials/cardsProduct.ejs',{...product}) %>
-            <% }) %>
-          <% }else{ %>
-            <h1>Results: <%= products.length %></h1>
-            <img src="/img/noresults.jpg" alt="">
-          <% } %>
-        </div>
-      </main>
-      <!-- footer -->
-      <%- include('./partials/footer.ejs') %>
-        <%- include('./partials//scripts.ejs') %>
-  </body>
+      <% products.forEach(product=> { %>
+      <%- include('./partials/cardsProduct.ejs',{...product.dataValues}) %>
+      <% }) %>
+      <% }else{ %>
+      <h1>Results: <%= products.length %></h1>
+      <img src="/img/noresults.jpg" alt="">
+      <% } %>
+    </div>
+  </main>
+  <!-- footer -->
+  <%- include('./partials/footer.ejs') %>
+  <%- include('./partials//scripts.ejs') %>
+</body>
 
 </html>

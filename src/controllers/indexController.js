@@ -1,26 +1,44 @@
-const path = require("path");
-const productsFilePath = path.join(__dirname, "../data/products.json");
-const { leerJson } = require("../data/index");
 const db = require("../database/models");
+const { Op } = require("sequelize");
 
 module.exports = {
   index: async (req, res) => {
-    const products = await db.Beat.findAll();
-    const categories = await db.Category.findAll();
-    return res.render("index", { products, categories });
+    try {
+      const products = await db.Beat.findAll();
+      const categories = await db.Category.findAll();
+      return res.render("index", { products, categories });
+    } catch (error) {
+      console.log(error);
+    }
   },
-  admin: (req, res) => {
-    const products = leerJson(productsFilePath);
-    return res.render("admin", { products });
+  admin: async (req, res) => {
+    try {
+      const products = await db.Beat.findAll();
+      const categories = await db.Category.findAll();
+      return res.render("admin", { products, categories });
+    } catch (error) {
+      console.log(error);
+    }
   },
-  search: (req, res) => {
-    const keywords = req.query.keywords.toLowerCase();
-    const products = leerJson(productsFilePath);
-    const results = products.filter(
-      ({ name, category }) =>
-        name.toLowerCase().includes(keywords) ||
-        category.toLowerCase().includes(keywords)
-    );
-    return res.render("admin", { products: results });
+  search: async (req, res) => {
+    try {
+      const keywords = req.query.keywords.trim();
+      const categories = await db.Category.findAll();
+      const products = await db.Beat.findAll({
+        where: {
+          [Op.or]: {
+            name: {
+              [Op.substring]: keywords
+            },
+            description: {
+              [Op.substring]: keywords
+            }
+          }
+        }
+      });
+      return res.render("admin", { products, categories });
+    } catch (error) {
+      console.log(error);
+    }
   }
 };

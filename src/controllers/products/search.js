@@ -1,11 +1,24 @@
-const path = require('path');
-const productsFilePath = path.join(__dirname, '../../data/products.json');
-const { leerJson } = require('../../data/index');
+const { Op } = require("sequelize");
+const db = require("../../database/models");
 
-module.exports = (req, res) => {
-    const keywords = req.query.keywords.toLowerCase();
-    const products = leerJson(productsFilePath);
-    const results = products.filter(({ name, category }) => name.toLowerCase().includes(keywords) || category.toLowerCase().includes(keywords));
-    return res.render('results', { products: results });
-
-}
+module.exports = async (req, res) => {
+  try {
+    const keywords = req.query.keywords.trim();
+    const categories = await db.Category.findAll();
+    const products = await db.Beat.findAll({
+      where: {
+        [Op.or]: {
+          name: {
+            [Op.substring]: keywords
+          },
+          description: {
+            [Op.substring]: keywords
+          }
+        }
+      }
+    });
+    return res.render("results", { products, categories });
+  } catch (error) {
+    console.log(error);
+  }
+};

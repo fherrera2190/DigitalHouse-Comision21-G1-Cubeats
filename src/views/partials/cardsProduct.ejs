@@ -1,15 +1,19 @@
-<div class="card card_t<%=productId %>">
+<div class="card card_t<%=id %>">
   <div class="card__image-holder">
-    <a href="/products/detail/<%=productId %>"><img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" /></a>
+    <a href="/products/detail/<%=id %>"><img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" /></a>
   </div>
-  <div id="t<%=productId %>" class="card-title">
+  <div id="t<%=id %>" class="card-title">
     <a class="toggle-info btn">
       <span class="left"></span>
       <span class="right"></span>
     </a>
     <h2>
       <%= name %>
-      <small><%=category%></small>
+      <% categories.forEach(category => { %>
+      <% if (category.dataValues.id===categoryId) { %>
+      <small><%=category.dataValues.name%></small>
+      <% } %>
+      <% }) %>
     </h2>
   </div>
   <div class="card-flap flap1">
@@ -20,10 +24,9 @@
     </div>
     <div class="card-flap flap2">
       <div class="card-actions">
-        <a href="/products/detail/<%=productId %>" class="btn"><i class="fa-solid fa-eye"></i></a>
+        <a href="/products/detail/<%=id%>" class="btn"><i class="fa-solid fa-eye"></i></a>
         <a href="/cart" class="btn"><i class="fa-solid fa-cart-plus"></i></a>
       </div>
     </div>
   </div>
 </div>
-

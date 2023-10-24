@@ -8,10 +8,10 @@
   <!-- Main body -->
   <main id="home">
     <!-- Tajetas -->
-    
+
     <div class="cards">
       <% products.forEach(product => { %>
-      <%- include('./partials/cardsProduct.ejs',{...product}) %>
+      <%- include('./partials/cardsProduct.ejs',{...product.dataValues}) %>
       <% }) %>
 
     </div>

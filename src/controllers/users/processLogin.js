@@ -3,7 +3,6 @@ const db = require("../../database/models");
 
 module.exports = async (req, res) => {
   const errors = validationResult(req);
-  console.log(errors.isEmpty());
   try {
     if (errors.isEmpty()) {
       const user = await db.User.findOne({
@@ -14,7 +13,7 @@ module.exports = async (req, res) => {
       req.session.userLogged = {
         userId: user.id,
         username: user.username,
-        role: user.role
+        role: user.roleId
       };
 
       req.body.remember !== undefined &&

@@ -24,7 +24,7 @@
         <nav class="header-nav-menu">
           <ul class="header-nav-menu__itemlist">
             <li class="itemlist__li"><a href="/products">All Beats</a></li>
-            <% if (locals.userLogged && locals.userLogged.role ==='admin') { %>
+            <% if (locals.userLogged && locals.userLogged.role ===1) { %>
             <li class="itemlist__li"><a href="/admin">Admin Panel</a></li>
             <% } %>
           </ul>

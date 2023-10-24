@@ -9,11 +9,7 @@
     </a>
     <h2>
       <%= name %>
-      <% categories.forEach(category => { %>
-      <% if (category.dataValues.id===categoryId) { %>
       <small><%=category.dataValues.name%></small>
-      <% } %>
-      <% }) %>
     </h2>
   </div>
   <div class="card-flap flap1">

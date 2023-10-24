@@ -6,6 +6,7 @@ module.exports = async (req, res) => {
     const keywords = req.query.keywords.trim();
     const categories = await db.Category.findAll();
     const products = await db.Beat.findAll({
+      include: ["category"],
       where: {
         [Op.or]: {
           name: {

@@ -11,6 +11,18 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Beat.belongsTo(models.Category,{
+        as:"category",
+        foreignKey:'categoryId'
+      })
+      Beat.belongsTo(models.User,{
+        as:"producer",
+        foreignKey:'producerId'
+      })
+      Beat.belongsTo(models.Licence,{
+        as:"licence",
+        foreignKey:'licenceId'
+      })
     }
   }
   Beat.init({

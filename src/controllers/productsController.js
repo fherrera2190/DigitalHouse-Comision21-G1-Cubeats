@@ -3,9 +3,10 @@ const db = require("../database/models");
 module.exports = {
   index: async (req, res) => {
     try {
-      const products = await db.Beat.findAll();
-      const categories = await db.Category.findAll();
-      return res.render("products", { products, categories });
+      const products = await db.Beat.findAll({
+        include: ["category"]
+      });
+      return res.render("products", { products });
     } catch (error) {
       console.log(error);
     }

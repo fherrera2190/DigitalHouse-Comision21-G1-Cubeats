@@ -22,11 +22,7 @@
       <div class="product-info">
         <img src="/img/products/<%=product.dataValues.image ? product.dataValues.image : 'default-image.png' %>" alt="">
         <h3 class="card__title"><%=product.dataValues.name %></h3>
-        <p class="card__description">#<% categories.forEach(category => { %>
-          <% if (category.dataValues.id===product.dataValues.categoryId) { %>
-          <small><%=category.dataValues.name%></small>
-          <% } %>
-          <% }) %>
+        <p class="card__description">#<small><%=product.dataValues.category.dataValues.name%></small>
         </p>
         <div class="admin-main__menu">
           <a href="/products/edit/<%=product.dataValues.id %>"><i class="fa-solid fa-pen-to-square"></i></a>

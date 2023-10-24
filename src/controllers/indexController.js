@@ -4,18 +4,21 @@ const { Op } = require("sequelize");
 module.exports = {
   index: async (req, res) => {
     try {
-      const products = await db.Beat.findAll();
-      const categories = await db.Category.findAll();
-      return res.render("index", { products, categories });
+      const products = await db.Beat.findAll({
+        include: ["category"]
+      });
+      // return res.json({ products });
+      return res.render("index", { products });
     } catch (error) {
       console.log(error);
     }
   },
   admin: async (req, res) => {
     try {
-      const products = await db.Beat.findAll();
-      const categories = await db.Category.findAll();
-      return res.render("admin", { products, categories });
+      const products = await db.Beat.findAll({
+        include: ["category"]
+      });
+      return res.render("admin", { products });
     } catch (error) {
       console.log(error);
     }
@@ -25,6 +28,7 @@ module.exports = {
       const keywords = req.query.keywords.trim();
       const categories = await db.Category.findAll();
       const products = await db.Beat.findAll({
+        include: ["category"],
         where: {
           [Op.or]: {
             name: {

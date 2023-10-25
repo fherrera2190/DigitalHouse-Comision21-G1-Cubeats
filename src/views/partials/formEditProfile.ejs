@@ -1,72 +1,143 @@
-  <% if (locals.errors) { %>
+<% if (locals.errors) { %>
 
-  <div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: block;" aria-modal="true" role="dialog">
-    <% }else{ %>
+<div
+	class="modal fade show"
+	id="exampleModal"
+	tabindex="-1"
+	aria-labelledby="exampleModalLabel"
+	style="display: block"
+	aria-modal="true"
+	role="dialog"
+>
+	<% }else{ %>
 
-    <div class="modal fade " id="exampleModal" tabindex="-1" style="display: none;" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div
+		class="modal fade"
+		id="exampleModal"
+		tabindex="-1"
+		style="display: none"
+		aria-labelledby="exampleModalLabel"
+		aria-hidden="true"
+	>
+		<% } %>
 
-      <% } %>
+		<div class="modal-dialog">
+			<div class="modal-content bg-dark">
+				<div class="modal-header" data-bs-theme="dark">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
+					<a
+						type="button"
+						class="btn-close white"
+						aria-label="Close"
+						href="/users/profile/<%=locals.userLogged.username%>"
+					></a>
+				</div>
+				<div class="modal-body">
+					<form
+						action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT"
+						method="POST"
+						enctype="multipart/form-data"
+					>
+						<div
+							class="d-flex flex-column flex-lg-row gap-lg-3 align-items-center justify-content-center"
+						>
+							<div class="autor-profile">
+								<img
+									src="/img/users/<%= locals.userLogged.image||'default-image.png' %>"
+									alt=""
+								/>
+							</div>
+							<div class="my-3">
+								<label for="image" class="form-label btn btn-primary"
+									>Change image
+									<input
+										class="form-control form-control-sm d-none"
+										name="image"
+										id="image"
+										type="file"
+								/></label>
+							</div>
+						</div>
+						<small class="d-flex justify-content-center text-danger my-3 ms-2">
+							<%= locals.errors && (errors.image && errors.image.msg) %>
+						</small>
+						<div class="autor-page-cover d-block mt-3 position-relative">
+							<img
+								class="profile-bg__img img-fluid"
+								src="/img/users/<%= userLogged.cover||'defaultcover.jpg' %>"
+								alt=""
+							/>
+							<label
+								class="btn btn-primary position-absolute bottom-0 end-0 mb-3"
+								for="cover"
+							>
+								Change cover
+								<input class="d-none" name="cover" id="cover" type="file" />
+							</label>
+						</div>
+						<small class="d-flex justify-content-center text-danger my-3 ms-2">
+							<%= locals.errors && (errors.cover && errors.cover.msg) %>
+						</small>
+						<div class="mb-3">
+							<label for="username" class="form-label">Name</label>
+							<input
+								type="text"
+								class="form-control"
+								name="username"
+								id="username"
+								value="<%= locals.userLogged.username  %>"
+							/>
+						</div>
+						<small class="d-flex justify-content-center text-danger ms-2">
+							<%= locals.errors && (errors.username && errors.username.msg) %>
+						</small>
+						<div class="mb-3">
+							<label for="last_name" class="form-label">Last Name</label>
+							<input
+								type="text"
+								class="form-control"
+								name="last_name"
+								id="last_name"
+								value="<%= locals.userLogged.last_name %>"
+							/>
+						</div>
+						<small class="d-flex justify-content-center text-danger ms-2">
+							<%= locals.errors && (errors.last_name && errors.last_name.msg) %>
+						</small>
+						<div class="mb-3">
+							<div
+								class="d-flex flex-column align-items-start flex-md-row align-items-md-center gap-md-3"
+							>
+								<label for="description" class="form-label">Description</label>
+								<small class="text-danger mb-3 mb-md-0">
+									<%= locals.errors && (errors.description &&
+									errors.description.msg) %>
+								</small>
+							</div>
+							<textarea
+								class="form-control"
+								name="description"
+								id="description"
+							>
+<%= locals.userLogged.description %></textarea
+							>
 
-      <div class="modal-dialog ">
-        <div class="modal-content bg-dark ">
-          <div class="modal-header" data-bs-theme="dark">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Profile</h1>
-            <a type="button" class="btn-close white  " aria-label="Close" href="/users/profile/<%=locals.userLogged.username%>"></a>
-          </div>
-          <div class="modal-body">
-            <form action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT" method="POST" enctype="multipart/form-data">
-              <div class="d-flex flex-column flex-lg-row gap-lg-3  align-items-center justify-content-center ">
-                <div class="autor-profile">
-                  <img src="/img/users/<%= userDatos.image||'default-image.png' %>" alt="">
-                </div>
-                <div class="my-3">
-                  <label for="image" class="form-label btn btn-primary">Change image
-                    <input class="form-control form-control-sm d-none " name="image" id="image" type="file"></label>
-                </div>
-              </div>
-              <small class="d-flex justify-content-center text-danger my-3 ms-2">
-                <%= locals.errors && (errors.image && errors.image.msg) %>
-              </small>
-              <div class="autor-page-cover d-block  mt-3 position-relative">
-                <img class="profile-bg__img img-fluid" src="/img/users/<%= userDatos.cover||'defaultcover.jpg' %>" alt="">
-                <label class="btn btn-primary position-absolute bottom-0 end-0 mb-3" for="cover"> Change cover
-                  <input class="d-none" name="cover" id="cover" type="file">
-                </label>
-              </div>
-              <small class="d-flex justify-content-center text-danger my-3 ms-2">
-                <%= locals.errors && (errors.cover && errors.cover.msg) %>
-              </small>
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name="name" id="name" value="<%= userDatos.name  %>">
-              </div>
-              <small class="d-flex justify-content-center text-danger ms-2">
-                <%= locals.errors && (errors.name && errors.name.msg) %>
-              </small>
-              <div class="mb-3">
-                <label for="lastname" class="form-label">Last Name</label>
-                <input type="text" class="form-control" name="lastname" id="lastname" value="<%= userDatos.lastname%>">
-              </div>
-              <small class="d-flex justify-content-center text-danger ms-2">
-                <%= locals.errors && (errors.lastname && errors.lastname.msg) %>
-              </small>
-              <div class="mb-3">
-                <div class="d-flex flex-column align-items-start flex-md-row align-items-md-center gap-md-3 ">
-                  <label for="description" class="form-label">Description</label>
-                  <small class="text-danger mb-3 mb-md-0">
-                    <%= locals.errors && (errors.description && errors.description.msg) %>
-                  </small>
-                </div>
-                <textarea class="form-control" name="description" id="description"></textarea>
-                <div class="invalid-feedback">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <a type="button" class="btn btn-secondary" href="/users/profile/<%=locals.userLogged.username%>">Close</a>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+							<div class="invalid-feedback"></div>
+						</div>
+						<div class="modal-footer">
+							<a
+								type="button"
+								class="btn btn-secondary"
+								href="/users/profile/<%=locals.userLogged.username%>"
+								>Close</a
+							>
+							<button type="submit" class="btn btn-primary">
+								Save changes
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

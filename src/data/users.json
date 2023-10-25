@@ -50,5 +50,31 @@
           "role": 2,
           "password": "$2a$10$F3cuHaavbX1/JebdECLgwObp2WjEF66iZS.lqi3sTwxXaoLkbRGgi",
           "date": "2023-09-29T02:19:51.975Z"
+     },
+     {
+          "userId": 5,
+          "username": "lucas",
+          "name": "",
+          "lastname": "",
+          "email": "lucas@gmail.com",
+          "description": null,
+          "image": null,
+          "cover": null,
+          "role": "user",
+          "password": "$2a$10$wb8TPxSHuOMjHmoho3fYCO3ukgMrE/4etwfVint/ocMxr20eaQ6Pm",
+          "date": "2023-10-25T00:14:28.138Z"
+     },
+     {
+          "userId": 6,
+          "username": "lucas",
+          "name": "",
+          "lastname": "",
+          "email": "lucas@gmail.com",
+          "description": null,
+          "image": null,
+          "cover": null,
+          "role": "user",
+          "password": "$2a$10$FaruJ2S3rVkt1dV/u4AuUeBtvtOK6tSamxeazjfhlTBuh/bArFp9m",
+          "date": "2023-10-25T00:37:44.852Z"
      }
 ]

@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<%- include('./partials/head', {
-  title : 'Register'
- }) %>
+<%- include('./partials/head', { title : 'Register' }) %>
 
-<body class="register">
-  <main class="register__main">
-    <div class="register__goHome">
-      <a href="/"><i class="fa-solid fa-left-long"></i></a>
-    </div>
-    <div class="register__form-container">
-      <form action="/users/register" class="register__form" method="post">
-        <div class="register__form-logo">
-          <img src="/img/logotransparente.png" alt="Logo">
-        </div>
-        <h2>Register</h2>
-        <div class="register__form-body">
-          <div class="register__form-input">
-            <input type="text" placeholder="Username" name="username" id="username" value="<%= locals.old && (locals.old.username && locals.old.username) %>"/>
-            <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.username&&errors.username.msg%></small>
-            <% } %>
+  <body class="register">
+    <main class="register__main">
+      <div class="register__goHome">
+        <a href="/"><i class="fa-solid fa-left-long"></i></a>
+      </div>
+      <div class="register__form-container">
+        <form action="/users/register" class="register__form" method="post">
+          <div class="register__form-logo">
+            <img src="/img/logotransparente.png" alt="Logo">
           </div>
-          <div class="register__form-input">
-            <input type="email" placeholder="Email" name="email" id="email" value="<%= locals.old && (locals.old.email && locals.old.email)%>"/>
-            <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.email&&errors.email.msg%></small>
-            <% } %>
+          <h2>Register</h2>
+          <div class="register__form-body">
+            <div class="register__form-input">
+              <input type="text" placeholder="Username" name="username" id="username"
+                value="<%= locals.old && (locals.old.username && locals.old.username) %>" />
+              <% if (locals.errors) { %>
+                <small class="small-error">
+                  <%=errors.username&&errors.username.msg%>
+                </small>
+                <% } %>
+            </div>
+            <div class="register__form-input">
+              <input type="email" placeholder="Email" name="email" id="email"
+                value="<%= locals.old && (locals.old.email && locals.old.email)%>" />
+              <% if (locals.errors) { %>
+                <small class="small-error">
+                  <%=errors.email&&errors.email.msg%>
+                </small>
+                <% } %>
+            </div>
+            <!--  -->
+            <div class="d-flex justify-content-around  ">
+              <div class="form-check d-flex gap-3 ">
+                <input class="form-check-input" type="radio" name="role" value="2" id="artist" checked>
+                <label class="form-check-label" for="artist">
+                  Artist
+                </label>
+              </div>
+              <div class="form-check d-flex gap-3 ">
+                <input class="form-check-input" type="radio" name="role" value="3" id="producer">
+                <label class="form-check-label" for="producer">
+                  Producer
+                </label>
+              </div>
+            </div>
+            <!--  -->
+            <div class="register__form-input">
+              <input class="register__form-password" type="password" placeholder="Password" name="password"
+                id="password" />
+              <input type="password" placeholder="Repeat password" name="password2" id="password2" />
+              <% if (locals.errors) { %>
+                <small class="small-error">
+                  <%=errors.password&&errors.password.msg%>
+                </small><br>
+                <small class="small-error">
+                  <%=errors.password2&&errors.password2.msg%>
+                </small>
+                <% } %>
+            </div>
+            <div class="register__form-input mt-4">
+              <label><input type="checkbox" id="terminos" name="terminos"><span>Accept <a href="http://">terms and
+                    conditions</a></span></label>
+              <% if (locals.errors) { %>
+                <small class="small-error">
+                  <%=errors.terminos&&errors.terminos.msg%>
+                </small>
+                <% } %>
+            </div>
+            <button class="mb-4" type="submit">Register</button>
           </div>
-          <div class="register__form-input">
-            <input class="register__form-password" type="password" placeholder="Password" name="password" id="password"/>
-            <input type="password" placeholder="Repeat password" name="password2" id="password2"/>
-            <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.password&&errors.password.msg%></small><br>
-            <small class="small-error"><%=errors.password2&&errors.password2.msg%></small>
-            <% } %>
-          </div>
-          <div class="register__form-input mt-4">
-            <label><input type="checkbox" id="terminos" name="terminos"><span>Accept <a href="http://">terms and conditions</a></span></label>
-            <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.terminos&&errors.terminos.msg%></small>
-            <% } %>
-          </div>
-          <button class="mb-4" type="submit">Register</button>
-        </div>
-      </form>
-    </div>
-  </main>
-  <%- include('./partials/scripts.ejs') %>
-</body>
+        </form>
+      </div>
+    </main>
+    <%- include('./partials/scripts.ejs') %>
+  </body>
 
 
 </html>

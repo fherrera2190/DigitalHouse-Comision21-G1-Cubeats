@@ -1,5 +1,5 @@
 const { check, body } = require("express-validator");
-const { leerJson } = require("../data");
+const db = require("../database/models");
 
 module.exports = [
   body("username")
@@ -12,16 +12,22 @@ module.exports = [
     .isEmail()
     .withMessage("No puede ser un email")
     .custom(value => {
-      const users = leerJson(
-        require("path").join(__dirname, "../data/users.json")
-      );
-      const user = users.find(user => user.username === value);
-      if (user) {
-        return false;
-      }
-      return true;
-    })
-    .withMessage('"error: Ya existe el username proporcionado"'),
+      return db.User
+        .findOne({
+          where: {
+            username: value
+          }
+        })
+        .then(user => {
+          if (user) {
+            return Promise.reject();
+          }
+        })
+        .catch(error => {
+          console.log(error);
+          return Promise.reject("El username ya se encuentra registrado");
+        });
+    }),
   body("email")
     .notEmpty()
     .withMessage("Ingresar el email es obligatorio")

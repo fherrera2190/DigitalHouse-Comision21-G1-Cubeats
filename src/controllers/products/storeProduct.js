@@ -1,46 +1,43 @@
-const { validationResult } = require('express-validator');
-const path = require('path');
-const productsFilePath = path.join(__dirname, '../../data/products.json');
-const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
-const { leerJson, escribirJson, existsSync, unlinkSync } = require('../../data/index');
+const { validationResult } = require("express-validator");
+const db = require("../../database/models");
 
-module.exports = (req, res) => {
-    const errors = validationResult(req);
-
-
-    // console.log(req.files.image[0].mimetype);
-
-    if (errors.isEmpty()) {
-        const products = leerJson(productsFilePath);
-        if (!req.files.beat) {
-            existsSync(`./public/img/products/${req.files.image[0].filename}`) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
-            return res.redirect('/products/add');
-        }
-        const newProduct = {
-            productId: products[products.length - 1].productId + 1,
-            name: req.body.title,
-            userId: req.session.userLogged.userId,
-            category: req.body.category,
-            description: req.body.description,
-            image: req.files.image ? req.files.image[0].filename : null,
-            beat: req.files.beat[0].filename,
-            price: req.body.price,
-            like: 0
-        }
-        products.push(newProduct);
-        escribirJson(productsFilePath, products);
-        console.log(req.session.userLogged.userId)
-        res.redirect('/');
-    } else {
-        const categories = leerJson(categoriesFilePath);
-
-        (req.files.image && existsSync(`./public/img/products/${req.files.image[0].filename}`)) && unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
-        (req.files.beat && existsSync(`./public/audio/${req.files.beat[0].filename}`)) && unlinkSync(`./public/audio/${req.files.beat[0].filename}`);
-
-        return res.render('createBeats', {
-            categories,
-            errors: errors.mapped(),
-            old: req.body
-        })
+module.exports = async (req, res) => {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    if (!req.files.beat) {
+      existsSync(`./public/img/products/${req.files.image[0].filename}`) &&
+        unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
+      return res.redirect("/products/add");
     }
-}
+    const newProduct = {
+      name: req.body.title,
+      producerId: req.session.userLogged.userId,
+      categoryId: req.body.category,
+      description: req.body.description,
+      image: req.files.image ? req.files.image[0].filename : null,
+      beat: req.files.beat[0].filename,
+      price: req.body.price,
+      licenceId: 1,
+      like: 0
+    };
+    await db.Beat.create(newProduct);
+    res.redirect("/");
+  } else {
+    try {
+      const categories = await db.Category.findAll({ order: ["name"] });
+      req.files.image &&
+        existsSync(`./public/img/products/${req.files.image[0].filename}`) &&
+        unlinkSync(`./public/img/products/${req.files.image[0].filename}`);
+      req.files.beat &&
+        existsSync(`./public/audio/${req.files.beat[0].filename}`) &&
+        unlinkSync(`./public/audio/${req.files.beat[0].filename}`);
+      return res.render("createBeats", {
+        categories,
+        errors: errors.mapped(),
+        old: req.body
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};

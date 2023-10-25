@@ -20,7 +20,7 @@
           <select name="category" id="category">
             <option value="" selected hidden>Select Category</option>
             <% categories.forEach(category => { %>
-            <option value="<%=category.name %>" <%=locals.old && (locals.old.category===category.name && 'selected' ) %>> <%=category.name %></option>
+            <option value="<%=category.id %>" <%=locals.old && (locals.old.category===category.name && 'selected' ) %>> <%=category.name %></option>
             <% }) %>
           </select>
           <% if (locals.errors) { %>
@@ -48,8 +48,8 @@
             <input class="position-absolute d-none " type="file" name="image" id="image">
           </label>
           <% if (locals.errors) { %>
-            <small class="small-error"><%=errors.image&&errors.image.msg%></small>
-            <% } %>
+          <small class="small-error"><%=errors.image&&errors.image.msg%></small>
+          <% } %>
         </div>
         <div class="createBeat-form__description">
           <label for="description">Description:</label>

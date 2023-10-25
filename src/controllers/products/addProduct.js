@@ -1,9 +1,11 @@
-const path = require('path');
-const categoriesFilePath = path.join(__dirname, '../../data/categories.json');
-const { leerJson } = require('../../data/index');
+const path = require("path");
+const db = require("../../database/models");
 
-
-module.exports = (req, res) => {
-    const categories = leerJson(categoriesFilePath);
-    return res.render('createBeats', { categories });
-}
+module.exports = async (req, res) => {
+  try {
+    const categories = await db.Category.findAll({ order: ["name"] });
+    return res.render("createBeats", { categories });
+  } catch (error) {
+    console.log(error);
+  }
+};

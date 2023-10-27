@@ -9,9 +9,9 @@ module.exports = (req, res) => {
 		const newUser = {
 			username: req.body.username.trim(),
 			name: "",
-			lastname: req.body.last_name.trim(),
+			lastname: "",
 			email: req.body.email.trim(),
-			description: req.body.description.trim(),
+			description: "",
 			image: null,
 			cover: null,
 			roleId: req.body.role,

@@ -1,0 +1,110 @@
+[
+  {
+    "productId": 1,
+    "name": "One More Time",
+    "description": "",
+    "image": "electro.jpeg",
+    "beat": "b1Prueba.mp3",
+    "price": 300,
+    "like": 100000,
+    "category": "Rock",
+    "userId": 2,
+    "licenceId": 1
+  },
+  {
+    "productId": 2,
+    "userId": 2,
+    "name": "Kachorro DJ",
+    "category": "Electro",
+    "description": "",
+    "image": "kachorro.jpeg",
+    "beat": "b2Prueba.mp3",
+    "price": 400,
+    "like": 80000,
+    "licenceId": 1
+  },
+  {
+    "productId": 3,
+    "userId": 2,
+    "name": "Classical",
+    "category": "Clasico",
+    "description": "",
+    "image": "classical.jpeg",
+    "beat": "b3Prueba.mp3",
+    "price": 500,
+    "like": 5000,
+    "licenceId": 1
+  },
+  {
+    "productId": 4,
+    "userId": 2,
+    "name": "Me gustas much",
+    "category": "Rock",
+    "description": "Un temaso",
+    "image": "viejas.jpg",
+    "beat": "b4Prueba.mp3",
+    "price": 300,
+    "like": 880000,
+    "licenceId": 1
+  },
+  {
+    "productId": 5,
+    "userId": 3,
+    "name": "Ibiza Rockefeller",
+    "category": "Remix",
+    "description": "",
+    "image": "ibiza.jpeg",
+    "beat": "b5Prueba.mp3",
+    "price": 500,
+    "like": 2000,
+    "licenceId": 1
+  },
+  {
+    "productId": 6,
+    "userId": 2,
+    "name": "Bust-a-mood",
+    "category": "Jazz",
+    "description": "",
+    "image": "jazz.jpeg",
+    "beat": "b6Prueba.mp3",
+    "price": 500,
+    "like": 27000,
+    "licenceId": 1
+  },
+  {
+    "productId": 7,
+    "userId": 3,
+    "name": "Celebrate",
+    "category": "Electro",
+    "description": "",
+    "image": "celebrate.jpeg",
+    "beat": "b7Prueba.mp3",
+    "price": 100,
+    "like": 25000,
+    "licenceId": 1
+  },
+  {
+    "productId": 8,
+    "userId": 2,
+    "name": "Relax",
+    "category": "Remix",
+    "description": "",
+    "image": "relax.jpeg",
+    "beat": "b8Prueba.mp3",
+    "price": 250,
+    "like": 35000,
+    "licenceId": 1
+  },
+  {
+    "productId": 9,
+    "userId": 2,
+    "name": "Giorgio Gaber",
+    "category": "Jazz",
+    "description": "",
+    "image": "gaber.jpg",
+    "beat": "b9Prueba.mp3",
+    "price": 400,
+    "like": 20100,
+    "licenceId": 1
+  }
+]

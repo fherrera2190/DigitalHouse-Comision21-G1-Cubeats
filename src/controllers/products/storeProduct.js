@@ -1,6 +1,6 @@
 const { validationResult } = require("express-validator");
 const db = require("../../database/models");
-
+const { existsSync, unlinkSync } = require("fs");
 module.exports = async (req, res) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {

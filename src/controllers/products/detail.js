@@ -7,7 +7,7 @@ module.exports = async (req, res) => {
   if (product) {
     const { username, image, cover } = product.dataValues.producer.dataValues;
     return res.render("productDetail", {
-      ...product.dataValues,
+      product: product.dataValues,
       user: { username, image, cover }
     });
   } else {

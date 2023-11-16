@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./src/bin/www",
+    "tailwind": "npx tailwindcss -i ./public/css/styles.css -o ./public/dist/output.css --watch",
     "db:create": "sequelize db:drop & sequelize db:create & sequelize db:migrate & sequelize db:seed:all",
     "db:reset": "sequelize db:migrate:undo:all & sequelize db:migrate & sequelize db:seed:all"
   },
@@ -23,5 +24,8 @@
     "mysql2": "^3.6.2",
     "nodemailer": "^6.9.7",
     "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
   }
 }

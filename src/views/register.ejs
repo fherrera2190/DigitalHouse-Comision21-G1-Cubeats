@@ -1,83 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+	<body class="font-Manrope text-base bg-black text-white font-medium">
+		<main class="grid grid-cols-1 xl:grid-cols-[1.35fr,2fr]">
+			<article
+				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto min-h-screen justify-start z-50"
+			>
+				<form
+					action="/users/register"
+					method="POST"
+					class="flex flex-col items-stretch gap-5 max-w-md w-full font-semibold xl:text-start overflow-y-hidden"
+				>
+					<a
+						href="/"
+						class="flex gap-2 items-center font-normal self-center xl:self-start"
+					>
+						<img src="/img/logotransparente.svg" alt="" class="w-5" />
+						<p class="text-xl">Cubeats</p>
+					</a>
+					<p class="text-4xl font-bold pt-14">Crear cuenta</p>
+					<p class="text-base text-zinc-500">
+						Ya tienes una cuenta?
+						<a href="/users/login" class="text-white underline"
+							>Iniciar sesión</a
+						>
+					</p>
+					<div
+						class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4"
+					>
+						<i class="fa-brands fa-google"></i
+						><a href="">Continuar con Google</a>
+					</div>
+					<div
+						class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4"
+					>
+						<i class="fa-brands fa-apple text-xl"></i>
+						<a href="">Continuar con Apple</a>
+					</div>
+					<div class="flex items-center w-full justify-between">
+						<hr class="flex-1 border border-zinc-800" />
+						<p class="text-zinc-500 px-4">O</p>
+						<hr class="flex-1 border border-zinc-800" />
+					</div>
+					<% if (locals.errors && (errors.email || errors.password ||
+					errors.password2)) { %>
+					<div
+						class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal"
+					>
+						<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+						<span id="input-error" class="error" aria-live="polite">
+							<% if (errors.email) { %> <%= errors.email.msg %> <% } else if
+							(errors.password) { %> <%= errors.password.msg %> <% } else if
+							(errors.password2) { %> <%= errors.password2.msg %> <% } %>
+						</span>
+					</div>
+					<% } %>
+					<input
+						type="email"
+						placeholder="Email"
+						id="email"
+						name="email"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+						value="<%= locals.old && old.email %>"
+					/>
+					<input
+						type="password"
+						placeholder="Contraseña"
+						id="password"
+						name="password"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+						value="<%= locals.old && old.password %>"
+					/>
+					<input
+						type="password"
+						placeholder="Re-ingresar contraseña"
+						id="password2"
+						name="password2"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+					/>
+					<div class="flex flex-col gap-3 text-zinc-500 text-base">
+						<div class="flex items-center gap-2">
+							<i class="fa-solid fa-check text-zinc-500"></i>
+							<p>Al menos 8 caracteres</p>
+						</div>
+						<div class="flex items-center gap-2">
+							<i class="fa-solid fa-check text-zinc-500"></i>
+							<p>Al menos un número (0-9)</p>
+						</div>
+						<div class="flex items-center gap-2">
+							<i class="fa-solid fa-check text-zinc-500"></i>
+							<p>Al menos un carácter especial</p>
+						</div>
+					</div>
+					<button
+						type="submit"
+						class="py-4 bg-white rounded-sm pl-4 text-black"
+					>
+						Continuar
+					</button>
 
-<%- include('./partials/head', { title : 'Register' }) %>
-
-  <body class="register">
-    <main class="register__main">
-      <div class="register__goHome">
-        <a href="/"><i class="fa-solid fa-left-long"></i></a>
-      </div>
-      <div class="register__form-container">
-        <form action="/users/register" class="register__form" method="post">
-          <div class="register__form-logo">
-            <img src="/img/logotransparente.png" alt="Logo">
-          </div>
-          <h2>Register</h2>
-          <div class="register__form-body">
-            <div class="register__form-input">
-              <input type="text" placeholder="Username" name="username" id="username"
-                value="<%= locals.old && (locals.old.username && locals.old.username) %>" />
-              <% if (locals.errors) { %>
-                <small class="small-error">
-                  <%=errors.username&&errors.username.msg%>
-                </small>
-                <% } %>
-            </div>
-            <div class="register__form-input">
-              <input type="email" placeholder="Email" name="email" id="email"
-                value="<%= locals.old && (locals.old.email && locals.old.email)%>" />
-              <% if (locals.errors) { %>
-                <small class="small-error">
-                  <%=errors.email&&errors.email.msg%>
-                </small>
-                <% } %>
-            </div>
-            <!--  -->
-            <div class="d-flex justify-content-around  ">
-              <div class="form-check d-flex gap-3 ">
-                <input class="form-check-input" type="radio" name="role" value="2" id="artist" checked>
-                <label class="form-check-label" for="artist">
-                  Artist
-                </label>
-              </div>
-              <div class="form-check d-flex gap-3 ">
-                <input class="form-check-input" type="radio" name="role" value="3" id="producer">
-                <label class="form-check-label" for="producer">
-                  Producer
-                </label>
-              </div>
-            </div>
-            <!--  -->
-            <div class="register__form-input">
-              <input class="register__form-password" type="password" placeholder="Password" name="password"
-                id="password" />
-              <input type="password" placeholder="Repeat password" name="password2" id="password2" />
-              <% if (locals.errors) { %>
-                <small class="small-error">
-                  <%=errors.password&&errors.password.msg%>
-                </small><br>
-                <small class="small-error">
-                  <%=errors.password2&&errors.password2.msg%>
-                </small>
-                <% } %>
-            </div>
-            <div class="register__form-input mt-4">
-              <label><input type="checkbox" id="terminos" name="terminos"><span>Accept <a href="http://">terms and
-                    conditions</a></span></label>
-              <% if (locals.errors) { %>
-                <small class="small-error">
-                  <%=errors.terminos&&errors.terminos.msg%>
-                </small>
-                <% } %>
-            </div>
-            <button class="mb-4" type="submit">Register</button>
-          </div>
-        </form>
-      </div>
-    </main>
-    <%- include('./partials/scripts.ejs') %>
-  </body>
-
-
+					<div class="text-sm text-zinc-500 flex flex-col gap-4">
+						<p>
+							Al crear una cuenta, aceptas nuestros Términos y Condiciones
+							Generales y has leído y aceptas nuestra Política de Privacidad.
+						</p>
+						<p>
+							Este sitio está protegido por reCAPTCHA y se aplican la Política
+							de Privacidad y las Condiciones del Servicio de Google.
+						</p>
+					</div>
+				</form>
+			</article>
+			<article
+				class="min-h-screen items-center justify-center xl:flex hidden w-[100%]"
+			>
+				<img
+					src="/img/Login.jpg"
+					alt=""
+					class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert"
+				/>
+			</article>
+		</main>
+	</body>
 </html>

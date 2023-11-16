@@ -8,20 +8,7 @@ module.exports = {
         include: ["category", "producer"]
       });
       const categories = await db.Category.findAll();
-      // const products2 = products.map(({ dataValues }) => {
-      //   //console.log(dataValues);
-      //   beat = {
-      //     productId: dataValues.id,
-      //     name:dataValues.name,
-      //     image: dataValues.image,
-      //     producer:dataValues.producer.name
-      //   };
-      //   console.log(beat);
-      //   return;
-      // });
-      //console.log(products2);
-      // return res.json({ products });
-      console.log(products[0].dataValues)
+
       return res.render("index", { products, categories });
     } catch (error) {
       console.log(error);

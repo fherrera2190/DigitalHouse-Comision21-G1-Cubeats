@@ -4,7 +4,7 @@ module.exports = {
   index: async (req, res) => {
     try {
       const products = await db.Beat.findAll({
-        include: ["category"]
+        include: ["category", "producer"]
       });
       return res.render("products", { products });
     } catch (error) {

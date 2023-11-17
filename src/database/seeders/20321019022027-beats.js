@@ -2,7 +2,17 @@
 const productsJSON = require("../../data/products.json");
 
 const productsDB = productsJSON.map(
-  ({ name, description, image, beat, price, like, licenceId, userId }) => {
+  ({
+    name,
+    description,
+    image,
+    beat,
+    price,
+    like,
+    licenceId,
+    userId,
+    categoryId
+  }) => {
     return {
       name,
       description,
@@ -11,7 +21,7 @@ const productsDB = productsJSON.map(
       price,
       like,
       licenceId,
-      categoryId: 1,
+      categoryId,
       producerId: userId,
       createdAt: new Date(),
       updatedAt: new Date()

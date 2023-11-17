@@ -35,5 +35,5 @@ module.exports = async (req, res) => {
       userDatos
     });
   }
-  res.redirect("/");
+  return res.redirect("/");
 };

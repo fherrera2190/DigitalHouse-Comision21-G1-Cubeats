@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+	<body
+		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<!-- <% if (locals.userLogged && locals.userLogged.role === "user") { %>
+			<p>Sos admin</p>
+			<% } %> -->
+			<article
+				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
+			>
+				<div class="flex justify-between items-center pb-12">
+					<div class="flex flex-col gap-7 font-bold">
+						<p class="text-2xl sm:text-3xl w-fit"><%= userDatos.username %></p>
+
+						<p class="py-2 px-5 border border-white w-fit text-base">
+							<%= userDatos.description %>
+						</p>
+					</div>
+					<img
+						src="/img/users/<%= userDatos.image %>"
+						alt=""
+						class="rounded-full w-64 h-64 object-cover"
+					/>
+				</div>
+				<div
+					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"
+				>
+					<!-- <div
+						class="flex items-center justify-between w-full sm:justify-start sm:gap-5"
+					>
+						<p class="text-white">Todo</p>
+						<div class="flex gap-4 items-center">
+							<p>Playlist</p>
+							<p
+								class="py-1 px-2 border border-white rounded-full text-xs scale-90"
+							>
+								5
+							</p>
+						</div>
+						<div class="flex gap-3 items-center">
+							<p>Lanzamientos</p>
+							<p
+								class="py-1 px-2 border border-white rounded-full text-xs scale-90"
+							>
+								<%= products.length %>
+							</p>
+						</div>
+						<div class="flex gap-3 items-center">
+							<p>Topic</p>
+							<p
+								class="py-1 px-2 border border-white rounded-full text-xs scale-90"
+							>
+								8
+							</p>
+						</div>
+					</div> -->
+					<hr class="flex-1 border border-zinc-800 w-full" />
+					<div
+						class="flex flex-col sm:flex-row sm:gap-4 justify-between w-full text-zinc-400"
+					>
+						<div class="items-center hidden sm:flex justify-between gap-7">
+							<i class="fa-solid fa-sliders text-lg"></i>
+							<p>Géneros</p>
+							<p>Duración</p>
+							<p>BPM</p>
+						</div>
+						<!-- <div class="flex items-center justify-between gap-3">
+							<div class="flex items-center gap-3">
+								<i class="fa-regular fa-clock text-xl"></i>
+								<p>Recientes</p>
+							</div>
+							<div class="flex items-center gap-3">
+								<i class="fa-solid fa-fire text-xl"></i>
+								<p>Populares</p>
+							</div>
+							<div class="flex items-center gap-3 text-white">
+								<i class="fa-solid fa-chevron-down text-xl"></i>
+								<p class="line-clamp-1">Mejor coincidencia</p>
+							</div>
+						</div> -->
+					</div>
+				</div>
+				<div class="flex flex-col gap-4 text-zinc-300 w-full relative">
+					<%- include("./partials/cardsProduct") %>
+				</div>
+			</article>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script type="module" src="/js/wave.js"></script>
+	</body>
+</html>

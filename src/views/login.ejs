@@ -1,103 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
-	<%- include('./partials/head', { title : 'Cubeats' }) %>
-	<body class="font-Manrope text-base bg-black text-white font-medium">
-		<main class="grid grid-cols-1 xl:grid-cols-[1.35fr,2fr]">
-			<article
-				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto min-h-screen justify-start"
-			>
-				<form
-					action="/users/login"
-					method="POST"
-					class="flex flex-col items-stretch gap-5 max-w-md w-full font-semibold xl:text-start"
-				>
-					<a
-						href="/"
-						class="flex gap-2 items-center font-normal self-center xl:self-start"
-					>
-						<img src="/img/logotransparente.svg" alt="" class="w-5" />
-						<p class="text-xl">Cubeats</p>
-					</a>
-					<p class="text-4xl font-bold pt-14">Iniciar sesión</p>
-					<p class="text-base text-zinc-500">
-						No tienes una cuenta?
-						<a href="/users/register" class="text-white underline"
-							>Crear cuenta</a
-						>
-					</p>
-					<div
-						class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4"
-					>
-						<i class="fa-brands fa-google"></i
-						><a href="">Continuar con Google</a>
-					</div>
-					<div
-						class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4"
-					>
-						<i class="fa-brands fa-apple text-xl"></i>
-						<a href="">Continuar con Apple</a>
-					</div>
-					<div class="flex items-center w-full justify-between">
-						<hr class="flex-1 border border-zinc-800" />
-						<p class="text-zinc-500 px-4">O</p>
-						<hr class="flex-1 border border-zinc-800" />
-					</div>
-					<% if (locals.errors && (errors.email || errors.password)) { %>
-					<div
-						class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal"
-					>
-						<i class="fa-solid fa-circle-exclamation text-2xl"></i>
-						<span id="input-error" class="error" aria-live="polite">
-							<% if (errors.email) { %> <%= errors.email.msg %> <% } else if
-							(errors.password) { %> <%= errors.password.msg %> <% } %>
-						</span>
-					</div>
-					<% } %>
-					<input
-						type="email"
-						placeholder="Email"
-						id="email"
-						name="email"
-						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
-					/>
+<%- include('./partials/head', { title : 'Cubeats' }) %>
 
-					<input
-						type="password"
-						placeholder="Password"
-						id="password"
-						name="password"
-						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
-					/>
-					<button
-						type="submit"
-						class="py-4 bg-white rounded-sm pl-4 text-black"
-					>
-						Iniciar sesión
-					</button>
-					<a href="" class="underline">Olvidaste tu contraseña?</a>
-					<div class="text-sm text-zinc-500 flex flex-col gap-4">
-						<p>
-							Al hacer clic en "Continuar con Apple/Google" arriba, reconoces
-							que has leído y estás de acuerdo con nuestros Términos y
-							Condiciones Generales, y has leído y reconoces la Política de
-							Privacidad.
-						</p>
-						<p>
-							Este sitio está protegido por reCAPTCHA y se aplican la Política
-							de Privacidad y las Condiciones del Servicio de Google.
-						</p>
-					</div>
-				</form>
-			</article>
-			<article
-				class="min-h-screen items-center justify-center xl:flex hidden w-[100%]"
-			>
-				<img
-					src="/img/Login.jpg"
-					alt=""
-					class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert"
-				/>
-			</article>
-		</main>
-	</body>
+<body class="font-Manrope text-base bg-black text-white font-medium">
+  <main class="grid grid-cols-1 xl:grid-cols-[1.35fr,2fr]">
+    <article class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto min-h-screen justify-start">
+      <form action="/users/login" method="POST" class="flex flex-col items-stretch gap-5 max-w-md w-full font-semibold xl:text-start">
+        <a href="/" class="flex gap-2 items-center font-normal self-center xl:self-start">
+          <img src="/img/logotransparente.svg" alt="" class="w-5" />
+          <p class="text-xl">Cubeats</p>
+        </a>
+        <p class="text-4xl font-bold pt-14">Iniciar sesión</p>
+        <p class="text-base text-zinc-500">
+          No tienes una cuenta?
+          <a href="/users/register" class="text-white underline">Crear cuenta</a>
+        </p>
+        <div class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4">
+          <i class="fa-brands fa-google"></i><a href="">Continuar con Google</a>
+        </div>
+        <div class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4">
+          <i class="fa-brands fa-apple text-xl"></i>
+          <a href="">Continuar con Apple</a>
+        </div>
+        <div class="flex items-center w-full justify-between">
+          <hr class="flex-1 border border-zinc-800" />
+          <p class="text-zinc-500 px-4">O</p>
+          <hr class="flex-1 border border-zinc-800" />
+        </div>
+        <% if (locals.errors && (errors.email || errors.password)) { %>
+        <div class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal">
+          <i class="fa-solid fa-circle-exclamation text-2xl"></i>
+          <span id="input-error" class="error" aria-live="polite">
+            <% if (errors.email) { %>
+            <%= errors.email.msg %>
+            <% } else if(errors.password) { %>
+            <%= errors.password.msg %>
+            <% } %>
+          </span>
+        </div>
+        <% } %>
+        <input type="email" placeholder="Email" id="email" name="email" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" />
+
+        <input type="password" placeholder="Password" id="password" name="password" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" />
+        <button type="submit" class="py-4 bg-white rounded-sm pl-4 text-black">
+          Iniciar sesión
+        </button>
+        <a href="" class="underline">Olvidaste tu contraseña?</a>
+        <div class="text-sm text-zinc-500 flex flex-col gap-4">
+          <p>
+            Al hacer clic en "Continuar con Apple/Google" arriba, reconoces
+            que has leído y estás de acuerdo con nuestros Términos y
+            Condiciones Generales, y has leído y reconoces la Política de
+            Privacidad.
+          </p>
+          <p>
+            Este sitio está protegido por reCAPTCHA y se aplican la Política
+            de Privacidad y las Condiciones del Servicio de Google.
+          </p>
+        </div>
+      </form>
+    </article>
+    <article class="min-h-screen items-center justify-center xl:flex hidden w-[100%]">
+      <img src="/img/Login.jpg" alt="" class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert" />
+    </article>
+  </main>
+</body>
+
 </html>

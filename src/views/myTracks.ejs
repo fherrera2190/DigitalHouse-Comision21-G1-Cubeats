@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+
+	<body
+		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<!-- <% if (locals.userLogged && locals.userLogged.role === "user") { %>
+			<p>Sos admin</p>
+			<% } %> -->
+			<article
+				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
+			>
+				<div class="flex flex-col">
+					<p class="text-2xl sm:text-3xl font-semibold w-fit">Mis track's</p>
+
+					<hr class="flex-1 border border-zinc-800 my-6" />
+				</div>
+			</article>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script type="module" src="/js/wave.js"></script>
+	</body>
+</html>

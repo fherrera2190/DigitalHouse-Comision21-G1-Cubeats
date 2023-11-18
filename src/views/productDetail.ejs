@@ -1,159 +1,218 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head', { title : 'Cubeats' }) %>
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
-<body class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen">
-  <%- include("./partials/header") %>
-  <main class="flex-1 grow">
-    <article class="flex flex-col gap-12 py-7 px-4 md:py-14 md:px-14 lg:px-14 container mx-auto">
-      <div class="flex flex-col lg:flex-row items-start xl:items-center gap-10">
-        <div>
-          <img src="/img/products/<%= product.image %>" alt="" class="w-44 h-44 md:w-52 md:h-52 xl:w-64 xl:h-64 object-cover" />
-          <img src="/img/products/<%= product.image %>" alt="" class="fixed top-0 left-0 right-0 z-10 blur-md opacity-[0.10] w-full h-full object-cover pointer-events-none" />
-        </div>
+	<body
+		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<article
+				class="flex flex-col gap-12 py-7 px-4 md:py-14 md:px-14 lg:px-14 container mx-auto"
+			>
+				<div
+					class="flex flex-col lg:flex-row items-start xl:items-center gap-10"
+				>
+					<div>
+						<img
+							src="/img/products/<%= product.image %>"
+							alt=""
+							class="w-44 h-44 md:w-52 md:h-52 xl:w-64 xl:h-64 object-cover"
+						/>
+						<img
+							src="/img/products/<%= product.image %>"
+							alt=""
+							class="fixed top-0 left-0 right-0 z-10 blur-md opacity-[0.10] w-full h-full object-cover pointer-events-none"
+						/>
+					</div>
 
-        <div class="flex flex-col gap-7">
-          <div class="flex flex-col gap-1 font-bold">
-            <a href="/producer/<%= product.producer.dataValues.username.toLowerCase().replace(/\s/g, '') %>" class="text-sm border-white text-zinc-400 hover:underline">
-              <%= product.producer.dataValues.username %>
-            </a>
+					<div class="flex flex-col gap-7">
+						<div class="flex flex-col gap-1 font-bold">
+							<a
+								href="/users/profile/<%= product.producer.dataValues.username.toLowerCase().replace(/\s/g, '') %>"
+								class="text-sm border-white text-zinc-400 hover:underline"
+							>
+								<%= product.producer.dataValues.username %>
+							</a>
 
-            <p class="text-4xl"><%= product.name %></p>
+							<p class="text-4xl"><%= product.name %></p>
 
-            <!-- <p class="text-2xl w-fit py-1 mt-3">$ <%= product.price %></p> -->
-          </div>
+							<!-- <p class="text-2xl w-fit py-1 mt-3">$ <%= product.price %></p> -->
+						</div>
 
-          <div class="flex gap-8 items-center">
-            <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="p-2 rounded-full bg-zinc-900 inline-block lg:hidden">
-              <path d="M20 12L8 5V19L20 12Z"></path>
-            </svg>
-            <div><i class="fa-solid fa-heart text-lg"></i></div>
-            <div class="">
-              <i class="fa-solid fa-plus text-lg"></i>
-            </div>
-            <div class="">
-              <i class="fa-solid fa-arrow-down text-lg"></i>
-            </div>
-            <div class="">
-              <i class="fa-solid fa-cart-shopping text-lg"></i>
-            </div>
-            <div class="">
-              <i class="fa-solid fa-link text-lg"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="p-3 grid grid-cols-[auto,0.1fr,2fr,0.1fr] items-center bg-zinc-900">
-        <button id="playsong">
-          <svg id="play-icon" width="45" height="45" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="p-2 rounded-full bg-zinc-800 hidden xl:inline-block hover:brightness-110">
-            <path d="M20 12L8 5V19L20 12Z"></path>
-          </svg>
-          <svg id="pause-icon" width="45" height="45" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="p-2 rounded-full bg-white fill-zinc-900 hover:brightness-90 hidden">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M10 5H7V19H10V5ZM17 5H14V19H17V5Z"></path>
-          </svg>
-        </button>
+						<div class="flex gap-8 items-center">
+							<svg
+								width="50"
+								height="50"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								fill="currentColor"
+								class="p-2 rounded-full bg-zinc-900 inline-block lg:hidden"
+							>
+								<path d="M20 12L8 5V19L20 12Z"></path>
+							</svg>
+							<div><i class="fa-solid fa-heart text-lg"></i></div>
+							<div class="">
+								<i class="fa-solid fa-plus text-lg"></i>
+							</div>
+							<div class="">
+								<i class="fa-solid fa-arrow-down text-lg"></i>
+							</div>
+							<div class="">
+								<i class="fa-solid fa-cart-shopping text-lg"></i>
+							</div>
+							<div class="">
+								<i class="fa-solid fa-link text-lg"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div
+					class="p-3 grid grid-cols-[auto,0.1fr,2fr,0.1fr] items-center bg-zinc-900"
+				>
+					<button id="playsong">
+						<svg
+							id="play-icon"
+							width="45"
+							height="45"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor"
+							class="p-2 rounded-full bg-zinc-800 hidden xl:inline-block hover:brightness-110"
+						>
+							<path d="M20 12L8 5V19L20 12Z"></path>
+						</svg>
+						<svg
+							id="pause-icon"
+							width="45"
+							height="45"
+							viewBox="0 0 24 24"
+							xmlns="http://www.w3.org/2000/svg"
+							fill="currentColor"
+							class="p-2 rounded-full bg-white fill-zinc-900 hover:brightness-90 hidden"
+						>
+							<path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M10 5H7V19H10V5ZM17 5H14V19H17V5Z"
+							></path>
+						</svg>
+					</button>
 
-        <p id="time-display" class="text-xs font-bold text-center text-zinc-500">
-          0:00
-        </p>
+					<p
+						id="time-display"
+						class="text-xs font-bold text-center text-zinc-500"
+					>
+						0:00
+					</p>
 
-        <div id="waveform" class="">
-          <!-- the waveform will be rendered here -->
-        </div>
-        <p id="duracion-total" class="text-xs font-bold text-center text-zinc-500"></p>
-      </div>
-      <script type="module">
-        import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+					<div id="waveform" class="">
+						<!-- the waveform will be rendered here -->
+					</div>
+					<p
+						id="duracion-total"
+						class="text-xs font-bold text-center text-zinc-500"
+					></p>
+				</div>
+				<script type="module">
+					import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 
-        const wavesurfer = WaveSurfer.create({
-          container: "#waveform",
-          waveColor: "#414141",
-          progressColor: "#ffffff",
-          cursorWidth: 0,
-          height: 70,
-          interact: true,
-          url: "/audio/<%= product.beat %>",
-        });
+					const wavesurfer = WaveSurfer.create({
+						container: "#waveform",
+						waveColor: "#414141",
+						progressColor: "#ffffff",
+						cursorWidth: 0,
+						height: 70,
+						interact: true,
+						url: "/audio/<%= product.beat %>",
+					});
 
-        wavesurfer.on("ready", () => {
-          const timeDisplay = document.getElementById("time-display");
-          const duracionTotalDisplay =
-            document.getElementById("duracion-total");
+					wavesurfer.on("ready", () => {
+						const timeDisplay = document.getElementById("time-display");
+						const duracionTotalDisplay =
+							document.getElementById("duracion-total");
 
-          // Obtener la duración total
-          const duracionTotal = wavesurfer.getDuration();
+						// Obtener la duración total
+						const duracionTotal = wavesurfer.getDuration();
 
-          const totalMinutes = Math.floor(duracionTotal / 60);
-          const totalSeconds = Math.floor(duracionTotal % 60);
-          duracionTotalDisplay.innerText = `${totalMinutes}:${totalSeconds
+						const totalMinutes = Math.floor(duracionTotal / 60);
+						const totalSeconds = Math.floor(duracionTotal % 60);
+						duracionTotalDisplay.innerText = `${totalMinutes}:${totalSeconds
 							.toString()
 							.padStart(2, "0")}`;
 
-          wavesurfer.on("audioprocess", (time) => {
-            const minutes = Math.floor(time / 60);
-            const seconds = Math.floor(time % 60);
-            timeDisplay.innerText = `${minutes}:${seconds
+						wavesurfer.on("audioprocess", (time) => {
+							const minutes = Math.floor(time / 60);
+							const seconds = Math.floor(time % 60);
+							timeDisplay.innerText = `${minutes}:${seconds
 								.toString()
 								.padStart(2, "0")}`;
-          });
-        });
+						});
+					});
 
-        const playButton = document.getElementById("playsong");
-        const playIcon = document.getElementById("play-icon");
-        const pauseIcon = document.getElementById("pause-icon");
+					const playButton = document.getElementById("playsong");
+					const playIcon = document.getElementById("play-icon");
+					const pauseIcon = document.getElementById("pause-icon");
 
-        playButton.addEventListener("click", () => {
-          if (wavesurfer.isPlaying()) {
-            wavesurfer.pause();
-            playIcon.style.display = "inline-block";
-            pauseIcon.style.display = "none";
-          } else {
-            wavesurfer.play();
-            playIcon.style.display = "none";
-            pauseIcon.style.display = "inline-block";
-          }
-        });
+					playButton.addEventListener("click", () => {
+						if (wavesurfer.isPlaying()) {
+							wavesurfer.pause();
+							playIcon.style.display = "inline-block";
+							pauseIcon.style.display = "none";
+						} else {
+							wavesurfer.play();
+							playIcon.style.display = "none";
+							pauseIcon.style.display = "inline-block";
+						}
+					});
 
-        wavesurfer.on("interaction", () => {
-          if (wavesurfer.isPlaying()) {
-            playIcon.style.display = "none";
-            pauseIcon.style.display = "inline-block";
-          } else {
-            playIcon.style.display = "inline-block";
-            pauseIcon.style.display = "none";
-          }
-        });
-      </script>
-    </article>
-    <article class="flex flex-col gap-7 py-7 px-4 md:pt-0 md:pb-14 md:px-14 lg:px-14 container mx-auto relative">
-      <div>
-        <p class="text-xl border-b-2 pb-1 font-semibold border-white w-fit">
-          Detalles de la pista
-        </p>
-      </div>
-      <div class="flex flex-col md:flex-row gap-6 md:gap-48 text-sm font-semibold">
-        <div class="flex flex-col gap-6">
-          <div class="flex flex-col gap-1">
-            <p class="text-zinc-500">Genre</p>
-            <a href="/" class="text-lg hover:underline"><%= product.category.dataValues.name %></a>
-          </div>
-          <div class="flex flex-col gap-1">
-            <p class="text-zinc-500">Produced by</p>
-            <a href="" class="text-lg hover:underline"><%= product.producer.dataValues.username %></a>
-          </div>
-        </div>
-        <div class="flex flex-col gap-1">
-          <div class="flex flex-col gap-2">
-            <p class="text-zinc-500">Tempo</p>
-            <p class="text-lg"><%= 120 %> BPM</p>
-          </div>
-        </div>
-      </div>
-    </article>
-  </main>
-  <%- include('./partials/footer.ejs')%>
-  <script src="https://unpkg.com/wavesurfer.js"></script>
-  <script type="module" src="/js/wave.js"></script>
-</body>
-
+					wavesurfer.on("interaction", () => {
+						if (wavesurfer.isPlaying()) {
+							playIcon.style.display = "none";
+							pauseIcon.style.display = "inline-block";
+						} else {
+							playIcon.style.display = "inline-block";
+							pauseIcon.style.display = "none";
+						}
+					});
+				</script>
+			</article>
+			<article
+				class="flex flex-col gap-7 py-7 px-4 md:pt-0 md:pb-14 md:px-14 lg:px-14 container mx-auto relative"
+			>
+				<div>
+					<p class="text-xl border-b-2 pb-1 font-semibold border-white w-fit">
+						Detalles de la pista
+					</p>
+				</div>
+				<div
+					class="flex flex-col md:flex-row gap-6 md:gap-48 text-sm font-semibold"
+				>
+					<div class="flex flex-col gap-6">
+						<div class="flex flex-col gap-1">
+							<p class="text-zinc-500">Genre</p>
+							<a href="/" class="text-lg hover:underline"
+								><%= product.category.dataValues.name %></a
+							>
+						</div>
+						<div class="flex flex-col gap-1">
+							<p class="text-zinc-500">Produced by</p>
+							<a href="" class="text-lg hover:underline"
+								><%= product.producer.dataValues.username %></a
+							>
+						</div>
+					</div>
+					<div class="flex flex-col gap-1">
+						<div class="flex flex-col gap-2">
+							<p class="text-zinc-500">Tempo</p>
+							<p class="text-lg"><%= 120 %> BPM</p>
+						</div>
+					</div>
+				</div>
+			</article>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script type="module" src="/js/wave.js"></script>
+	</body>
 </html>

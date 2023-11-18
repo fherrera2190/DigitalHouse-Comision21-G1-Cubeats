@@ -7,7 +7,7 @@
 			<p class="text-xl hidden sm:inline-block">Cubeats</p>
 		</a>
 		<div class="flex gap-3 items-center">
-			<% if (locals.userLogged.role === 3) { %>
+			<% if (locals.userLogged && locals.userLogged.role === 3) { %>
 			<div class="flex gap-5 items-center relative">
 				<a href="/products/search"
 					><svg
@@ -135,7 +135,7 @@
 					});
 				</script>
 			</div>
-			<% } else if (locals.userLogged.role === 2) { %>
+			<% } else if (locals.userLogged && locals.userLogged.role === 2) { %>
 			<div class="flex gap-5 items-center relative">
 				<a href="/products/search"
 					><svg

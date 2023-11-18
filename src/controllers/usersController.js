@@ -6,5 +6,6 @@ module.exports = {
   register: require("./users/register"),
   processRegister: require("./users/processRegister"),
   myData: require("./users/myData"),
+  myTracks: require("./users/myTracks.js"),
   logout: require("./users/logout")
 };

@@ -32,6 +32,10 @@ router.put(
   usersController.editProfile
 );
 
+router.get("/profile/myTracks/:username", userCheck, usersController.myTracks);
+
+
+
 /* User Logout */
 router.get("/logout", usersController.logout);
 

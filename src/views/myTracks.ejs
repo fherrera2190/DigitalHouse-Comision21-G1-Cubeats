@@ -11,12 +11,15 @@
 			<p>Sos admin</p>
 			<% } %> -->
 			<article
-				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
+				class="flex flex-col gap-2 py-12 px-4 md:px-14 container mx-auto"
 			>
 				<div class="flex flex-col">
 					<p class="text-2xl sm:text-3xl font-semibold w-fit">Mis track's</p>
 
 					<hr class="flex-1 border border-zinc-800 my-6" />
+				</div>
+				<div class="flex flex-col gap-4 text-zinc-300 w-full relative">
+					<%- include("./partials/cardsProduct") %>
 				</div>
 			</article>
 		</main>

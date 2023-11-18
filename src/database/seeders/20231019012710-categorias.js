@@ -8,55 +8,55 @@ module.exports = {
       [
         {
           name: "Hip-Hop",
-          image: null,
+          image: "Hiphop.png",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "R&B",
-          image: null,
+          image: "RB.jpg",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Trap",
-          image: null,
+          image: "Trap.png",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "EDM",
-          image: null,
+          image: "Nightlovell.webp",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Pop",
-          image: null,
+          image: "Pop.jpg",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Rock",
-          image: null,
+          image: "Rock.png",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Jazz",
-          image: null,
+          image: "Jazz.jpg",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Experimental",
-          image: null,
+          image: "Lilwayne1.webp",
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
           name: "Electro",
-          image: null,
+          image: "Electro.png",
           createdAt: new Date(),
           updatedAt: new Date()
         }

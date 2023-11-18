@@ -5,6 +5,7 @@ const db = require("../../database/models");
 module.exports = (req, res) => {
 	console.log(req.body);
 	const errors = validationResult(req);
+	console.log(errors.mapped())
 	if (errors.isEmpty()) {
 		const newUser = {
 			username: req.body.username.trim(),

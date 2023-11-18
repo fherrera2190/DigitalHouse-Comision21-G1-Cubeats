@@ -1,0 +1,133 @@
+<div class="sticky top-0 bg-black z-50">
+  <header class="py-2 px-4 md:px-14 container flex items-center justify-between mx-auto relative">
+    <a href="/" class="flex gap-2 items-center font-normal">
+      <img src="/img/logotransparente.svg" alt="" class="w-10 md:w-5" />
+      <p class="text-xl hidden sm:inline-block">Cubeats</p>
+    </a>
+    <!-- <form action="" class="hidden sm:inline-block">
+					<input
+						type="text"
+						placeholder="Buscar beat, productores"
+						class="py-3 px-3 bg-zinc-900 rounded-sm focus:outline-none placeholder:text-zinc-500 text-zinc-500"
+					/>
+				</form> -->
+    <div class="flex gap-3 items-center">
+      <a href="/users/login" class="py-3 px-3 rounded-sm">Iniciar sesión</a>
+      <a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm">Crear cuenta
+      </a>
+
+      <!-- <button
+				id="registerButton"
+				type="button"
+				data-dropdown-toggle="dropdown"
+				class="rounded-sm transition-all ease-in-out inline-block"
+			>
+				<span class="py-3 px-3 bg-blue-600 rounded-sm">Crear cuenta</span>
+			</button>
+
+			<div
+				id="background-overlay"
+				class="fixed inset-0 bg-black opacity-60 z-50 pointer-events-none hidden"
+			></div>
+			<div
+				id="dropRegister"
+				class="z-[100] top-[27.5vh] hidden right-0 left-0 m-auto bg-white text-zinc-900 shadow-2xl w-[22rem] h-72 md:w-[42.5rem] md:h-[23.5rem] flex-col justify-between px-4 md:px-12 text-2xl absolute py-4 md:py-12"
+			>
+				<div class="text-lg md:text-2xl">Registrarse como</div>
+				<div
+					class="flex bg-zinc-200 rounded-lg px-2 py-2 md:px-4 md:py-8 text-base md:text-lg gap-12"
+				>
+					<div
+						class="flex flex-col gap-2 items-start justify-between w-20 md:w-60"
+					>
+						<div class="flex flex-col gap-2">
+							<p>Productor</p>
+							<p class="text-zinc-600 text-sm">Quiero vender mis ritmos</p>
+						</div>
+						<a
+							href="/users/register"
+							class="py-3 px-3 border border-black rounded-sm truncate text-sm md:text-lg"
+							>Crear cuenta</a
+						>
+					</div>
+					<div class="border-r border-black"></div>
+					<div
+						class="flex flex-col gap-12 items-start justify-between w-20 md:w-60"
+					>
+						<div class="flex flex-col gap-2">
+							<p class="line-clamp-1">Artista / Oyente</p>
+							<p class="text-zinc-600 text-sm">
+								Quiero escuchar / comprar ritmos
+							</p>
+						</div>
+						<a
+							href="/users/costumer/register"
+							class="py-3 px-3 border border-black rounded-sm truncate text-sm md:text-lg"
+							>Crear cuenta</a
+						>
+					</div>
+				</div>
+				<button
+					id="exitRegister"
+					class="p-3 rounded-sm transition-all ease-in-out absolute right-1 top-1 hidden"
+				>
+					<svg
+						width="22"
+						height="22"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						class="fill-black"
+						aria-label="Navigation menu"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"
+						></path>
+					</svg>
+				</button>
+			</div>
+			<script>
+				document.addEventListener("DOMContentLoaded", function () {
+					const button = document.getElementById("registerButton");
+					const exit = document.getElementById("exitRegister");
+					const menu = document.getElementById("dropRegister");
+					const overlay = document.getElementById("background-overlay");
+
+					button.addEventListener("click", function () {
+						overlay.classList.toggle("hidden");
+						menu.classList.toggle("hidden");
+						menu.classList.toggle("flex");
+
+						exit.classList.toggle("hidden");
+					});
+
+					exit.addEventListener("click", function () {
+						menu.classList.add("hidden");
+						menu.classList.toggle("flex");
+						exit.classList.toggle("hidden");
+
+						overlay.classList.toggle("hidden");
+					});
+
+					document.addEventListener("click", function (event) {
+						if (
+							!menu.contains(event.target) &&
+							!button.contains(event.target) &&
+							!exit.contains(event.target)
+						) {
+							menu.classList.add("hidden");
+							menu.classList.remove("flex");
+						}
+					});
+				});
+			</script> -->
+      <!-- <div
+								class="flex gap-3 items-center bg-white text-black font-semibold rounded-sm py-3 px-3"
+							>
+								<a href="/"><i class="fa-brands fa-opencart text-xl"></i></a>
+								<p>1 item</p>
+							</div> -->
+    </div>
+  </header>
+</div>

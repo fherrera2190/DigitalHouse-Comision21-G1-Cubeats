@@ -1,66 +1,151 @@
-<!-- Header -->
-<header class="header">
-  <div class="header-container">
-    <div class="header-top">
-      <div class="header-top-left">
-        <div class="burger-menu">
-          <a class="burger-menu__link" href=""><i class="fas fa-bars burger-menu__i"></i></a>
-        </div>
-      </div>
-      <div class="header__logo">
-        <a href="/"><img class="logo__img" src="/img/logotransparente.png" alt="Logo">
-          <span>CuBeats</span>
+<div class="sticky top-0 bg-black z-50">
+  <header class="py-2 px-4 md:px-14 container flex items-center justify-between mx-auto">
+    <a href="/" class="flex gap-2 items-center font-normal">
+      <img src="/img/logotransparente.svg" alt="" class="w-10 md:w-5" />
+      <p class="text-xl hidden sm:inline-block">Cubeats</p>
+    </a>
+    <div class="flex gap-3 items-center">
+      <% if (locals.userLogged) { %>
+      <div class="flex gap-5 items-center relative">
+        <a href="/products/search"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 10C16 13.3137 13.3137 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10ZM14.9056 16.3199C13.551 17.3729 11.8487 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 11.8487 17.3729 13.551 16.3199 14.9056L21.7071 20.2929L20.2929 21.7071L14.9056 16.3199Z"></path>
+          </svg>
         </a>
-        <div class="desktop-search">
-          <form action="/products/search" method="GET" class="header-search">
-            <input name="keywords" class="header-search__input" type="text" placeholder="¿Qué Estás Buscando?">
-            <button type="submit" class="header-search__button"><i class="fa-solid fa-magnifying-glass"></i></button>
-          </form>
+        <button id="dropdownDefaultButton" type="button" data-dropdown-toggle="dropdown" class="inline-block p-3 bg-zinc-900 rounded-sm hover:bg-zinc-800 transition-all ease-in-out">
+          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" class="src-mainapp-SignedInNav-___NavSecondaryItems__burgerIcon___ZlH-P" aria-label="Navigation menu">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4H22V6H2V4ZM2 11H22V13H2V11ZM22 18H2V20H22V18Z"></path>
+          </svg>
+        </button>
+
+        <!-- Dropdown menu -->
+        <div id="dropdown" class="z-[100] hidden rounded-lg dark:bg-zinc-900 shadow-2xl md:absolute top-0 md:left-auto left-0 right-0 md:right-px min-h-screen md:min-h-full md:top-full md:mt-2 md:w-64 flex-col md:py-4 px-4 gap-1 md:text-base text-4xl fixed py-28">
+          <button id="toggleDropdown">
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" class="absolute top-5 right-5 inline-block md:hidden mr-2">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"></path>
+            </svg>
+          </button>
+          <a href="/users/profile/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mi perfil</a>
+          <a href="/users/profile/myData/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis datos</a>
+          <a href="/users/profile/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis track's</a>
+          <a href="/users/logout" class="flex justify-between w-full items-center">
+            <span class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg text-zinc-500 text-xl md:text-base md:text-red-300 w-full">Cerrar sesión</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="fill-zinc-500 inline-block md:hidden">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M3 2H2V3V21V22H3H7V20H4V4H7V2H3ZM7 11H17.9159L13 6.46573L14.356 4.99561L21.1507 11.2628L21.9476 11.9978L21.1507 12.7329L14.356 19.0001L13 17.5299L17.9112 13H7V11Z"></path>
+            </svg>
+          </a>
         </div>
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const button = document.getElementById("dropdownDefaultButton");
+            const exit = document.getElementById("toggleDropdown");
+            const menu = document.getElementById("dropdown");
+
+            button.addEventListener("click", function() {
+              menu.classList.toggle("hidden");
+              menu.classList.toggle("flex");
+            });
+
+            exit.addEventListener("click", function() {
+              menu.classList.add("hidden");
+              menu.classList.remove("flex");
+            });
+
+            document.addEventListener("click", function(event) {
+              if (
+                !menu.contains(event.target) &&
+                !button.contains(event.target) &&
+                !exit.contains(event.target)
+              ) {
+                menu.classList.add("hidden");
+                menu.classList.remove("flex");
+              }
+            });
+          });
+        </script>
       </div>
-      <div class="header-top-right">
-        <% if (locals.userLogged) { %>
-        <a class="header-top-right__mobileButton" href="/users/profile/<%=locals.userLogged.username %>"><%= locals.userLogged.username %></a>
-        <nav class="header-nav-menu">
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/products">All Beats</a></li>
-            <% if (locals.userLogged && locals.userLogged.role ===1) { %>
-            <li class="itemlist__li"><a href="/admin">Admin Panel</a></li>
-            <% } %>
-          </ul>
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/users/profile/<%=locals.userLogged.username %>"><%= locals.userLogged.username %></a></li>
-            <li class="itemlist__li"><a href="/users/logout">Logout</a></li>
-          </ul>
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-            </li>
-          </ul>
-        </nav>
-        <% }else{ %>
-        <a class="header-top-right__mobileButton" href="/users/register">Sign Up</a>
-        <a class="header-top-right__mobileButton" href="/users/login">Login</a>
-        <nav class="header-nav-menu">
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/products">All Beats</a></li>
-          </ul>
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/users/register">Sign up</a></li>
-            <li class="itemlist__li"><a href="/users/login"> Sign in</a></li>
-          </ul>
-          <ul class="header-nav-menu__itemlist">
-            <li class="itemlist__li"><a href="/cart"><i class="fa-solid fa-cart-shopping"></i></a>
-            </li>
-          </ul>
-        </nav>
-        <% } %>
+      <% } else { %>
+      <a href="/products/search"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16 10C16 13.3137 13.3137 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10ZM14.9056 16.3199C13.551 17.3729 11.8487 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 11.8487 17.3729 13.551 16.3199 14.9056L21.7071 20.2929L20.2929 21.7071L14.9056 16.3199Z"></path>
+        </svg>
+      </a>
+
+      <a href="/users/login" class="py-3 px-3 rounded-sm hidden xl:inline-block">Iniciar sesión</a>
+      <a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm hidden xl:inline-block">Crear cuenta</a>
+      <button id="dropdownDefaultButton" type="button" data-dropdown-toggle="dropdown" class="p-3 rounded-sm transition-all ease-in-out inline-block xl:hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" class="src-mainapp-SignedInNav-___NavSecondaryItems__burgerIcon___ZlH-P" aria-label="Navigation menu">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4H22V6H2V4ZM2 11H22V13H2V11ZM22 18H2V20H22V18Z"></path>
+        </svg>
+      </button>
+      <button id="toggleDropdown" class="p-3 rounded-sm transition-all ease-in-out hidden">
+        <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" class="src-mainapp-SignedInNav-___NavSecondaryItems__burgerIcon___ZlH-P" aria-label="Navigation menu">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"></path>
+        </svg>
+      </button>
+      <div id="dropdown" class="z-[100] hidden rounded-lg bg-black shadow-2xl top-full w-screen min-h-screen flex-col justify-between px-4 md:px-14 gap-1 text-l absolute left-0 pb-28 py-14">
+        <div class="flex flex-col gap-2">
+          <a href="#" class="inline-block py-2 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Descubre</a>
+          <a href="/users/login" class="flex gap-4 items-center">
+            <span class="inline-block py-2 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Inicia sesíon</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" aria-hidden="true">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M17.916 11L2 11L2 13L17.9112 13L13 17.5299L14.356 19L21.1507 12.7328L21.9476 11.9978L21.1507 11.2627L14.356 4.99554L13 6.46567L17.916 11Z"></path>
+            </svg>
+          </a>
+        </div>
+        <a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm self-center font-normal">Crear cuenta</a>
       </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const button = document.getElementById("dropdownDefaultButton");
+          const exit = document.getElementById("toggleDropdown");
+          const menu = document.getElementById("dropdown");
+
+          button.addEventListener("click", function() {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
+            button.classList.toggle("hidden");
+            exit.classList.toggle("hidden");
+          });
+
+          exit.addEventListener("click", function() {
+            menu.classList.add("hidden");
+            menu.classList.toggle("flex");
+            exit.classList.toggle("hidden");
+            button.classList.toggle("hidden");
+          });
+
+          document.addEventListener("click", function(event) {
+            if (
+              !menu.contains(event.target) &&
+              !button.contains(event.target) &&
+              !exit.contains(event.target)
+            ) {
+              menu.classList.add("hidden");
+              menu.classList.remove("flex");
+            }
+          });
+        });
+      </script>
+      <!-- <div
+				class="items-center py-3 px-3 bg-white gap-4 hidden xl:flex rounded-sm"
+			>
+				<svg
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+					class="fill-black text-black"
+				>
+					<path
+						fill-rule="evenodd"
+						clip-rule="evenodd"
+						d="M2 4H4.80701L6.06367 7.35103L9.06367 15.3508L9.30701 15.9997H10H18H18.693L18.9363 15.3508L21.9363 7.35103L22.443 5.9999H21H7.69299L6.43633 2.64887L6.19299 2H5.5H2V4ZM10.693 13.9997L8.44301 7.9999H19.557L17.307 13.9997H10.693ZM8 20C8 18.8954 8.89543 18 10 18C11.1046 18 12 18.8954 12 20C12 21.1046 11.1046 22 10 22C8.89543 22 8 21.1046 8 20ZM16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20Z"
+						fill="currentColor"
+					></path>
+				</svg>
+				<a href="" class="text-black rounded-sm">1 item</a>
+			</div> -->
+
+      <% } %>
     </div>
-    <div class="header-bottom">
-      <form action="/products/search" method="GET" class="header-search">
-        <input name="keywords" class="header-search__input" type="text" placeholder="¿Qué Estás Buscando?">
-        <button type="submit" class="header-search__button"><i class="fa-solid fa-magnifying-glass"></i></button>
-      </form>
-    </div>
-  </div>
-</header>
+  </header>
+</div>

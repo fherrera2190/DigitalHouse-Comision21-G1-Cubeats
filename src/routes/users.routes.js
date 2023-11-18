@@ -19,15 +19,17 @@ router.post("/login", loginValidator, processLogin);
 
 /* User Profile */
 router.get("/profile/:username", userCheck, usersController.profile);
+router.get("/profile/myData/:username", userCheck, usersController.myData);
+
 router.put(
-	"/profile/update/:username",
-	userCheck,
-	uploadUserImages.fields([
-		{ name: "image", maxCount: 1 },
-		{ name: "cover", maxCount: 1 },
-	]),
-	// editprofileValidator,
-	usersController.editProfile
+  "/profile/update/:username",
+  userCheck,
+  uploadUserImages.fields([
+    { name: "image", maxCount: 1 },
+    { name: "cover", maxCount: 1 }
+  ]),
+  // editprofileValidator,
+  usersController.editProfile
 );
 
 /* User Logout */

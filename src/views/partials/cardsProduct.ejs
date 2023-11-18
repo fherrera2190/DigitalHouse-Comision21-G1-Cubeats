@@ -1,28 +1,123 @@
-<div class="card card_t<%=id %>">
-  <div class="card__image-holder">
-    <a href="/products/detail/<%=id %>"><img class="card__image" src="/img/products/<%= image ? image:'default-image.png' %>" alt="dj" /></a>
-  </div>
-  <div id="t<%=id %>" class="card-title">
-    <a class="toggle-info btn">
-      <span class="left"></span>
-      <span class="right"></span>
+<% products.forEach(({dataValues:product}) => { %>
+<div class="grid grid-cols-[auto,1fr,1fr,1fr] md:grid-cols-[auto,0.15fr,0.2fr,2fr,0.2fr,auto] w-full justify-between items-center gap-4 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out" id="grid-<%= product.id %>">
+  <img src="/img/products/<%= product.image %>" alt="" id="image-<%= product.id %>" class="w-16 h-16 object-cover block group-hover:hidden transition-all ease-in-out" />
+  <button id="playsong-<%= product.id %>" class="hidden group-hover:block w-16 h-16 transition-all ease-in-out">
+    <svg id="play-icon-<%= product.id %>" width="45" height="45" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="p-2 rounded-full bg-zinc-800 hidden xl:inline-block hover:brightness-110">
+      <path d="M20 12L8 5V19L20 12Z"></path>
+    </svg>
+
+    <svg id="pause-icon-<%= product.id %>" width="45" height="45" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="p-2 rounded-full bg-white fill-zinc-900 hover:brightness-90 hidden">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M10 5H7V19H10V5ZM17 5H14V19H17V5Z"></path>
+    </svg>
+  </button>
+  <div class="flex flex-col items-start text-start">
+    <a href="/products/detail/<%=product.id%>" class="truncate font-semibold text-white w-20 hover:underline">
+      <%= product.name %>
     </a>
-    <h2>
-      <%= name %>
-      <small><%=category.dataValues.name%></small>
-    </h2>
+    <a href="/users/profile/<%= product.producer.username.toLowerCase().replace(/\s/g, '') %>" class="truncate font-semibold w-20 hover:underline text-xs text-zinc-500">
+      <%= product.producer.username %>
+    </a>
   </div>
-  <div class="card-flap flap1">
-    <div class="card-description">
-      <i class="fa-solid fa-play"></i>
-      <i class="fa-solid fa-compact-disc"></i>
-      <i class="fa-solid fa-volume-xmark"></i>
+  <p id="time-display-<%= product.id %>" class="text-xs font-bold text-center text-zinc-500 hidden lg:block">
+    0:00
+  </p>
+  <div>
+    <div id="wave-<%= product.id %>" class="hidden lg:block"></div>
+  </div>
+
+  <div class="flex-col items-center font-semibold hidden sm:flex">
+    <p id="duracion-total-<%= product.id %>" class="text-xs font-bold text-center text-zinc-500"></p>
+    <p class="text-xs text-zinc-600"><%= 120 %> BPM</p>
+  </div>
+
+  <div class="flex gap-6">
+    <div class="hidden sm:inline-block">
+      <i class="fa-solid fa-cart-shopping text-lg"></i>
     </div>
-    <div class="card-flap flap2">
-      <div class="card-actions">
-        <a href="/products/detail/<%=id%>" class="btn"><i class="fa-solid fa-eye"></i></a>
-        <a href="/cart" class="btn"><i class="fa-solid fa-cart-plus"></i></a>
-      </div>
+    <div class="hidden sm:inline-block">
+      <i class="fa-solid fa-link text-lg"></i>
+    </div>
+    <div class="hidden sm:inline-block">
+      <i class="fa-solid fa-circle-notch text-lg"></i>
+    </div>
+    <div><i class="fa-solid fa-heart text-lg"></i></div>
+    <div class="hidden sm:inline-block">
+      <i class="fa-solid fa-plus text-lg"></i>
+    </div>
+    <div class="hidden sm:inline-block">
+      <i class="fa-solid fa-arrow-down text-lg"></i>
     </div>
   </div>
 </div>
+<script type="module">
+  import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
+
+  const wavesurfer = WaveSurfer.create({
+    id: "<%= product.id %>",
+    container: "#wave-<%= product.id %>",
+    waveColor: "#414141",
+    progressColor: "#ffffff",
+    cursorWidth: 0,
+    height: 50,
+    url: "/audio/<%= product.beat %>",
+  });
+
+  wavesurfer.on("ready", () => {
+    const timeDisplay = document.getElementById(
+      "time-display-<%= product.id %>"
+    );
+    const duracionTotalDisplay = document.getElementById(
+      "duracion-total-<%= product.id %>"
+    );
+
+    // Obtener la duración total
+    const duracionTotal = wavesurfer.getDuration();
+
+    const totalMinutes = Math.floor(duracionTotal / 60);
+    const totalSeconds = Math.floor(duracionTotal % 60);
+    duracionTotalDisplay.innerText = `${totalMinutes}:${totalSeconds
+			.toString()
+			.padStart(2, "0")}`;
+
+    wavesurfer.on("audioprocess", (time) => {
+      const minutes = Math.floor(time / 60);
+      const seconds = Math.floor(time % 60);
+      timeDisplay.innerText = `${minutes}:${seconds
+				.toString()
+				.padStart(2, "0")}`;
+    });
+  });
+
+  const grids = document.getElementById("grid-<%= product.id %>");
+  const playButton = document.getElementById(
+    "playsong-<%= product.id %>"
+  );
+  const playIcon = document.getElementById(
+    "play-icon-<%= product.id %>"
+  );
+  const pauseIcon = document.getElementById(
+    "pause-icon-<%= product.id %>"
+  );
+  const image = document.getElementById("image-<%= product.id %>");
+
+  playButton.addEventListener("click", () => {
+    if (wavesurfer.isPlaying()) {
+      wavesurfer.pause();
+      grids.classList.remove("bg-zinc-900");
+      image.classList.remove("hidden");
+      playButton.classList.add("hidden");
+      playIcon.classList.add("xl:inline-block");
+      pauseIcon.classList.add("hidden");
+      pauseIcon.classList.remove("inline-block");
+    } else {
+      wavesurfer.play();
+      grids.classList.add("bg-zinc-900");
+      image.classList.add("hidden");
+      playButton.classList.remove("hidden");
+      playIcon.classList.remove("xl:inline-block");
+      pauseIcon.classList.remove("hidden");
+      pauseIcon.classList.add("inline-block");
+    }
+  });
+</script>
+<% }) %>

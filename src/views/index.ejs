@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head', { title : 'Cubeats' }) %>
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
-<body class="font-Manrope text-base bg-black text-white font-medium">
-  <%- include("./partials/preheader") %>
-  <article class="flex flex-col text-center items-center justify-center gap-4 py-12 px-4 md:py-24 md:px-14 container mx-auto">
-    <p class="text-4xl md:text-5xl font-bold">
-      Beats de Élite, hechos por expertos
-    </p>
-    <p class="text-xl md:text-xl">
-      Obtén acceso ilimitado a nuestro catálogo de beats y efectos de sonido
-      para tus videos, transmisiones y podcasts. Nuestra licencia incluye
-      todos los derechos necesarios.
-    </p>
-    <div class="flex gap-2">
-      <a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm">Comenzar a vender</a>
-      <a href="/products" class="py-3 px-3 bg-zinc-900 rounded-sm">Descubre más</a>
-    </div>
-    <p>Regístrate ahora, y accede a contenido exclusivo.</p>
-  </article>
-  <article class="flex flex-col text-center items-center justify-center gap-7 py-12 md:py-24 px-4 container mx-auto">
-    <p class="text-3xl md:text-4xl font-bold">Pistas actuales</p>
-    <div class="flex flex-col gap-4 text-zinc-300 w-full relative">
-      <!-- <div
+	<body class="font-Manrope text-base bg-zinc-950 text-white font-medium">
+		<%- include("./partials/preheader") %>
+		<article
+			class="flex flex-col text-center items-center justify-center gap-4 py-12 px-4 md:py-24 md:px-14 container mx-auto"
+		>
+			<p class="text-3xl md:text-4xl font-bold">
+				Beats de Élite, hechos por expertos
+			</p>
+			<p class="text-xl md:text-xl">
+				Obtén acceso ilimitado a nuestro catálogo de beats y efectos de sonido
+				para tus videos, transmisiones y podcasts. Nuestra licencia incluye
+				todos los derechos necesarios.
+			</p>
+			<div class="flex gap-2">
+				<a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm"
+					>Comenzar a vender</a
+				>
+				<a href="/products" class="py-3 px-3 bg-zinc-900 rounded-sm"
+					>Descubre más</a
+				>
+			</div>
+			<p>Regístrate ahora, y accede a contenido exclusivo.</p>
+		</article>
+		<article
+			class="flex flex-col text-center items-center justify-center gap-7 py-12 md:py-24 px-4 container mx-auto"
+		>
+			<p class="text-2xl md:text-3xl font-bold">Pistas actuales</p>
+			<div class="flex flex-col gap-4 text-zinc-300 w-full relative">
+				<!-- <div
 					class="absolute top-10 left-0 w-full h-full bg-gradient-to-t from-black via-black to-transparent pointer-events-none opacity-70 z-30"
 				></div> -->
-      <%- include("./partials/cardsProduct") %>
-    </div>
-  </article>
+				<%- include("./partials/cardsProduct") %>
+			</div>
+		</article>
 
-  <!-- <article
+		<!-- <article
 			class="flex flex-col text-start items-start justify-center gap-4 py-12 px-4 md:py-24 md:px-14 container mx-auto"
 		>
 			<p class="text-2xl font-normal italic">
@@ -44,39 +52,57 @@
 				a su música.
 			</p>
 		</article> -->
-  <article class="flex flex-col text-center items-center justify-center gap-24 py-16 md:py-24 px-4">
-    <div class="flex flex-col gap-4">
-      <p class="text-4xl md:text-5xl font-bold">Música real, impacto real.</p>
-      <p class="text-xl md:text-2xl">
-        Trabajamos con los principales creadores de música de todo el mundo
-        para traerte pistas nuevas, exclusivas y auténticas todos los días.
-      </p>
-    </div>
-    <div class="flex items-center justify-center gap-24 flex-wrap">
-      <% categories.forEach(categorie => { %>
-      <div class="flex flex-col gap-4 text-lg md:text-xl font-semibold">
-        <% const categoryColors = { "Electro": 'bg-[#010645]', "Hip Hop":
+		<article
+			class="flex flex-col text-center items-center justify-center gap-24 py-16 md:py-24 px-4"
+		>
+			<div class="flex flex-col gap-4">
+				<p class="text-3xl md:text-4xl font-bold">Música real, impacto real.</p>
+				<p class="text-xl md:text-2xl">
+					Trabajamos con los principales creadores de música de todo el mundo
+					para traerte pistas nuevas, exclusivas y auténticas todos los días.
+				</p>
+			</div>
+			<div class="flex items-center justify-center gap-24 flex-wrap">
+				<% categories.forEach(categorie => { %>
+				<div class="flex flex-col gap-4 text-lg md:text-xl font-semibold">
+					<% const categoryColors = { "Electro": 'bg-[#010645]', "Hip Hop":
 					'bg-[#E5E4E3]', "RKT": 'bg-[#D4223C]', "Rock": 'bg-[#0E273B]', "Trap":
 					'bg-[#E4E5E5]' }; const bgColor = categoryColors[categorie.name] ||
 					''; %>
-        <a href="/products/search?query=<%= categorie.name.toLowerCase() %>" class="flex flex-col items-start text-start rounded-sm">
-          <img src="/img/genres/<%= categorie.image %>" alt="" class="w-36 h-36 object-cover rounded-sm opacity-70 invert" />
-        </a>
-        <a href="/products/search?query=<%= categorie.name.toLowerCase() %>" class="hover:underline"><%= categorie.name %></a>
-      </div>
-      <% }) %>
-    </div>
-  </article>
-  <article class="flex flex-col text-center items-center justify-center gap-4 px-4 py-12 md:px-14 md:py-20 container mx-auto">
-    <p class="text-2xl md:text-3xl font-bold">Confiado por :</p>
-    <div class="flex items-center gap-8">
-      <img src="/img/Digitalhouse.svg" alt="" class="w-48 opacity-90" />
-      <img src="/img/Formar.svg" alt="" class="w-28 grayscale opacity-40 invert" />
-    </div>
-  </article>
-  <%- include('./partials/footer.ejs')%>
-  <script src="https://unpkg.com/wavesurfer.js"></script>
-  <script type="module" src="/js/wave.js"></script>
-</body>
-
+					<a
+						href="/products/search?keywords=<%= categorie.name.toLowerCase() %>"
+						class="flex flex-col items-start text-start rounded-sm"
+					>
+						<img
+							src="/img/genres/<%= categorie.image %>"
+							alt=""
+							class="w-36 h-36 object-cover rounded-sm opacity-70 invert"
+						/>
+					</a>
+					<a
+						href="/products/search?keywords=<%= categorie.name.toLowerCase() %>"
+						class="hover:underline"
+						><%= categorie.name %></a
+					>
+				</div>
+				<% }) %>
+			</div>
+		</article>
+		<article
+			class="flex flex-col text-center items-center justify-center gap-4 px-4 py-12 md:px-14 md:py-20 container mx-auto"
+		>
+			<p class="text-2xl md:text-3xl font-bold">Confiado por ,</p>
+			<div class="flex items-center gap-10">
+				<img src="/img/Digitalhouse.svg" alt="" class="w-48 opacity-90" />
+				<img
+					src="/img/Formar.svg"
+					alt=""
+					class="w-28 grayscale opacity-40 invert"
+				/>
+			</div>
+		</article>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script type="module" src="/js/wave.js"></script>
+	</body>
 </html>

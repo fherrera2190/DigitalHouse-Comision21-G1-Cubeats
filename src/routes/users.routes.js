@@ -18,7 +18,9 @@ router.get("/login", notUserCheck, login);
 router.post("/login", loginValidator, processLogin);
 
 /* User Profile */
-router.get("/profile/:username", userCheck, usersController.profile);
+router.get("/profile/:username", usersController.profile);
+router.get("/profile/myData/:username", userCheck, usersController.myData);
+
 router.put(
 	"/profile/update/:username",
 	userCheck,
@@ -29,6 +31,8 @@ router.put(
 	// editprofileValidator,
 	usersController.editProfile
 );
+
+router.get("/profile/myTracks/:username", userCheck, usersController.myTracks);
 
 /* User Logout */
 router.get("/logout", usersController.logout);

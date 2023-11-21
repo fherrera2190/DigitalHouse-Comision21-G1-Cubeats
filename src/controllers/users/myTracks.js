@@ -13,8 +13,9 @@ module.exports = async (req, res) => {
   }
 
   userFind = userFind.dataValues;
+
   const products = await db.Beat.findAll({
-    include: ["category","producer"],
+    include: ["category", "producer"],
     where: {
       producerId: userFind.id
     }
@@ -28,9 +29,8 @@ module.exports = async (req, res) => {
     cover: userFind.cover,
     date: userFind.date
   };
-
   if (userFind) {
-    return res.render("profile", {
+    return res.render("myTracks", {
       products,
       userDatos
     });

@@ -43,10 +43,11 @@
 						<p class="text-zinc-500 px-4">O</p>
 						<hr class="flex-1 border border-zinc-900" />
 					</div>
+					
 					<% if (locals.errors && (errors.email || errors.password ||
 					errors.password2)) { %>
 					<div
-						class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal"
+						class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
 					>
 						<i class="fa-solid fa-circle-exclamation text-2xl"></i>
 						<span id="input-error" class="error" aria-live="polite">
@@ -88,19 +89,7 @@
 						name="password2"
 						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 					/>
-					<% if (locals.errors && (errors.email || errors.password ||
-					errors.password2)) { %>
-					<div
-						class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
-					>
-						<i class="fa-solid fa-circle-exclamation text-2xl"></i>
-						<span id="input-error" class="error" aria-live="polite">
-							<% if (errors.email) { %> <%= errors.email.msg %> <% } else if
-							(errors.password) { %> <%= errors.password.msg %> <% } else if
-							(errors.password2) { %> <%= errors.password2.msg %> <% } %>
-						</span>
-					</div>
-
+					
 					<ul
 						class="items-center w-full font-medium bg-zinc-900 border border-[#6B7280] rounded-sm sm:flex py-1"
 					>

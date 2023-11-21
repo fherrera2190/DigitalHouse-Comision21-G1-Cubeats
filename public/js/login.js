@@ -6,7 +6,18 @@ window.onload = function () {
     function emailValid(email) {
         return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
     }
-
+    function usernameValid(username) {
+        return /^[a-zA-Z0-9_]+$/.test(username);
+    }
+    $('username').addEventListener('blur', function () {
+        if (!this.value.trim()) {
+            setError("El nombre de usuario es obligatorio");
+        } else if (!usernameValid(this.value)) {
+            setError("El nombre de usuario solo puede contener letras, números y guiones bajos (_)");
+        } else {
+            clearError();
+        }
+    });
     $('email').addEventListener('blur', function () {
         if (!this.value.trim()) {
             setError("El email es obligatorio");

@@ -3,11 +3,11 @@ const $ = id => document.getElementById(id);
 window.onload = function () {
     console.log('Enganchando señal de register.js');
 
-    function clearError() {
+    function clearError() { //funcion que voy a utilizar a lo largo del codigo para hacerlo mas largo pero mas entendible (para mi)
         $('input-error').innerHTML = "";
     }
 
-    function setError(message) {
+    function setError(message) { // lo mismo que dije arriba
         $('input-error').innerHTML = message;
     }
 
@@ -18,6 +18,18 @@ window.onload = function () {
     function passwordValid(password) {
         return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/.test(password);
     }
+    function usernameValid(username) {
+        return /^[a-zA-Z0-9_]+$/.test(username);
+    }
+    $('username').addEventListener('blur', function () {
+        if (!this.value.trim()) {
+            setError("El nombre de usuario es obligatorio");
+        } else if (!usernameValid(this.value)) {
+            setError("El nombre de usuario solo puede contener letras, números y guiones bajos (_)");
+        } else {
+            clearError();
+        }
+    });
 
     $('email').addEventListener('blur', function () {
         if (!this.value.trim()) {

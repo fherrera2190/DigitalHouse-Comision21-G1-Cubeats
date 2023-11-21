@@ -3,24 +3,63 @@
 	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
 	<body
-		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
 	>
 		<%- include("./partials/header") %>
 		<main class="flex-1 grow">
-			<!-- <% if (locals.userLogged && locals.userLogged.role === "user") { %>
-			<p>Sos admin</p>
-			<% } %> -->
 			<article
-				class="flex flex-col gap-2 py-12 px-4 md:px-14 container mx-auto"
+				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
 			>
-				<div class="flex flex-col">
-					<p class="text-2xl sm:text-3xl font-semibold w-fit">Mis track's</p>
-
-					<hr class="flex-1 border border-zinc-800 my-6" />
+				<% if (locals.userLogged && locals.userLogged.role === 3) { %>
+				<div class="flex flex-col gap-7">
+					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+						Todos mis track's
+					</p>
+					<hr class="flex-1 border border-zinc-900 w-full" />
+					<% if (products && products.length > 0) { %>
+					<div class="items-center hidden sm:flex gap-8 text-zinc-300">
+						<i class="fa-solid fa-sliders text-lg"></i>
+						<p>Géneros</p>
+						<p>Duración</p>
+						<p>BPM</p>
+					</div>
+					<% } else { %>
+					<p class="font-normal text-gray-300">
+						No has agregado ningún track a tu colección.
+					</p>
+					<% } %>
 				</div>
-				<div class="flex flex-col gap-4 text-zinc-300 w-full relative">
+				<div
+					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"
+				>
 					<%- include("./partials/cardsProduct") %>
 				</div>
+				<% } else if (locals.userLogged && locals.userLogged.role === 2) { %>
+				<div class="flex flex-col gap-7">
+					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+						Todas mis compras
+					</p>
+					<hr class="flex-1 border border-zinc-900 w-full" />
+					<% if (products && products.length > 0) { %>
+					<div class="items-center hidden sm:flex gap-8 text-zinc-300">
+						<i class="fa-solid fa-sliders text-lg"></i>
+						<p>Géneros</p>
+						<p>Duración</p>
+						<p>BPM</p>
+					</div>
+					<% } else { %>
+					<p class="font-normal text-gray-300">
+						Aún no has comprado ningún track.
+					</p>
+
+					<% } %>
+				</div>
+				<div
+					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"
+				>
+					<%- include("./partials/cardsProduct") %>
+				</div>
+				<% } %>
 			</article>
 		</main>
 		<%- include('./partials/footer.ejs')%>

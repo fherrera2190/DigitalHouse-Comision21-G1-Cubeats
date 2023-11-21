@@ -1,5 +1,6 @@
 const { validationResult } = require("express-validator");
 const db = require("../../database/models");
+const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
 	const errors = validationResult(req);
@@ -7,7 +8,10 @@ module.exports = async (req, res) => {
 		if (errors.isEmpty()) {
 			const user = await db.User.findOne({
 				where: {
-					email: req.body.email,
+					[Op.or]: [
+						{ email: req.body.emailOrUsername },
+						{ username: req.body.emailOrUsername },
+					],
 				},
 			});
 			req.session.userLogged = {

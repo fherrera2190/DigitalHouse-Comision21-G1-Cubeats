@@ -3,34 +3,34 @@
 	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
 	<body
-		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
 	>
 		<%- include("./partials/header") %>
 		<main class="flex-1 grow">
 			<article
-				class="flex flex-col gap-12 py-7 px-4 md:py-14 md:px-14 lg:px-14 container mx-auto"
+				class="flex flex-col gap-8 py-7 px-4 md:py-14 md:px-14 lg:px-14 container mx-auto"
 			>
 				<div
-					class="flex flex-col lg:flex-row items-start xl:items-center gap-10"
+					class="flex flex-col lg:flex-row items-start xl:items-center gap-8"
 				>
 					<div>
 						<img
 							src="/img/products/<%= product.image %>"
 							alt=""
-							class="w-44 h-44 md:w-52 md:h-52 xl:w-64 xl:h-64 object-cover"
+							class="w-48 h-48 object-cover"
 						/>
 						<img
 							src="/img/products/<%= product.image %>"
 							alt=""
-							class="fixed top-0 left-0 right-0 z-10 blur-md opacity-[0.10] w-full h-full object-cover pointer-events-none"
+							class="fixed top-0 left-0 right-0 z-10 blur-md opacity-10 w-full h-full object-cover pointer-events-none"
 						/>
 					</div>
 
-					<div class="flex flex-col gap-7">
+					<div class="flex flex-col gap-3">
 						<div class="flex flex-col gap-1 font-bold">
 							<a
 								href="/users/profile/<%= product.producer.dataValues.username.toLowerCase().replace(/\s/g, '') %>"
-								class="text-sm border-white text-zinc-400 hover:underline"
+								class="text-sm border-white text-zinc-400 hover:underline font-normal"
 							>
 								<%= product.producer.dataValues.username %>
 							</a>
@@ -40,35 +40,43 @@
 							<!-- <p class="text-2xl w-fit py-1 mt-3">$ <%= product.price %></p> -->
 						</div>
 
-						<div class="flex gap-8 items-center">
+						<div id="products" class="flex justify-start items-start">
 							<svg
-								width="50"
-								height="50"
+								width="24"
+								id="svg"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="currentColor"
+								xmlns="http://www.w3.org/2000/svg"
+								class="section-icon products-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-200"
+							>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M12 4.68905C9.71236 2.43698 6.00337 2.43698 3.71573 4.68905C1.42809 6.94113 1.42809 10.5925 3.71573 12.8445L12 21L20.2843 12.8445C22.5719 10.5925 22.5719 6.94113 20.2843 4.68905C17.9966 2.43698 14.2876 2.43698 12 4.68905ZM12 18.1935L18.8812 11.4193C20.3729 9.95071 20.3729 7.58287 18.8812 6.1143C17.372 4.62857 14.9123 4.62857 13.4031 6.1143L12 7.49558L10.5969 6.1143C9.08771 4.62857 6.62802 4.62857 5.11882 6.1143C3.62706 7.58287 3.62706 9.95071 5.11882 11.4193L12 18.1935Z"
+									stroke-width="2"
+								></path>
+							</svg>
+
+							<svg
+								width="24"
+								height="24"
 								viewBox="0 0 24 24"
 								xmlns="http://www.w3.org/2000/svg"
 								fill="currentColor"
-								class="p-2 rounded-full bg-zinc-900 inline-block lg:hidden"
+								class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-200"
 							>
-								<path d="M20 12L8 5V19L20 12Z"></path>
+								<path
+									fill-rule="evenodd"
+									clip-rule="evenodd"
+									d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
+								></path>
 							</svg>
-							<div><i class="fa-solid fa-heart text-lg"></i></div>
-							<div class="">
-								<i class="fa-solid fa-plus text-lg"></i>
-							</div>
-							<div class="">
-								<i class="fa-solid fa-arrow-down text-lg"></i>
-							</div>
-							<div class="">
-								<i class="fa-solid fa-cart-shopping text-lg"></i>
-							</div>
-							<div class="">
-								<i class="fa-solid fa-link text-lg"></i>
-							</div>
 						</div>
 					</div>
 				</div>
 				<div
-					class="p-3 grid grid-cols-[auto,0.1fr,2fr,0.1fr] items-center bg-zinc-900"
+					class="py-1 px-2 grid gap-4 grid-cols-[auto,0.1fr,2fr,0.1fr] items-center bg-zinc-900"
 				>
 					<button id="playsong">
 						<svg
@@ -78,7 +86,7 @@
 							viewBox="0 0 24 24"
 							xmlns="http://www.w3.org/2000/svg"
 							fill="currentColor"
-							class="p-2 rounded-full bg-zinc-800 hidden xl:inline-block hover:brightness-110"
+							class="p-2 rounded-full bg-zinc-800 hover:brightness-110"
 						>
 							<path d="M20 12L8 5V19L20 12Z"></path>
 						</svg>
@@ -119,9 +127,11 @@
 
 					const wavesurfer = WaveSurfer.create({
 						container: "#waveform",
-						waveColor: "#414141",
+						waveColor: "#36363a",
+						// waveColor: "#414141",
 						progressColor: "#ffffff",
 						cursorWidth: 0,
+						barHeight: 0.55,
 						height: 70,
 						interact: true,
 						url: "/audio/<%= product.beat %>",
@@ -180,32 +190,41 @@
 			<article
 				class="flex flex-col gap-7 py-7 px-4 md:pt-0 md:pb-14 md:px-14 lg:px-14 container mx-auto relative"
 			>
-				<div>
-					<p class="text-xl border-b-2 pb-1 font-semibold border-white w-fit">
+				<div class="flex flex-col gap-7">
+					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
 						Detalles de la pista
 					</p>
+					<hr class="flex-1 border border-zinc-900 w-full" />
 				</div>
 				<div
-					class="flex flex-col md:flex-row gap-6 md:gap-48 text-sm font-semibold"
+					class="flex flex-col md:flex-row gap-6 md:gap-48 font-semibold text-base"
 				>
 					<div class="flex flex-col gap-6">
 						<div class="flex flex-col gap-1">
-							<p class="text-zinc-500">Genre</p>
-							<a href="/" class="text-lg hover:underline"
+							<p class="text-zinc-500 text-sm">Genre</p>
+							<a
+								href="/products/search?keywords=<%= product.category.name.toLowerCase() %>"
+								class="hover:underline font-normal"
 								><%= product.category.dataValues.name %></a
 							>
 						</div>
 						<div class="flex flex-col gap-1">
-							<p class="text-zinc-500">Produced by</p>
-							<a href="" class="text-lg hover:underline"
+							<p class="text-zinc-500 text-sm">Produced by</p>
+							<a
+								href="/users/profile/<%= product.producer.dataValues.username.toLowerCase().replace(/\s/g, '') %>"
+								class="hover:underline font-normal"
 								><%= product.producer.dataValues.username %></a
 							>
 						</div>
 					</div>
 					<div class="flex flex-col gap-1">
-						<div class="flex flex-col gap-2">
-							<p class="text-zinc-500">Tempo</p>
-							<p class="text-lg"><%= 120 %> BPM</p>
+						<div class="flex flex-col gap-1">
+							<p class="text-zinc-500 text-sm">Tempo</p>
+							<a
+								href="/products/search?keywords=<%= product.category.name.toLowerCase() %>"
+								class="hover:underline font-normal"
+								><%= 120 %> BPM</a
+							>
 						</div>
 					</div>
 				</div>

@@ -1,17 +1,17 @@
 <% products.forEach(({dataValues:product}) => { %>
 <div
-	class="grid grid-cols-[auto,1fr,1fr,0.5fr] md:grid-cols-[auto,0.15fr,0.2fr,2fr,0.2fr,auto] w-full justify-between items-center gap-4 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out"
+	class="grid grid-cols-[2fr,0.2fr,0.2fr,0.2fr] md:grid-cols-[auto,0.15fr,0.2fr,0.5fr,0.25fr,auto] lg:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] w-full justify-between items-center gap-6 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out"
 	id="grid-<%= product.id %>"
 >
 	<img
 		src="/img/products/<%= product.image %>"
 		alt=""
 		id="image-<%= product.id %>"
-		class="w-16 h-16 object-cover block group-hover:hidden transition-all ease-in-out"
+		class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
 	/>
 	<button
 		id="playsong-<%= product.id %>"
-		class="hidden group-hover:block w-16 h-16 transition-all ease-in-out"
+		class="hidden group-hover:block w-14 h-14 transition-all ease-in-out"
 	>
 		<svg
 			id="play-icon-<%= product.id %>"
@@ -44,62 +44,178 @@
 	<div class="flex flex-col items-start text-start">
 		<a
 			href="/products/detail/<%=product.id%>"
-			class="truncate font-semibold text-white w-20 hover:underline"
+			class="truncate font-bold text-white text-base w-32 hover:underline"
 		>
 			<%= product.name %>
 		</a>
 		<a
 			href="/users/profile/<%= product.producer.username.toLowerCase().replace(/\s/g, '') %>"
-			class="truncate font-semibold w-20 hover:underline text-xs text-zinc-500"
+			class="truncate font-medium w-20 hover:underline text-sm text-zinc-400"
 		>
 			<%= product.producer.username %>
 		</a>
 	</div>
-	<p
+	<!-- <p
 		id="time-display-<%= product.id %>"
-		class="text-xs font-bold text-center text-zinc-500 hidden lg:block"
+		class="text-sm font-bold text-center text-zinc-500 hidden lg:block"
 	>
 		0:00
-	</p>
+	</p> -->
 	<div>
 		<div id="wave-<%= product.id %>" class="hidden lg:block"></div>
 	</div>
 
-	<div class="flex-col items-center font-semibold hidden sm:flex">
+	<div class="flex-col items-start font-bold hidden sm:flex w-fit">
 		<p
 			id="duracion-total-<%= product.id %>"
-			class="text-xs font-bold text-center text-zinc-500"
+			class="font-medium text-zinc-400 text-base"
 		></p>
-		<p class="text-xs text-zinc-600"><%= 120 %> BPM</p>
+		<p class="text-zinc-400 text-xs font-medium"><%= 120 %> BPM</p>
 	</div>
-
-	<div class="flex gap-6 justify-between">
-		<div class="inline-block">
-			<i class="fa-solid fa-cart-shopping text-lg"></i>
-		</div>
-		<div class="hidden sm:inline-block">
-			<i class="fa-solid fa-link text-lg"></i>
-		</div>
-		<div class="hidden sm:inline-block">
-			<i class="fa-solid fa-circle-notch text-lg"></i>
-		</div>
-		<div><i class="fa-solid fa-heart text-lg"></i></div>
-		<div class="hidden sm:inline-block">
-			<i class="fa-solid fa-plus text-lg"></i>
-		</div>
-		<div class="hidden sm:inline-block">
-			<i class="fa-solid fa-arrow-down text-lg"></i>
-		</div>
+	<div class="flex-col items-start w-fit hidden sm:flex">
+		<a
+			href="/products/search?keywords=<%= product.category.name.toLowerCase() %>"
+			class="text-base font-medium text-zinc-400 hover:underline"
+			><%= product.category.name %></a
+		>
+	</div>
+	<div id="products" class="flex justify-end items-center">
+		<svg
+			width="24"
+			id="svg"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="currentColor"
+			xmlns="http://www.w3.org/2000/svg"
+			class="section-icon products-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+		>
+			<path
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M12 4.68905C9.71236 2.43698 6.00337 2.43698 3.71573 4.68905C1.42809 6.94113 1.42809 10.5925 3.71573 12.8445L12 21L20.2843 12.8445C22.5719 10.5925 22.5719 6.94113 20.2843 4.68905C17.9966 2.43698 14.2876 2.43698 12 4.68905ZM12 18.1935L18.8812 11.4193C20.3729 9.95071 20.3729 7.58287 18.8812 6.1143C17.372 4.62857 14.9123 4.62857 13.4031 6.1143L12 7.49558L10.5969 6.1143C9.08771 4.62857 6.62802 4.62857 5.11882 6.1143C3.62706 7.58287 3.62706 9.95071 5.11882 11.4193L12 18.1935Z"
+				stroke-width="2"
+			></path>
+		</svg>
+		<a href="/products/detail/<%- product.id %>">
+			<svg
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="section-icon products-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+			>
+				<path
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M9 2C5.13401 2 2 5.13401 2 9C2 12.548 4.63967 15.4795 8.06227 15.9377C8.52049 19.3603 11.452 22 15 22C18.866 22 22 18.866 22 15C22 11.452 19.3603 8.52049 15.9377 8.06227C15.4795 4.63967 12.548 2 9 2ZM13.9162 8.0834C13.4857 5.78974 11.4483 4 9 4C6.23858 4 4 6.23858 4 9C4 11.4483 5.78974 13.4857 8.0834 13.9162C8.54941 10.9181 10.9181 8.54941 13.9162 8.0834ZM13.8723 10.1277C12.0164 10.5555 10.5555 12.0164 10.1277 13.8723C11.9836 13.4445 13.4445 11.9836 13.8723 10.1277ZM10.0838 15.9166C13.0819 15.4506 15.4506 13.0819 15.9166 10.0838C18.2403 10.5143 20 12.5517 20 15C20 17.7614 17.7614 20 15 20C12.5517 20 10.5143 18.2403 10.0838 15.9166Z"
+				></path>
+			</svg>
+		</a>
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="currentColor"
+			class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+		>
+			<path
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
+			></path>
+		</svg>
+	</div>
+	<div id="mytracks" class="flex justify-end items-center">
+		<a href="/products/detail/<%- product.id %>">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				x="0px"
+				y="0px"
+				width="100"
+				height="100"
+				viewBox="0 0 30 30"
+				class="section-icon mytracks-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+			>
+				<path
+					d="M 22.828125 3 C 22.316375 3 21.804562 3.1954375 21.414062 3.5859375 L 19 6 L 24 11 L 26.414062 8.5859375 C 27.195062 7.8049375 27.195062 6.5388125 26.414062 5.7578125 L 24.242188 3.5859375 C 23.851688 3.1954375 23.339875 3 22.828125 3 z M 17 8 L 5.2597656 19.740234 C 5.2597656 19.740234 6.1775313 19.658 6.5195312 20 C 6.8615312 20.342 6.58 22.58 7 23 C 7.42 23.42 9.6438906 23.124359 9.9628906 23.443359 C 10.281891 23.762359 10.259766 24.740234 10.259766 24.740234 L 22 13 L 17 8 z M 4 23 L 3.0566406 25.671875 A 1 1 0 0 0 3 26 A 1 1 0 0 0 4 27 A 1 1 0 0 0 4.328125 26.943359 A 1 1 0 0 0 4.3378906 26.939453 L 4.3632812 26.931641 A 1 1 0 0 0 4.3691406 26.927734 L 7 26 L 5.5 24.5 L 4 23 z"
+				></path>
+			</svg>
+		</a>
+		<a href="/products/detail/<%- product.id %>">
+			<svg
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="section-icon mytracks-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+			>
+				<path
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M9 2C5.13401 2 2 5.13401 2 9C2 12.548 4.63967 15.4795 8.06227 15.9377C8.52049 19.3603 11.452 22 15 22C18.866 22 22 18.866 22 15C22 11.452 19.3603 8.52049 15.9377 8.06227C15.4795 4.63967 12.548 2 9 2ZM13.9162 8.0834C13.4857 5.78974 11.4483 4 9 4C6.23858 4 4 6.23858 4 9C4 11.4483 5.78974 13.4857 8.0834 13.9162C8.54941 10.9181 10.9181 8.54941 13.9162 8.0834ZM13.8723 10.1277C12.0164 10.5555 10.5555 12.0164 10.1277 13.8723C11.9836 13.4445 13.4445 11.9836 13.8723 10.1277ZM10.0838 15.9166C13.0819 15.4506 15.4506 13.0819 15.9166 10.0838C18.2403 10.5143 20 12.5517 20 15C20 17.7614 17.7614 20 15 20C12.5517 20 10.5143 18.2403 10.0838 15.9166Z"
+				></path>
+			</svg>
+		</a>
+		<form
+			action="/products/delete/<%- product.id %>?_method=DELETE"
+			method="POST"
+		>
+			<button>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					x="0px"
+					y="0px"
+					width="100"
+					height="100"
+					viewBox="0 0 30 30"
+					class="section-icon mytracks-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+				>
+					<path
+						d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"
+					></path>
+				</svg>
+			</button>
+		</form>
 	</div>
 </div>
 <script type="module">
+	var currentPageUrl = window.location.pathname;
+
+	// Oculta todos los íconos por defecto
+	document.querySelectorAll(".section-icon").forEach(function (icon) {
+		icon.style.display = "none";
+	});
+
+	if (currentPageUrl.includes("/users/profile/myTracks/")) {
+		// Muestra los íconos de la sección de mis pistas
+		document.querySelectorAll(".products-icon").forEach(function (icon) {
+			icon.style.display = "none"; // Oculta los íconos de productos
+		});
+		document.querySelectorAll(".mytracks-icon").forEach(function (icon) {
+			icon.style.display = "block"; // Muestra los íconos de mis pistas
+		});
+	} else {
+		// Muestra los íconos de la sección de productos en caso contrario
+		document.querySelectorAll(".products-icon").forEach(function (icon) {
+			icon.style.display = "block";
+		});
+		document.querySelectorAll(".mytracks-icon").forEach(function (icon) {
+			icon.style.display = "none";
+		});
+	}
+
 	import WaveSurfer from "https://unpkg.com/wavesurfer.js@7/dist/wavesurfer.esm.js";
 
 	const wavesurfer = WaveSurfer.create({
 		id: "<%= product.id %>",
 		container: "#wave-<%= product.id %>",
-		waveColor: "#414141",
+		waveColor: "#36363a",
+		// waveColor: "#414141",
 		progressColor: "#ffffff",
+		barHeight: 0.75,
 		cursorWidth: 0,
 		height: 50,
 		url: "/audio/<%= product.beat %>",

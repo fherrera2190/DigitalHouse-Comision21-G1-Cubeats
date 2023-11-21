@@ -3,7 +3,7 @@
 	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
 	<body
-		class="font-Manrope text-base bg-black text-white font-medium flex flex-col min-h-screen"
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
 	>
 		<%- include("./partials/header") %>
 		<main class="flex-1 grow">
@@ -13,10 +13,13 @@
 			<article
 				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
 			>
-				<p class="text-2xl sm:text-3xl font-semibold w-fit">Cuenta</p>
-				<div class="flex flex-col">
-					<p class="text-base border-b-2 pb-1 border-white w-fit">Perfil</p>
-					<hr class="flex-1 border border-zinc-800 my-6" />
+				<div class="flex flex-col gap-7">
+					<div class="flex flex-col gap-7">
+						<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+							Mis datos
+						</p>
+						<hr class="flex-1 border border-zinc-900 w-full" />
+					</div>
 					<div class="flex flex-col gap-6 pb-16">
 						<p class="text-lg font-semibold">Change password</p>
 						<div class="flex flex-col lg:flex-row justify-between gap-10">

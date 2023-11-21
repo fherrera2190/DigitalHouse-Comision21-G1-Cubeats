@@ -5,3 +5,4 @@
 - ![Sprint 3](https://ferbeoulve.atlassian.net/wiki/spaces/SD/pages/2097366/Retrospectiva+Grupo+1+-+Fundaci+n+Formar+-+Sprint-4)
 - ![Sprint 4](https://ferbeoulve.atlassian.net/wiki/spaces/SD/pages/2883598/Retrospectiva+Grupo+1+-+Fundaci+n+Formar+-+Sprint-5)
 - ![Sprint 5](https://ferbeoulve.atlassian.net/wiki/spaces/SD/pages/6062081/Retrospectiva+Grupo+1+-+Fundaci+n+Formar+-+Sprint-6)
+- ![Sprint 6](https://ferbeoulve.atlassian.net/wiki/spaces/SD/pages/6062081/Retrospectiva+Grupo+1+-+Fundaci+n+Formar+-+Sprint-7)

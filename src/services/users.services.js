@@ -25,8 +25,25 @@ const getUserById = async id => {
     };
   }
 };
+const getUserByEmail = async email => {
+  try {
+    const user = await db.User.findOne({
+      where: {
+        email
+      }
+    });
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw {
+      status: 500,
+      message: error.message
+    };
+  }
+};
 
 module.exports = {
   getAllUsers,
-  getUserById
+  getUserById,
+  getUserByEmail
 };

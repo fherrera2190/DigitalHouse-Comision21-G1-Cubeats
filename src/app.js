@@ -45,6 +45,7 @@ app.use("/cart", cartRouter);
 app.use("/api/users", apiUsersRouter);
 app.use("/api/products", apiProductsRoutes);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -51,4 +51,29 @@ window.onload = function () {
         $('input-error').innerHTML = message; 
         document.querySelector('.orange-error').style.display = "block";
     }
+
+    function validateForm(event) {
+        clearError();
+
+        if (!$('email').value.trim()) {
+            setError("El email es obligatorio");
+            event.preventDefault(); 
+        } else if (!emailValid($('email').value)) {
+            setError("El email es inválido");
+            event.preventDefault(); 
+        }
+
+        if (!$('password').value.trim()) {
+            setError("La contraseña es obligatoria");
+            event.preventDefault(); 
+        }
+        const msgError = document.querySelectorAll('.orange-error');
+        if (msgError.length > 0) {
+            setError("Hubo un error en la carga de datos");
+            event.preventDefault();
+        }
+    }
+
+    const formLogin = document.getElementById('formLogin');
+    formLogin.addEventListener('submit', validateForm);
 };

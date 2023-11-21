@@ -32,7 +32,7 @@ window.onload = function () {
     $('email').addEventListener('change', async function () {
         if (emailValid(this.value)) {
             try {
-                const response = await fetch(`/user.api/check-email?email=${this.value}`);
+                const response = await fetch(`http://localhost:3000/user.api/check-email?email=${this.value}`);
                 const result = await response.json();
 
                 if (result.data) {
@@ -75,5 +75,42 @@ window.onload = function () {
         $('input-error').innerHTML = message;  // Utilizo el setError para mostrar el bloque naranja con el mensaje de error
         document.querySelector('.orange-error').style.display = "block";
     }
+
+    function validateForm(event) { // Con esta funcion quiero evitar que se envíe el formulario
+        clearError();
+
+        if (!$('email').value.trim()) {
+            setError("El email es obligatorio");
+            event.preventDefault(); 
+        } else if (!emailValid($('email').value)) {
+            setError("El email es inválido");
+            event.preventDefault(); 
+        }
+
+        if (!$('password').value.trim()) {
+            setError("La contraseña es obligatoria");
+            event.preventDefault(); 
+        } else if (!passwordValid($('password').value)) {
+            setError("La contraseña debe tener al menos 8 caracteres, un número (0-9), una mayúscula y un carácter especial");
+            event.preventDefault(); 
+        }
+
+        if (!$('password2').value.trim()) {
+            setError("Debes confirmar tu contraseña");
+            event.preventDefault(); 
+        } else if ($('password2').value.trim() !== $('password').value.trim()) {
+            setError("Las contraseñas no coinciden");
+            event.preventDefault(); 
+        }
+
+        const msgError = document.querySelectorAll('.orange-error');
+        if (msgError.length > 0) {
+            setError("Hubo un error en la carga de datos");
+            event.preventDefault();
+        }
+    }
+
+    const form = document.getElementById('formAdd');
+    form.addEventListener('submit', validateForm);
 
 };

@@ -44,7 +44,7 @@ window.onload = function () {
     $('email').addEventListener('change', async function () {
         if (emailValid(this.value)) {
             try {
-                const response = await fetch(`http://localhost:3000/user.api/check-email?email=${this.value}`);
+                const response = await fetch(`http://localhost:3000/api/users/check-email?email=${this.value}`);
                 const result = await response.json();
 
                 if (result.data) {

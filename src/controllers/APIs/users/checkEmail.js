@@ -1,28 +1,19 @@
-const db = require('../../../database/models');
+const { getUserByEmail } = require("../../../services/users.services");
 
-const checkEmail = async (req,res) => {
-    const email = req.query.email;
+module.exports = async (req, res) => {
+  const email = req.query.email;
+  console.log(email);
+  try {
+    const user = await getUserByEmail(email);
 
-    try {
-        const user = await db.User.findOne({
-            where : {
-                email
-            }
-        })
-
-        return res.status(200).json({
-            ok : true,
-            data : user ? true : false
-        })
-
-    } catch (error) {
-        return res.status(error.status || 500).json({
-            ok : false,
-            msg : error.message || "Hay un error"
-        })
-    }
-}
-
-module.exports = {
-    checkEmail
-}
+    return res.status(200).json({
+      ok: true,
+      data: user ? true : false
+    });
+  } catch (error) {
+    return res.status(error.status || 500).json({
+      ok: false,
+      msg: error.message || "Hay un error"
+    });
+  }
+};

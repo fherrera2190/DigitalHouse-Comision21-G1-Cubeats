@@ -28,7 +28,7 @@
           <hr class="flex-1 border border-zinc-800" />
         </div>
         <% if (locals.errors && (errors.email || errors.password)) { %>
-        <div class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal">
+        <div class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error">
           <i class="fa-solid fa-circle-exclamation text-2xl"></i>
           <span id="input-error" class="error" aria-live="polite">
             <% if (errors.email) { %>
@@ -64,6 +64,7 @@
       <img src="/img/Login.jpg" alt="" class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert" />
     </article>
   </main>
+  <script src="/js/login.js"></script>
 </body>
 
 </html>

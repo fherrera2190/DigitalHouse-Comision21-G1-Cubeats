@@ -1,4 +1,4 @@
 module.exports = {
   getUsers: require("./users/getUsers"),
-  getUserById:require('./users/getUserById')
+  getUserById:require('./users/getUserById'),
 };

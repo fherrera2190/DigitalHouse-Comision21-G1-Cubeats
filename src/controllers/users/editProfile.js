@@ -26,15 +26,16 @@ module.exports = async (req, res) => {
 
       return res.redirect("/");
     }
-
+    console.log(description);
     if (req.files.image) {
       existsSync(`./public/img/users/${req.files.image[0].filename}`) &&
         unlinkSync(`./public/img/users/${req.files.image[0].filename}`);
     }
-
+    console.log(errors.mapped());
     return res.render("myData", {
       userDatos: user.dataValues,
-      errors: errors.mapped()
+      errors: errors.mapped(),
+      old: req.body
     });
   } catch (error) {
     console.error("Error al actualizar el usuario:", error);

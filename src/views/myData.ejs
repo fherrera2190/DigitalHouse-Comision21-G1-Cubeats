@@ -45,6 +45,7 @@
 								type="text"
 								name="first_name"
 								id="first_name"
+								value="<%= locals.old && (locals.old.first_name && locals.old.first_name)%>"
 								placeholder="Ingresa tu nombre"
 								value="<%= userDatos.first_name  %>"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
@@ -56,7 +57,7 @@
 								name="last_name"
 								id="last_name"
 								placeholder="Ingresa tu apellido"
-								value="<%= userDatos.last_name %>"
+								value="<%= locals.old && (locals.old.last_name&& locals.old.last_name)%>"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
 
@@ -64,17 +65,20 @@
 							<textarea
 								name="description"
 								id="description"
-								placeholder="<%= userDatos.description ||'Aquí todavía no hay descripción.' %>"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 min-h-[150px] max-h-[150px]"
-							></textarea>
-							<div
-								class="flex items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error hidden"
+							><%=locals.old.desc userDatos.description %></textarea>
+							<div 
+								id="divError"
+								class="<%= locals.errors? "flex" :"hidden"%> items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
 							>
-								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
-								<span id="input-error" class="error" aria-live="polite">
-									Debes agregar una descripción
-								</span>
+							<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+								<small id="input-error" class="error" aria-live="polite">
+									<p class="errorFirstName"><%= locals.errors&&(errors.first_name && errors.first_name.msg) %></p>
+									<p class="errorLastName"><%= locals.errors&&(errors.last_name && errors.last_name.msg) %></p>
+									<p class="errorDescription"><%= locals.errors&&(errors.description && errors.description.msg) %></p>
+								</small>
 							</div>
+			
 							<button
 								type="submit"
 								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"

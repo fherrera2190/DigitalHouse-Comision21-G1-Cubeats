@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
 			username: req.params.username,
 		},
 	});
-	console.log(userFind);
+	
 	if (userFind) {
 		return res.render("myData", {
 			userDatos: userFind.dataValues,

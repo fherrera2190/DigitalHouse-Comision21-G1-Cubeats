@@ -38,26 +38,6 @@
 								type="file"
 								class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
 							/>
-							<script>
-								document
-									.getElementById("image")
-									.addEventListener("input", previewImage);
-
-								function previewImage() {
-									var input = document.getElementById("image");
-									var preview = document.getElementById("previewImage");
-
-									if (input.files && input.files[0]) {
-										var reader = new FileReader();
-
-										reader.onload = function (e) {
-											preview.src = e.target.result;
-										};
-
-										reader.readAsDataURL(input.files[0]);
-									}
-								}
-							</script>
 						</div>
 						<div class="flex flex-col items-stretch w-72 md:w-96 gap-4">
 							<label for="first_name">Nombre</label>
@@ -87,14 +67,14 @@
 								placeholder="<%= userDatos.description ||'Aquí todavía no hay descripción.' %>"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 min-h-[150px] max-h-[150px]"
 							></textarea>
-							<!-- <div
-								class="flex items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
+							<div
+								class="flex items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error hidden"
 							>
 								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
 								<span id="input-error" class="error" aria-live="polite">
-									Poner un nombre
+									Debes agregar una descripción
 								</span>
-							</div> -->
+							</div>
 							<button
 								type="submit"
 								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
@@ -108,5 +88,6 @@
 		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script src="/js/myData.js"></script>
 	</body>
 </html>

@@ -10,7 +10,6 @@ module.exports = {
         limit: 4
       });
       const categories = await db.Category.findAll();
-      console.log(products);
       return res.render("index", { products, categories });
     } catch (error) {
       console.log(error);

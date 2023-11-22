@@ -22,14 +22,14 @@ router.get("/profile/:username", usersController.profile);
 router.get("/profile/myData/:username", userCheck, usersController.myData);
 
 router.put(
-	"/profile/update/:username",
-	userCheck,
-	uploadUserImages.fields([
-		{ name: "image", maxCount: 1 },
-		{ name: "cover", maxCount: 1 },
-	]),
-	// editprofileValidator,
-	usersController.editProfile
+  "/profile/update/:username",
+  userCheck,
+  uploadUserImages.fields([
+    { name: "image", maxCount: 1 },
+    { name: "cover", maxCount: 1 }
+  ]),
+  editprofileValidator,
+  usersController.editProfile
 );
 
 router.get("/profile/myTracks/:username", userCheck, usersController.myTracks);

@@ -1,10 +1,10 @@
 const { check, body } = require("express-validator");
 
 module.exports = [
-    check("name")
+    check("first_name")
         .notEmpty().withMessage("Debe ingresar un Nombre")
         .isAlpha("es-ES").withMessage("Solo letras"),
-    check("lastname")
+    check("last_name")
         .notEmpty().withMessage("Debe ingresar un apellido")
         .isAlpha("es-ES").withMessage("Solo letras"),
     check("description")

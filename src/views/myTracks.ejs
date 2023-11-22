@@ -12,9 +12,18 @@
 			>
 				<% if (locals.userLogged && locals.userLogged.role === 3) { %>
 				<div class="flex flex-col gap-7">
-					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
-						Todos mis track's
-					</p>
+					<div class="flex items-center gap-7">
+						<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+							Todos mis track's
+						</p>
+
+						<a
+							href="/products/add"
+							class="font-medium pb-1 w-fit text-zinc-400 hover:text-zinc-200 text-lg"
+						>
+							Añade un nuevo track
+						</a>
+					</div>
 					<hr class="flex-1 border border-zinc-900 w-full" />
 					<% if (products && products.length > 0) { %>
 					<div class="items-center hidden sm:flex gap-8 text-zinc-300">
@@ -64,6 +73,5 @@
 		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
-		<script type="module" src="/js/wave.js"></script>
 	</body>
 </html>

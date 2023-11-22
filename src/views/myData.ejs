@@ -7,9 +7,6 @@
 	>
 		<%- include("./partials/header") %>
 		<main class="flex-1 grow">
-			<!-- <% if (locals.userLogged && locals.userLogged.role === "user") { %>
-			<p>Sos admin</p>
-			<% } %> -->
 			<article
 				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
 			>
@@ -20,49 +17,96 @@
 						</p>
 						<hr class="flex-1 border border-zinc-900 w-full" />
 					</div>
-					<div class="flex flex-col gap-6 pb-16">
-						<p class="text-lg font-semibold">Change password</p>
-						<div class="flex flex-col lg:flex-row justify-between gap-10">
+					<form
+						action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT"
+						method="POST"
+						enctype="multipart/form-data"
+						class="flex flex-col lg:flex-row justify-around px-7 py-20 items-center gap-12 bg-zinc-900 rounded-md font-normal"
+					>
+						<!-- invert -->
+						<div class="flex flex-col items-center gap-8">
+							<img
+								id="previewImage"
+								src="/img/users/<%= userDatos.image||'default1.webp' %>"
+								alt=""
+								class="rounded-full w-60 h-60 object-cover"
+							/>
+							<!-- invert en light -->
+							<input
+								name="image"
+								id="image"
+								type="file"
+								class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
+							/>
+							<script>
+								document
+									.getElementById("image")
+									.addEventListener("input", previewImage);
+
+								function previewImage() {
+									var input = document.getElementById("image");
+									var preview = document.getElementById("previewImage");
+
+									if (input.files && input.files[0]) {
+										var reader = new FileReader();
+
+										reader.onload = function (e) {
+											preview.src = e.target.result;
+										};
+
+										reader.readAsDataURL(input.files[0]);
+									}
+								}
+							</script>
+						</div>
+						<div class="flex flex-col items-stretch w-72 md:w-96 gap-4">
+							<label for="first_name">Nombre</label>
 							<input
 								type="text"
-								class="pl-4 py-4 bg-zinc-900 flex justify-center items-center gap-4 w-full z-0 truncate grow"
-								placeholder="Contraseña actual"
-							/><input
-								type="text"
-								class="pl-4 py-4 bg-zinc-900 flex justify-center items-center gap-4 w-full z-0 truncate grow"
-								placeholder="Nueva contraseña"
+								name="first_name"
+								id="first_name"
+								placeholder="Ingresa tu nombre"
+								value="<%= userDatos.first_name  %>"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
-						</div>
-						<button
-							class="py-4 px-5 bg-zinc-900 rounded-sm self-start lg:self-end text-zinc-500 w-full sm:w-fit"
-						>
-							Change password
-						</button>
-					</div>
-					<div class="flex flex-col gap-6 py-7">
-						<p class="text-lg font-semibold">Change email address</p>
-						<div class="flex flex-col lg:flex-row justify-between gap-10">
+
+							<label for="first_name">Apellido</label>
 							<input
 								type="text"
-								class="pl-4 py-4 bg-zinc-900 flex justify-center items-center gap-4 w-full z-0 truncate grow"
-								placeholder="<%= userDatos.email %>"
-							/><input
-								type="text"
-								class="pl-4 py-4 bg-zinc-900 flex justify-center items-center gap-4 w-full z-0 truncate grow"
-								placeholder="Confirma tu contraseña"
+								name="last_name"
+								id="last_name"
+								placeholder="Ingresa tu apellido"
+								value="<%= userDatos.last_name %>"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
+
+							<label for="first_name">Descripción</label>
+							<textarea
+								name="description"
+								id="description"
+								placeholder="<%= userDatos.description ||'Aquí todavía no hay descripción.' %>"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 min-h-[150px] max-h-[150px]"
+							></textarea>
+							<!-- <div
+								class="flex items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
+							>
+								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+								<span id="input-error" class="error" aria-live="polite">
+									Poner un nombre
+								</span>
+							</div> -->
+							<button
+								type="submit"
+								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
+							>
+								Guardar
+							</button>
 						</div>
-						<button
-							class="py-4 px-5 bg-zinc-900 rounded-sm text-zinc-500 self-start lg:self-end w-full sm:w-fit"
-						>
-							Change email
-						</button>
-					</div>
+					</form>
 				</div>
 			</article>
 		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
-		<script type="module" src="/js/wave.js"></script>
 	</body>
 </html>

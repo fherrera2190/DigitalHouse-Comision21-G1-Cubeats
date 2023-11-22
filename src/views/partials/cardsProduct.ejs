@@ -1,6 +1,6 @@
 <% products.forEach(({dataValues:product}) => { %>
 <div
-	class="grid grid-cols-[2fr,0.2fr,0.2fr,0.2fr] md:grid-cols-[auto,0.15fr,0.2fr,0.5fr,0.25fr,auto] lg:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] w-full justify-between items-center gap-6 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out"
+	class="grid grid-cols-[2fr,0.2fr,0.2fr,0.2fr,auto] md:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] lg:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] w-full justify-between items-center gap-6 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out"
 	id="grid-<%= product.id %>"
 >
 	<img
@@ -128,7 +128,7 @@
 		</svg>
 	</div>
 	<div id="mytracks" class="flex justify-end items-center">
-		<a href="/products/detail/<%- product.id %>">
+		<a href="/products/edit/<%- product.id %>">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				x="0px"

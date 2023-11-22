@@ -4,8 +4,10 @@ const { existsSync, unlinkSync } = require("fs");
 
 module.exports = async (req, res) => {
   try {
+
     const errors = validationResult(req);
     let { first_name, last_name, image, description } = req.body;
+    console.log(req.body)
     const user = await db.User.findByPk(req.session.userLogged.userId);
     if (errors.isEmpty()) {
       first_name = req.body.first_name && req.body.first_name.trim();

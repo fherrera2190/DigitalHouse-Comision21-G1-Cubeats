@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 module.exports = async (req, res) => {
 	const errors = validationResult(req);
 	try {
+		req.body.remember="on"
 		if (errors.isEmpty()) {
 			const user = await db.User.findOne({
 				where: {
@@ -25,7 +26,7 @@ module.exports = async (req, res) => {
 
 			req.body.remember !== undefined &&
 				res.cookie("CuBeatsX100pre", req.session.userLogged, {
-					maxAge: 1000 * 60 * 5,
+					maxAge: 1000 * 60 * 15,
 				});
 
 			return res.redirect("/");

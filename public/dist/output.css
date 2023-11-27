@@ -881,12 +881,24 @@ video {
   height: 100%;
 }
 
+.h-2{
+  height: 0.5rem;
+}
+
+.h-28{
+  height: 7rem;
+}
+
 .max-h-\[150px\]{
   max-height: 150px;
 }
 
 .max-h-\[45px\]{
   max-height: 45px;
+}
+
+.max-h-9{
+  max-height: 2.25rem;
 }
 
 .min-h-\[150px\]{
@@ -1202,6 +1214,10 @@ video {
 
 .self-center{
   align-self: center;
+}
+
+.overflow-auto{
+  overflow: auto;
 }
 
 .overflow-hidden{

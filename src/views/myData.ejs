@@ -18,7 +18,7 @@
 						<hr class="flex-1 border border-zinc-900 w-full" />
 					</div>
 					<form
-					id="formUpdateProfile"
+						id="formUpdateProfile"
 						action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT"
 						method="POST"
 						enctype="multipart/form-data"
@@ -47,7 +47,7 @@
 								name="first_name"
 								id="first_name"
 								value="<%= locals.old ?(locals.old.first_name && locals.old.first_name) : userDatos.first_name%>"
-								placeholder="<%=userDatos.first_name%>"
+								placeholder="Ingrese aquí su nombre"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
 
@@ -56,7 +56,7 @@
 								type="text"
 								name="last_name"
 								id="last_name"
-								placeholder="<%=userDatos.last_name%>"
+								placeholder="Ingrese aquí su apellido"
 								value="<%= locals.old ? (locals.old.last_name&& locals.old.last_name) :userDatos.last_name%>"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
@@ -66,28 +66,39 @@
 								name="description"
 								id="description"
 								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 min-h-[150px] max-h-[150px]"
-							><%=locals.old ? (locals.old.description&& locals.old.description) : userDatos.description %></textarea>
-							<div 
-								id="divError"
-								class="<%= locals.errors? "flex" :"hidden"%> items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
 							>
+<%=locals.old ? (locals.old.description&& locals.old.description) : userDatos.description %></textarea
+							>
+							<div id="divError" class="<%= locals.errors? "flex" :"hidden"%>
+							items-center gap-4 py-4 bg-orange-600 rounded-sm pl-5 text-black
+							font-normal orange-error" >
 							<i class="fa-solid fa-circle-exclamation text-2xl"></i>
-								<small id="input-error" class="error" aria-live="polite">
-									<p class="errorFirstName"><%= locals.errors&&(errors.first_name && errors.first_name.msg) %></p>
-									<p class="errorLastName"><%= locals.errors&&(errors.last_name && errors.last_name.msg) %></p>
-									<p class="errorDescription"><%= locals.errors&&(errors.description && errors.description.msg) %></p>
-									<p class="errorDescription"><%= locals.errors&&(errors.image && errors.image.msg) %></p>
-								</small>
-							</div>
-			
-							<button
-								type="submit"
-								id="btnSubmit"
-								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
-							>
-								Guardar
-							</button>
+							<small id="input-error" class="error" aria-live="polite">
+								<p class="errorFirstName">
+									<%= locals.errors&&(errors.first_name &&
+									errors.first_name.msg) %>
+								</p>
+								<p class="errorLastName">
+									<%= locals.errors&&(errors.last_name && errors.last_name.msg)
+									%>
+								</p>
+								<p class="errorDescription">
+									<%= locals.errors&&(errors.description &&
+									errors.description.msg) %>
+								</p>
+								<p class="errorDescription">
+									<%= locals.errors&&(errors.image && errors.image.msg) %>
+								</p>
+							</small>
 						</div>
+
+						<button
+							type="submit"
+							id="btnSubmit"
+							class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
+						>
+							Guardar
+						</button>
 					</form>
 				</div>
 			</article>

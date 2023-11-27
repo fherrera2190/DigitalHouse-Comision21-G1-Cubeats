@@ -36,6 +36,7 @@ router.put(
 		{ name: "image", maxCount: 1 },
 		{ name: "beat", maxCount: 1 },
 	]),
+	productEditValidator,
 	productsController.update
 );
 

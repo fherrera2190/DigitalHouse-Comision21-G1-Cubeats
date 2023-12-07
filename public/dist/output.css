@@ -1050,6 +1050,11 @@ video {
   border-collapse: collapse;
 }
 
+.translate-y-3{
+  --tw-translate-y: 0.75rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .scale-90{
   --tw-scale-x: .9;
   --tw-scale-y: .9;
@@ -1104,6 +1109,10 @@ video {
   flex-wrap: wrap;
 }
 
+.place-items-center{
+  place-items: center;
+}
+
 .items-start{
   align-items: flex-start;
 }
@@ -1138,6 +1147,10 @@ video {
 
 .justify-around{
   justify-content: space-around;
+}
+
+.justify-evenly{
+  justify-content: space-evenly;
 }
 
 .gap-1{
@@ -1398,6 +1411,11 @@ video {
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
+.bg-gray-900{
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+
 .bg-orange-600{
   --tw-bg-opacity: 1;
   background-color: rgb(234 88 12 / var(--tw-bg-opacity));
@@ -1443,6 +1461,10 @@ video {
   background-color: rgb(9 9 11 / var(--tw-bg-opacity));
 }
 
+.bg-opacity-0{
+  --tw-bg-opacity: 0;
+}
+
 .bg-gradient-to-t{
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -1450,6 +1472,12 @@ video {
 .from-black{
   --tw-gradient-from: #000 var(--tw-gradient-from-position);
   --tw-gradient-to: rgb(0 0 0 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-blue-200{
+  --tw-gradient-from: #bfdbfe var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(191 219 254 / 0) var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -1476,6 +1504,10 @@ video {
 
 .to-black{
   --tw-gradient-to: #000 var(--tw-gradient-to-position);
+}
+
+.to-indigo-900{
+  --tw-gradient-to: #312e81 var(--tw-gradient-to-position);
 }
 
 .to-transparent{
@@ -1541,6 +1573,10 @@ video {
 
 .p-4{
   padding: 1rem;
+}
+
+.p-5{
+  padding: 1.25rem;
 }
 
 .p-7{
@@ -1833,9 +1869,19 @@ video {
   color: rgb(37 99 235 / var(--tw-text-opacity));
 }
 
+.text-gray-200{
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
 .text-gray-300{
   --tw-text-opacity: 1;
   color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.text-gray-400{
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .text-gray-500{
@@ -1905,6 +1951,10 @@ video {
 
 .underline{
   text-decoration-line: underline;
+}
+
+.opacity-0{
+  opacity: 0;
 }
 
 .opacity-10{
@@ -2051,6 +2101,12 @@ video {
   color: rgb(113 113 122 / var(--tw-text-opacity));
 }
 
+.hover\:scale-110:hover{
+  --tw-scale-x: 1.1;
+  --tw-scale-y: 1.1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .hover\:bg-slate-700:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(51 65 85 / var(--tw-bg-opacity));
@@ -2108,6 +2164,19 @@ video {
   display: none;
 }
 
+.group:hover .group-hover\:translate-y-0{
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group:hover .group-hover\:bg-opacity-60{
+  --tw-bg-opacity: 0.6;
+}
+
+.group:hover .group-hover\:opacity-100{
+  opacity: 1;
+}
+
 @media (prefers-color-scheme: dark){
   .dark\:bg-zinc-900{
     --tw-bg-opacity: 1;
@@ -2129,6 +2198,10 @@ video {
     display: flex;
   }
 
+  .sm\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .sm\:flex-row{
     flex-direction: row;
   }
@@ -2145,6 +2218,11 @@ video {
   .sm\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .sm\:text-5xl{
+    font-size: 3rem;
+    line-height: 1;
   }
 }
 
@@ -2191,6 +2269,10 @@ video {
 
   .md\:w-64{
     width: 16rem;
+  }
+
+  .md\:w-72{
+    width: 18rem;
   }
 
   .md\:w-96{
@@ -2292,6 +2374,11 @@ video {
   .md\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .md\:text-7xl{
+    font-size: 4.5rem;
+    line-height: 1;
   }
 
   .md\:text-base{

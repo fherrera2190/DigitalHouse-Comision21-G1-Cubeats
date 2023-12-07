@@ -80,7 +80,7 @@
 		>
 	</div>
 	<div id="products" class="flex justify-end items-center">
-		<svg
+		<button><svg
 			width="24"
 			id="svg"
 			height="24"
@@ -95,7 +95,7 @@
 				d="M12 4.68905C9.71236 2.43698 6.00337 2.43698 3.71573 4.68905C1.42809 6.94113 1.42809 10.5925 3.71573 12.8445L12 21L20.2843 12.8445C22.5719 10.5925 22.5719 6.94113 20.2843 4.68905C17.9966 2.43698 14.2876 2.43698 12 4.68905ZM12 18.1935L18.8812 11.4193C20.3729 9.95071 20.3729 7.58287 18.8812 6.1143C17.372 4.62857 14.9123 4.62857 13.4031 6.1143L12 7.49558L10.5969 6.1143C9.08771 4.62857 6.62802 4.62857 5.11882 6.1143C3.62706 7.58287 3.62706 9.95071 5.11882 11.4193L12 18.1935Z"
 				stroke-width="2"
 			></path>
-		</svg>
+		</svg></button>
 		<a href="/products/detail/<%- product.id %>">
 			<svg
 				width="24"
@@ -112,20 +112,24 @@
 				></path>
 			</svg>
 		</a>
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="currentColor"
-			class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
-		>
-			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
-				d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
-			></path>
-		</svg>
+		<% if (locals.userLogged && locals.userLogged.role === 2) { %>
+			<button onclick=<%="addItemToCart("+product.id+")"%>>
+				<svg
+				width="24"
+				height="24"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
+				fill="currentColor"
+				class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+			>
+				<path
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
+				></path>
+			</svg>
+			</button>
+		<% } %>
 	</div>
 	<div id="mytracks" class="flex justify-end items-center">
 		<a href="/products/edit/<%- product.id %>">

@@ -18,6 +18,14 @@ module.exports = {
         },
         allowNull: false
       },
+      statusId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: {
+            tableName: "Statuses"
+          }
+        }
+      },
       total: {
         type: Sequelize.INTEGER,
         defaultValue: 0

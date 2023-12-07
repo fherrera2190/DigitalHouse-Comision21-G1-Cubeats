@@ -7,6 +7,13 @@ module.exports = {
       "Licences",
       [
         {
+          name: "Exclusive License",
+          description:
+            "El licenciatario (persona que adquiere la licencia) tiene derechos exclusivos para utilizar la obra musical. Esto significa que el licenciante (persona que otorga la licencia) no puede conceder la misma licencia a otras personas durante el período de exclusividad.",
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
           name: "Non-Exclusive License",
           description:
             "Esta licencia te permite utilizar la música, pero el productor o creador de beats puede seguir vendiendo la misma pista a otros clientes. No tienes exclusividad sobre la pista. Uso: Puedes usar la música en tu proyecto, como canciones, videos, podcasts, etc., según los términos de la licencia, pero debes respetar las limitaciones especificadas.",

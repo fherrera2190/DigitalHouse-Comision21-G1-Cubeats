@@ -14,6 +14,7 @@ const cookieCheck = require("./middlewares/cookieCheck");
 const app = express();
 const apiUsersRouter = require("./routes/user.api.routes");
 const apiProductsRoutes = require("./routes/products.api.routes");
+const apiCartsRoutes= require('./routes/cart.api.routes')
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -44,6 +45,7 @@ app.use("/cart", cartRouter);
 //Apis
 app.use("/api/users", apiUsersRouter);
 app.use("/api/products", apiProductsRoutes);
+app.use("/api/carts", apiCartsRoutes);
 
 
 // catch 404 and forward to error handler

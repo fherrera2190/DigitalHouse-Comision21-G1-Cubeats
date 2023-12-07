@@ -94,7 +94,7 @@ window.onload = function () {
 
 	function setError(message) {
 		$("input-error").innerHTML = message; // Utilizo el setError para mostrar el bloque naranja con el mensaje de error
-		document.querySelector(".orange-error").style.display = "block";
+		document.querySelector(".orange-error").style.display = "flex";
 	}
 
 	function validateForm(event) {

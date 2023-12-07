@@ -28,6 +28,7 @@
 					<form
 						action="/products/edit/<%= id %>?_method=PUT"
 						method="POST"
+						id="formEditProduct"
 						enctype="multipart/form-data"
 						class="flex flex-col lg:flex-row justify-around px-7 py-12 items-center gap-12 bg-zinc-900 rounded-md font-normal"
 					>
@@ -142,7 +143,20 @@
 								<%=category.name %> <% }) %>
 							</select> -->
 							<!-- invert en light -->
-
+							<% if (locals.errors && (errors.title || errors.price ||
+							errors.description)) { %>
+							<div
+								class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
+							>
+								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+								<span id="input-error" class="error" aria-live="polite">
+									<% if (errors.title) { %> <%= errors.title.msg %> <% } else if
+									(errors.price) { %> <%= errors.price.msg %> <% } else if
+									(errors.description) { %> <%= errors.description.msg %> <% }
+									%>
+								</span>
+							</div>
+							<% } %>
 							<button
 								type="submit"
 								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
@@ -156,5 +170,6 @@
 		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script src="/js/editBeat.js"></script>
 	</body>
 </html>

@@ -29,6 +29,7 @@
 						action="/products/add"
 						method="post"
 						enctype="multipart/form-data"
+						id="formAddProduct"
 						class="flex flex-col lg:flex-row justify-around px-7 py-12 items-center gap-12 bg-zinc-900 rounded-md font-normal"
 					>
 						<!-- invert -->
@@ -85,7 +86,7 @@
 								id="title"
 								placeholder="Ingresa el titulo aquí"
 								value="<%= locals.old && (old.title && old.title ) %>"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 validate-on-blur"
 							/>
 
 							<label for="category">Categoria</label>
@@ -146,7 +147,23 @@
 								<%=category.name %> <% }) %>
 							</select> -->
 							<!-- invert en light -->
-
+							<% if (locals.errors && (errors.title || errors.category ||
+							errors.price || errors.description || errors.beat ||
+							errors.image)) { %>
+							<div
+								class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
+							>
+								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+								<span id="input-error" class="error" aria-live="polite">
+									<% if (errors.title) { %> <%= errors.title.msg %> <% } else if
+									(errors.category) { %> <%= errors.category.msg %> <% } else if
+									(errors.price) { %> <%= errors.price.msg %> <% } else if
+									(errors.description) { %> <%= errors.description.msg %> <% }
+									else if (errors.beat) { %> <%= errors.beat.msg %> <% } else if
+									(errors.image) { %> <%= errors.image.msg %> <% } %>
+								</span>
+							</div>
+							<% } %>
 							<button
 								type="submit"
 								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
@@ -158,7 +175,10 @@
 				</div>
 			</article>
 		</main>
+
 		<%- include('./partials/footer.ejs')%>
+
 		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script src="/js/addBeat.js"></script>
 	</body>
 </html>

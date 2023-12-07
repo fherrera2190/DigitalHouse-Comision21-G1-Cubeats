@@ -30,7 +30,6 @@ module.exports = async (req, res) => {
           maxAge: 1000 * 60 * 15
         });
       if (user.roleId === 2) {
-        console.log("Soy artista<<<<<<<<<<<<<<<<<<<<<<");
         const order = await db.Order.findOne({
           where: {
             userId: user.id,
@@ -47,28 +46,24 @@ module.exports = async (req, res) => {
             }
           ]
         });
-        
+
         if (order) {
-          console.log(
-            "Lei una orden existente <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-          );
           req.session.cart = {
             orderId: order.id,
             total: order.total,
-            products: order.items.map(({ quantity, beat: { id,name, price } }) => {
-              return {
-                id,
-                name,
-                price,
-                quantity
-              };
-            })
+            products: order.items.map(
+              ({ quantity, beat: { id, name, price } }) => {
+                return {
+                  id,
+                  name,
+                  price,
+                  quantity
+                };
+              }
+            )
           };
           return res.redirect("/");
         } else {
-          console.log(
-            "Cree una nueva orden <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"
-          );
           const order = await db.Order.create({
             total: 0,
             userId: user.id,
@@ -81,7 +76,6 @@ module.exports = async (req, res) => {
               products: []
             };
           }
-          console.log(req.session.cart, "<<<<<<<<<<<<<<<<<");
           return res.redirect("/");
         }
       }

@@ -30,7 +30,34 @@ const getBeatById = async id => {
   }
 };
 
+const addLikeBeat = async (beatId, userId) => {
+  try {
+    const like = await db.Like.findOrCreate({ where: { beatId, userId } });
+    return like;
+  } catch (error) {
+    console.log(error);
+    throw {
+      status: 500,
+      message: error.message
+    };
+  }
+};
+const deleteLike = async (beatId, userId) => {
+  try {
+    const like = await db.Like.destroy({ where: { beatId, userId } });
+    return like;
+  } catch (error) {
+    console.log(error);
+    throw {
+      status: 500,
+      message: error.message
+    };
+  }
+};
+
 module.exports = {
   getAllBeats,
-  getBeatById
+  getBeatById,
+  addLikeBeat,
+  deleteLike
 };

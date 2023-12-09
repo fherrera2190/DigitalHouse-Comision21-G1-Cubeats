@@ -2,13 +2,13 @@ const db = require("../../../database/models");
 
 module.exports = async (req, res) => {
   try {
-    console.log(req.session);
+    
     if (!req.session.cart) {
       let error = new Error("Debe loguearte para comprar");
       error.status = 404;
       throw error;
     }
-    console.log(req.body);
+    
     const { product: id } = req.body;
 
     const { name, price, discount, images } = await db.Beat.findByPk(id);
@@ -19,9 +19,8 @@ module.exports = async (req, res) => {
       price,
       quantity: 1
     };
-    console.log(req.session.cart.products);
     const array = req.session.cart.products.map(product => product.id);
-    console.log(array);
+
     if (array.includes(id)) {
       
       return res

@@ -4,89 +4,88 @@ const { existsSync, unlinkSync } = require("fs");
 const path = require("path");
 
 module.exports = async (req, res) => {
-	const errors = validationResult(req);
+  const errors = validationResult(req);
+  try {
+    const productModify = await db.Beat.findOne({
+      where: { id: +req.params.id },
+    });
 
-	try {
-		const productModify = await db.Beat.findOne({
-			where: { id: +req.params.id },
-		});
+    if (errors.isEmpty() && productModify) {
+      const { title, price, category, description } = req.body;
+      productModify.name = title.trim();
+      productModify.description = description;
+      productModify.price = +price;
+      productModify.categoryId = +category;
+      const imageFilename = req.files.image && req.files.image[0].filename;
+      const beatFilename = req.files.beat && req.files.beat[0].filename;
 
-		if (errors.isEmpty() && productModify) {
-			const { title, price, category, description } = req.body;
+      if (imageFilename) {
+        existsSync(
+          path.join(__dirname, `./public/img/products/${productModify.image}`)
+        ) &&
+          unlinkSync(
+            path.join(__dirname, `./public/img/products/${productModify.image}`)
+          );
+        productModify.image = imageFilename;
+      }
 
-			productModify.name = title.trim();
-			productModify.description = description;
-			productModify.price = +price;
-			productModify.category = +category;
+      if (beatFilename) {
+        existsSync(
+          path.join(__dirname, `./public/audio/${productModify.beat}`)
+        ) &&
+          unlinkSync(
+            path.join(__dirname, `./public/audio/${productModify.beat}`)
+          );
+        productModify.beat = beatFilename;
+      }
 
-			const imageFilename = req.files.image && req.files.image[0].filename;
-			const beatFilename = req.files.beat && req.files.beat[0].filename;
+      await productModify.save();
+      // console.log(productModify);
 
-			if (imageFilename) {
-				existsSync(
-					path.join(__dirname, `./public/img/products/${productModify.image}`)
-				) &&
-					unlinkSync(
-						path.join(__dirname, `./public/img/products/${productModify.image}`)
-					);
-				productModify.image = imageFilename;
-			}
+      return res.redirect(
+        `/users/profile/myTracks/${req.session.userLogged.username}`
+      );
+    } else {
+      // Manejo de errores
+      const categories = await db.Category.findAll({ order: ["name"] });
 
-			if (beatFilename) {
-				existsSync(
-					path.join(__dirname, `./public/audio/${productModify.beat}`)
-				) &&
-					unlinkSync(
-						path.join(__dirname, `./public/audio/${productModify.beat}`)
-					);
-				productModify.beat = beatFilename;
-			}
+      req.files.image &&
+        existsSync(
+          path.join(
+            __dirname,
+            `./public/img/products/${req.files.image[0].filename}`
+          )
+        ) &&
+        unlinkSync(
+          path.join(
+            __dirname,
+            `./public/img/products/${req.files.image[0].filename}`
+          )
+        );
 
-			await productModify.save();
-			console.log(productModify);
+      req.files.beat &&
+        existsSync(
+          path.join(__dirname, `./public/audio/${req.files.beat[0].filename}`)
+        ) &&
+        unlinkSync(
+          path.join(__dirname, `./public/audio/${req.files.beat[0].filename}`)
+        );
 
-			return res.redirect("/");
-		} else {
-			// Manejo de errores
-			const categories = await db.Category.findAll({ order: ["name"] });
+      const products = await db.Beat.findByPk(req.params.id, {
+        include: {
+          all: true,
+        },
+      });
 
-			req.files.image &&
-				existsSync(
-					path.join(
-						__dirname,
-						`./public/img/products/${req.files.image[0].filename}`
-					)
-				) &&
-				unlinkSync(
-					path.join(
-						__dirname,
-						`./public/img/products/${req.files.image[0].filename}`
-					)
-				);
-
-			req.files.beat &&
-				existsSync(
-					path.join(__dirname, `./public/audio/${req.files.beat[0].filename}`)
-				) &&
-				unlinkSync(
-					path.join(__dirname, `./public/audio/${req.files.beat[0].filename}`)
-				);
-
-			const products = await db.Beat.findByPk(req.params.id, {
-				include: {
-					all: true,
-				},
-			});
-
-			return res.render("editbeat", {
-				categories,
-				...products?.dataValues,
-				errors: errors.mapped(),
-				old: req.body,
-			});
-		}
-	} catch (error) {
-		console.error(error);
-		res.status(500).send("Error interno del servidor");
-	}
+      return res.render("editbeat", {
+        categories,
+        ...products?.dataValues,
+        errors: errors.mapped(),
+        old: req.body,
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error interno del servidor");
+  }
 };

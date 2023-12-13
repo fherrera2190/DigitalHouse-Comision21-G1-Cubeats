@@ -16,28 +16,28 @@ router.get("/detail/:id", productsController.detail);
 //Crear Productos
 router.get("/add", userCheck, productsController.addProduct);
 router.post(
-	"/add",
-	userCheck,
-	upload.fields([
-		{ name: "image", maxCount: 1 },
-		{ name: "beat", maxCount: 1 },
-	]),
-	productAddValidator,
-	productsController.storeProduct
+  "/add",
+  userCheck,
+  upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "beat", maxCount: 1 },
+  ]),
+  productAddValidator,
+  productsController.storeProduct
 );
 
 //Modificar Productos
 router.get("/edit/:id", userCheck, productsController.editProduct);
 router.put(
-	"/edit/:id",
-	userCheck,
-	// productEditValidator,
-	upload.fields([
-		{ name: "image", maxCount: 1 },
-		{ name: "beat", maxCount: 1 },
-	]),
-	productEditValidator,
-	productsController.update
+  "/edit/:id",
+  userCheck,
+  // productEditValidator,
+  upload.fields([
+    { name: "image", maxCount: 1 },
+    { name: "beat", maxCount: 1 },
+  ]),
+  productEditValidator,
+  productsController.update
 );
 
 router.delete("/delete/:id", userCheck, productsController.deleteProduct);

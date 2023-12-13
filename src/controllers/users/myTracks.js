@@ -3,8 +3,8 @@ const db = require("../../database/models");
 module.exports = async (req, res) => {
   let userFind = await db.User.findOne({
     where: {
-      username: req.params.username
-    }
+      username: req.params.username,
+    },
   });
 
   if (!userFind) {
@@ -17,8 +17,8 @@ module.exports = async (req, res) => {
   const products = await db.Beat.findAll({
     include: ["category", "producer"],
     where: {
-      producerId: userFind.id
-    }
+      producerId: userFind.id,
+    },
   });
   const userDatos = {
     username: userFind.username,
@@ -27,12 +27,21 @@ module.exports = async (req, res) => {
     description: userFind.description,
     image: userFind.image,
     cover: userFind.cover,
-    date: userFind.date
+    date: userFind.date,
   };
+
+  let userAllLikes = await db.Like.findAll({
+    where: {
+      userId: userFind.id,
+    },
+  });
+  userAllLikes = userAllLikes.map((elemnt) => elemnt.dataValues.beatId);
+  
   if (userFind) {
     return res.render("myTracks", {
       products,
-      userDatos
+      userDatos,
+      userAllLikes,
     });
   }
   return res.redirect("/");

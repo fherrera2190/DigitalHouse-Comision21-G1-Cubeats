@@ -8,12 +8,12 @@ const getAllUsers = async () => {
     console.log(error);
     throw {
       status: 500,
-      message: error.message
+      message: error.message,
     };
   }
 };
 
-const getUserById = async id => {
+const getUserById = async (id) => {
   try {
     const user = await db.User.findByPk(id);
     return user;
@@ -21,23 +21,40 @@ const getUserById = async id => {
     console.log(error);
     throw {
       status: 500,
-      message: error.message
+      message: error.message,
     };
   }
 };
-const getUserByEmail = async email => {
+const getUserByEmail = async (email) => {
   try {
     const user = await db.User.findOne({
       where: {
-        email
-      }
+        email,
+      },
     });
     return user;
   } catch (error) {
     console.log(error);
     throw {
       status: 500,
-      message: error.message
+      message: error.message,
+    };
+  }
+};
+
+const getUserByUsername = async (username) => {
+  try {
+    const user = await db.User.findOne({
+      where: {
+        username,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw {
+      status: 500,
+      message: error.message,
     };
   }
 };
@@ -45,5 +62,6 @@ const getUserByEmail = async email => {
 module.exports = {
   getAllUsers,
   getUserById,
-  getUserByEmail
+  getUserByEmail,
+  getUserByUsername,
 };

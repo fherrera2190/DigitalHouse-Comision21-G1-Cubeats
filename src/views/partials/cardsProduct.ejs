@@ -189,20 +189,21 @@
 		<div id="background-<%= product.id %>" class="hidden top-0 left-0 w-screen h-screen bg-black opacity-70 z-50"></div>
 		<div
 				id="youSecure-<%= product.id %>"
-					class="hidden items-center justify-center z-[100] rounded-lg bg-zinc-900 shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-44 w-72 flex-col px-7 gap-7 py-4 invert"
+					class="hidden items-center justify-center z-[100] rounded-lg bg-zinc-900 shadow-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-48 w-80 flex-col px-8 gap-7 py-4 text-white font-medium text-base "
 				>
 				<div class="flex flex-col gap-2">
-					<p>¿Estás seguro de que <span class="text-red-300">deseas eliminar este track? </span></p>
-					<p class="italic ">"<%= product.name %>"</p>
+					<p >¿Estás seguro de que deseas eliminar este track? </p>
+					<!-- <p >¿Estás seguro de que deseas eliminar el track <span class="text-zinc-400">"<%= product.name %>"</span>? </p> -->
+			
 				</div>
-				<div class="flex gap-4">
+				<div class="flex justify-between w-full items-center  ">
 					<form
 			action="/products/delete/<%- product.id %>?_method=DELETE"
-			method="POST"
-		>	<button type="button">Si,</button></form>
-					<button id="closeMenu-<%= product.id %>">no.</button></div>
+			method="POST" 
+		>	<button type="button" class=" rounded-md  transition-all ease-in-out text-red-400 ">Si, Eliminar</button></form>
+					<button id="closeMenu-<%= product.id %>" class="opacity-70 text-zinc-400">No, Cancelar</button></div>
 				</div>
-
+				<!-- bg-red-500 hover:bg-red-600 py-2 px-5 -->
 				<script>
 
 

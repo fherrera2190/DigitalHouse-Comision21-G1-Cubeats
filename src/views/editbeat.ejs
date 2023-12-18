@@ -30,7 +30,7 @@
 						method="POST"
 						id="formEditProduct"
 						enctype="multipart/form-data"
-						class="flex flex-col lg:flex-row justify-around px-7 py-12 items-center gap-12 bg-zinc-900 rounded-md font-normal"
+						class="flex flex-col lg:flex-row justify-around px-7 py-12 items-center gap-12 rounded-md font-medium"
 					>
 						<!-- invert -->
 						<div class="flex flex-col items-center gap-12">
@@ -41,11 +41,17 @@
 									alt="Image-beat"
 									class="rounded-full w-60 h-60 object-cover"
 								/>
+								<img
+									id="backgroundImage"
+									src="/img/products/<%= image || 'product.jpg' %>"
+									alt="backgroundImage"
+									class="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover blur-3xl opacity-5 pointer-events-none"
+								/>
 								<input
 									type="file"
 									name="image"
 									id="image"
-									class="rounded-sm placeholder:text-zinc-500 text-zinc-300 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
+									class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
 								/>
 								<script>
 									document
@@ -55,12 +61,14 @@
 									function previewImage() {
 										var input = document.getElementById("image");
 										var preview = document.getElementById("previewImage");
+										const preview2 = document.getElementById("backgroundImage");
 
 										if (input.files && input.files[0]) {
 											var reader = new FileReader();
 
 											reader.onload = function (e) {
 												preview.src = e.target.result;
+												preview2.src = e.target.result;
 											};
 
 											reader.readAsDataURL(input.files[0]);
@@ -86,14 +94,14 @@
 								id="title"
 								value="<%= name %>"
 								placeholder="Ingresa el titulo aquí"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
 							/>
 
 							<label for="category">Categoria</label>
 							<select
 								name="category"
 								id="category"
-								class="bg-[#1f1f23] placeholder:text-zinc-500 text-zinc-300 rounded-sm pl-4 py-4"
+								class="bg-zinc-800 placeholder:text-zinc-500 text-zinc-300 rounded-sm pl-4 py-4"
 							>
 								<% categories.forEach(item=> { %> <option <%= item.name ===
 								category && 'selected' %> value="<%= item.id %>"><%= item.name
@@ -107,7 +115,7 @@
 								id="price"
 								placeholder="Ingresa el precio aquí"
 								value="<%= price %>"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
 							/>
 							<label for="description">Descripción</label>
 							<textarea
@@ -115,7 +123,7 @@
 								id="description"
 								cols="20"
 								rows="5"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
 							>
 <%= description %></textarea
 							>
@@ -126,13 +134,13 @@
 								id="price"
 								placeholder="Ingresa el precio aquí"
 								value="<%= locals.old && (old.price && old.price ) %>"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
 							/>
 							<label for="category">Licencia</label>
 							<select
 								name="category"
 								id="category"
-								class="bg-[#1f1f23] placeholder:text-zinc-500 text-zinc-500 rounded-sm pl-4 py-4"
+								class="bg-zinc-800 placeholder:text-zinc-500 text-zinc-500 rounded-sm pl-4 py-4"
 							>
 								<option value="" selected hidden>
 									Selecciona una categoria

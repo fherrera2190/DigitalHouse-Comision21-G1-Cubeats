@@ -51,12 +51,13 @@ window.addEventListener("load", function () {
 function previewImage() {
 	const input = document.getElementById("image");
 	const preview = document.getElementById("previewImage");
-
+	const preview2 = document.getElementById("backgroundImage");
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 
 		reader.onload = function (e) {
 			preview.src = e.target.result;
+			preview2.src = e.target.result;
 		};
 		// console.log( input.files[0].type)
 		reader.readAsDataURL(input.files[0]);

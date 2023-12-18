@@ -35,7 +35,7 @@
 				<!-- Dropdown menu -->
 				<div
 					id="dropdown"
-					class="z-[100] hidden rounded-lg dark:bg-zinc-900 shadow-2xl absolute left-auto right-px min-h-full top-full mt-2 w-64 flex-col py-4 px-4 gap-1 text-base"
+					class="z-[100] hidden rounded-lg bg-zinc-900 shadow-2xl absolute left-auto right-px min-h-full top-full mt-2 w-64 flex-col py-4 px-4 gap-1 text-base"
 				>
 					<button id="toggleDropdown"></button>
 					<% if (locals.userLogged.role === 3) { %>
@@ -84,7 +84,7 @@
 						class="flex justify-between w-full items-center"
 					>
 						<span
-							class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg text-base text-red-300 w-full"
+							class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg text-base text-red-400 w-full"
 							>Cerrar sesión</span
 						>
 					</a>
@@ -95,13 +95,23 @@
 						const exit = document.getElementById("toggleDropdown");
 						const menu = document.getElementById("dropdown");
 
-						button.addEventListener("click", function () {
+						button.addEventListener("click", function (event) {
+							event.stopPropagation();
 							menu.classList.toggle("hidden");
 							menu.classList.add("flex");
 						});
 
 						exit.addEventListener("click", function () {
 							menu.classList.add("hidden");
+						});
+
+						document.addEventListener("click", function (event) {
+							const isClickInsideDropdown = menu.contains(event.target);
+							const isClickOnButton = button.contains(event.target);
+
+							if (!isClickInsideDropdown && !isClickOnButton) {
+								menu.classList.add("hidden");
+							}
 						});
 					});
 				</script>

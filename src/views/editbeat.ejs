@@ -45,7 +45,7 @@
 									type="file"
 									name="image"
 									id="image"
-									class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
+									class="rounded-sm placeholder:text-zinc-500 text-zinc-300 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
 								/>
 								<script>
 									document
@@ -86,14 +86,14 @@
 								id="title"
 								value="<%= name %>"
 								placeholder="Ingresa el titulo aquí"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
 							/>
 
 							<label for="category">Categoria</label>
 							<select
 								name="category"
 								id="category"
-								class="bg-[#1f1f23] placeholder:text-zinc-500 text-zinc-500 rounded-sm pl-4 py-4"
+								class="bg-[#1f1f23] placeholder:text-zinc-500 text-zinc-300 rounded-sm pl-4 py-4"
 							>
 								<% categories.forEach(item=> { %> <option <%= item.name ===
 								category && 'selected' %> value="<%= item.id %>"><%= item.name
@@ -107,7 +107,7 @@
 								id="price"
 								placeholder="Ingresa el precio aquí"
 								value="<%= price %>"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
 							/>
 							<label for="description">Descripción</label>
 							<textarea
@@ -115,7 +115,7 @@
 								id="description"
 								cols="20"
 								rows="5"
-								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
+								class="py-4 bg-[#1f1f23] rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
 							>
 <%= description %></textarea
 							>

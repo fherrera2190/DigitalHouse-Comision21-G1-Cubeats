@@ -50,10 +50,44 @@
         </div>
         <% } %>
 
+<<<<<<< Updated upstream
         <input type="text" placeholder="Nombre de usuario" id="username" name="username" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" value="<%= locals.old && old.username %>" />
         <input type="email" placeholder="Email" id="email" name="email" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" value="<%= locals.old && old.email %>" />
         <input type="password" placeholder="Contraseña" id="password" name="password" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" />
         <input type="password" placeholder="Re-ingresar contraseña" id="password2" name="password2" class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500" />
+=======
+					<input
+						type="text"
+						placeholder="Nombre de usuario"
+						id="username"
+						name="username"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.email %>"
+					/>
+					<input
+						type="email"
+						placeholder="Email"
+						id="email"
+						name="email"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.email %>"
+					/>
+					<input
+						type="password"
+						placeholder="Contraseña"
+						id="password"
+						name="password"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.password %>"
+					/>
+					<input
+						type="password"
+						placeholder="Re-ingresar contraseña"
+						id="password2"
+						name="password2"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+					/>
+>>>>>>> Stashed changes
 
         <ul class="items-center w-full font-medium bg-zinc-900 border border-[#6B7280] rounded-sm sm:flex py-1">
           <li class="w-full">
@@ -75,6 +109,7 @@
           Continuar
         </button>
 
+<<<<<<< Updated upstream
         <div class="text-sm text-zinc-500 flex flex-col gap-4">
           <p>
             Al crear una cuenta, aceptas nuestros Términos y Condiciones
@@ -95,3 +130,30 @@
 </body>
 
 </html>
+=======
+					<div class="text-sm text-zinc-500 flex flex-col gap-4">
+						<p>
+							Al crear una cuenta, aceptas nuestros Términos y Condiciones
+							Generales y has leído y aceptas nuestra Política de Privacidad.
+						</p>
+						<p>
+							Este sitio está protegido por reCAPTCHA y se aplican la Política
+							de Privacidad y las Condiciones del Servicio de Google.
+						</p>
+					</div>
+				</form>
+			</article>
+			<article
+				class="min-h-screen items-center justify-center xl:flex hidden w-[100%]"
+			>
+				<img
+					src="/img/login.jpg"
+					alt=""
+					class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert"
+				/>
+			</article>
+		</main>
+		<script src="/js/register.js"></script>
+	</body>
+</html>
+>>>>>>> Stashed changes

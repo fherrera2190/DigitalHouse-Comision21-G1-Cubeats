@@ -68,6 +68,29 @@
 				>
 					<%- include("./partials/cardsProduct") %>
 				</div>
+				<% } else if (locals.userLogged && locals.userLogged.role === 1) { %>
+				<div class="flex flex-col gap-7">
+					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+						Todos los track's
+					</p>
+					<hr class="flex-1 border border-zinc-900 w-full" />
+					<% if (products && products.length > 0) { %>
+					<div class="items-center hidden sm:flex gap-8 text-zinc-300">
+						<i class="fa-solid fa-sliders text-lg"></i>
+						<p>Géneros</p>
+						<p>Duración</p>
+						<p>BPM</p>
+					</div>
+					<% } else { %>
+					<p class="font-normal text-gray-300">Aún nadie ha subido un track.</p>
+
+					<% } %>
+				</div>
+				<div
+					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"
+				>
+					<%- include("./partials/cardsProduct") %>
+				</div>
 				<% } %>
 			</article>
 		</main>

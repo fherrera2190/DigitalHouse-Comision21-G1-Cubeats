@@ -1,8 +1,8 @@
 <% products.forEach(({dataValues:product}) => { %>
 <div
-	class="grid grid-cols-[2fr,0.2fr,0.2fr,0.2fr,auto] md:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] lg:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto,auto] w-full justify-between items-center gap-6 group hover:bg-zinc-900 py-2 pr-4 transition-all ease-in-out"
-	id="grid-<%= product.id %>"
->
+	class="grid grid-cols-[2fr,0.2fr,0.2fr,0.2fr] md:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto] lg:grid-cols-[auto,0.7fr,1.2fr,0.40fr,0.4fr,auto] w-full justify-start items-center  group hover:bg-zinc-900 py-2 transition-all ease-in-out gap-5"
+	id="grid-<%= product.id %>" 
+> 
 	<img
 		src="/img/products/<%= product.image %>"
 		alt=""
@@ -20,11 +20,10 @@
 			viewBox="0 0 24 24"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="currentColor"
-			class="p-2 rounded-full bg-zinc-800 hidden xl:inline-block hover:brightness-110"
+			class="p-2 rounded-full bg-zinc-800 hidden group-hover:inline-block hover:brightness-110"
 		>
 			<path d="M20 12L8 5V19L20 12Z"></path>
 		</svg>
-
 		<svg
 			id="pause-icon-<%= product.id %>"
 			width="45"
@@ -68,37 +67,40 @@
 	<div class="flex-col items-start font-bold hidden sm:flex w-fit">
 		<p
 			id="duracion-total-<%= product.id %>"
-			class="font-medium text-zinc-400 text-base"
+			class="font-medium text-zinc-400 text-sm"
 		></p>
-		<p class="text-zinc-400 text-xs font-medium"><%= 120 %> BPM</p>
+		<p class="text-zinc-400 text-xs font-medium text-start"><%= product.bpm %> BPM</p>
 	</div>
 	<div class="flex-col items-start w-fit hidden sm:flex">
 		<a
 			href="/products/search?keywords=<%= product.category.name.toLowerCase() %>"
-			class="text-base font-medium text-zinc-400 hover:underline"
+			class="text-sm font-medium text-zinc-400 hover:underline"
 			><%= product.category.name %></a
 		>
 	</div>
 	<div id="products" class="flex justify-end items-center">
-		<button onclick=<%="likefunction("+product.id+")"%>><svg
+
+		<button onclick=<%="likefunction("+product.id+")"%>>
+			<svg
 			width="24"
 			height="24"
 			viewBox="0 0 24 24"
 			xmlns="http://www.w3.org/2000/svg"
 			class="section-icon products-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
 		>
-			<path
-			<% if (locals.userLogged&&userAllLikes.includes( product.id)) { %>
-				fill="#a1a1aa"
-				<% } else{%>
-					fill-rule="evenodd"
-				<% } %>
-				clip-rule="evenodd"
-				id="svg-heart-path<%= "-"+product.id %>"
-				d="M12 4.68905C9.71236 2.43698 6.00337 2.43698 3.71573 4.68905C1.42809 6.94113 1.42809 10.5925 3.71573 12.8445L12 21L20.2843 12.8445C22.5719 10.5925 22.5719 6.94113 20.2843 4.68905C17.9966 2.43698 14.2876 2.43698 12 4.68905ZM12 18.1935L18.8812 11.4193C20.3729 9.95071 20.3729 7.58287 18.8812 6.1143C17.372 4.62857 14.9123 4.62857 13.4031 6.1143L12 7.49558L10.5969 6.1143C9.08771 4.62857 6.62802 4.62857 5.11882 6.1143C3.62706 7.58287 3.62706 9.95071 5.11882 11.4193L12 18.1935Z"
-				stroke-width="2"
-			></path>
-		</svg></button>
+			<path <% if (locals.userLogged && userAllLikes.includes(product.id)) { %>
+				fill="#a1a1aa" <% } else { %> fill-rule="evenodd" <% } %>
+				clip-rule="evenodd" id="<%= 'svg-heart-path-' + product.id %>" d="M12
+				4.68905C9.71236 2.43698 6.00337 2.43698 3.71573 4.68905C1.42809 6.94113
+				1.42809 10.5925 3.71573 12.8445L12 21L20.2843 12.8445C22.5719 10.5925
+				22.5719 6.94113 20.2843 4.68905C17.9966 2.43698 14.2876 2.43698 12
+				4.68905ZM12 18.1935L18.8812 11.4193C20.3729 9.95071 20.3729 7.58287
+				18.8812 6.1143C17.372 4.62857 14.9123 4.62857 13.4031 6.1143L12
+				7.49558L10.5969 6.1143C9.08771 4.62857 6.62802 4.62857 5.11882
+				6.1143C3.62706 7.58287 3.62706 9.95071 5.11882 11.4193L12 18.1935Z"
+				stroke-width="2" >
+			</path></svg>
+		</button>
 		<a href="/products/detail/<%- product.id %>">
 			<svg
 				width="24"
@@ -115,26 +117,26 @@
 				></path>
 			</svg>
 		</a>
-		<% if (locals.userLogged && locals.userLogged.role === 2) { %>
-			<button onclick=<%="addItemToCart("+product.id+")"%>>
-				<svg
-				width="24"
-				height="24"
-				viewBox="0 0 24 24"
-				xmlns="http://www.w3.org/2000/svg"
-				fill="currentColor"
-				class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
-			>
-				<path
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
-				></path>
-			</svg>
-			</button>
+		<% if (locals.userLogged && locals.userLogged.role === 2) { %> <button
+		onclick=<%="addItemToCart("+product.id+")"%> class="hidden sm:inline-block">
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			xmlns="http://www.w3.org/2000/svg"
+			fill="currentColor"
+			class="section-icon products-icon py-[0.78rem] px-[0.75rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+		>
+			<path
+				fill-rule="evenodd"
+				clip-rule="evenodd"
+				d="M11 13V21H13V13H21V11H13V3H11V11H3V13H11Z"
+			></path>
+		</svg>
+	
 		<% } %>
 	</div>
-	<div id="mytracks" class="flex justify-end items-center">
+	<div id="mytracks" class="hidden items-center">
 		<a href="/products/edit/<%- product.id %>">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +152,7 @@
 				></path>
 			</svg>
 		</a>
-		<a href="/products/detail/<%- product.id %>">
+		<a href="/products/detail/<%- product.id %>" class="hidden sm:inline-block">
 			<svg
 				width="24"
 				height="24"
@@ -166,29 +168,51 @@
 				></path>
 			</svg>
 		</a>
-		<form
+		<button id="removeTrack-<%= product.id %>"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				x="0px"
+				y="0px"
+				width="100"
+				height="100"
+				viewBox="0 0 30 30"
+				class="section-icon mytracks-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
+			>
+				<path
+					d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"
+				></path>
+				
+			</svg>
+		</button>
+		
+		<div id="background-<%= product.id %>" class="hidden top-0 left-0 w-screen h-screen bg-black opacity-70 z-50"></div>
+		<div
+				id="youSecure-<%= product.id %>"
+					class="hidden items-center justify-center z-[100] rounded-lg bg-zinc-900 shadow-xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-44 w-72 flex-col px-7 gap-7 py-4 invert"
+				>
+				<div class="flex flex-col gap-2">
+					<p>¿Estás seguro de que <span class="text-red-300">deseas eliminar este track? </span></p>
+					<p class="italic ">"<%= product.name %>"</p>
+				</div>
+				<div class="flex gap-4">
+					<form
 			action="/products/delete/<%- product.id %>?_method=DELETE"
 			method="POST"
-		>
-			<button>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					x="0px"
-					y="0px"
-					width="100"
-					height="100"
-					viewBox="0 0 30 30"
-					class="section-icon mytracks-icon py-[0.78rem] px-[0.78rem] hover:bg-zinc-800 rounded-full flex items-center justify-center transition-all ease-in-out w-12 h-12 fill-zinc-400"
-				>
-					<path
-						d="M 14.984375 2.4863281 A 1.0001 1.0001 0 0 0 14 3.5 L 14 4 L 8.5 4 A 1.0001 1.0001 0 0 0 7.4863281 5 L 6 5 A 1.0001 1.0001 0 1 0 6 7 L 24 7 A 1.0001 1.0001 0 1 0 24 5 L 22.513672 5 A 1.0001 1.0001 0 0 0 21.5 4 L 16 4 L 16 3.5 A 1.0001 1.0001 0 0 0 14.984375 2.4863281 z M 6 9 L 7.7929688 24.234375 C 7.9109687 25.241375 8.7633438 26 9.7773438 26 L 20.222656 26 C 21.236656 26 22.088031 25.241375 22.207031 24.234375 L 24 9 L 6 9 z"
-					></path>
-				</svg>
-			</button>
-		</form>
+		>	<button type="button">Si,</button></form>
+					<button id="closeMenu-<%= product.id %>">no.</button></div>
+				</div>
+
+				<script>
+
+
+				  </script>
+				  
+	
 	</div>
 </div>
 <script type="module">
+
 	var currentPageUrl = window.location.pathname;
 
 	// Oculta todos los íconos por defecto
@@ -203,7 +227,15 @@
 		});
 		document.querySelectorAll(".mytracks-icon").forEach(function (icon) {
 			icon.style.display = "block"; // Muestra los íconos de mis pistas
-		});
+		});	document.querySelectorAll("#products").forEach(function (icon) {
+        icon.classList.remove("flex"); // Quita la clase "hidden"
+        icon.classList.add("hidden"); // Agrega la clase "flex"
+    });
+		document.querySelectorAll("#mytracks").forEach(function (icon) {
+        icon.classList.remove("hidden"); // Quita la clase "hidden"
+        icon.classList.add("flex"); // Agrega la clase "flex"
+    });
+
 	} else {
 		// Muestra los íconos de la sección de productos en caso contrario
 		document.querySelectorAll(".products-icon").forEach(function (icon) {
@@ -255,29 +287,60 @@
 	});
 
 	const grids = document.getElementById("grid-<%= product.id %>");
-	const playButton = document.getElementById("playsong-<%= product.id %>");
-	const playIcon = document.getElementById("play-icon-<%= product.id %>");
-	const pauseIcon = document.getElementById("pause-icon-<%= product.id %>");
-	const image = document.getElementById("image-<%= product.id %>");
+    const playButton = document.getElementById("playsong-<%= product.id %>");
+    const playIcon = document.getElementById("play-icon-<%= product.id %>");
+    const pauseIcon = document.getElementById("pause-icon-<%= product.id %>");
+    const image = document.getElementById("image-<%= product.id %>");
 
-	playButton.addEventListener("click", () => {
-		if (wavesurfer.isPlaying()) {
-			wavesurfer.pause();
-			grids.classList.remove("bg-zinc-900");
-			image.classList.remove("hidden");
-			playButton.classList.add("hidden");
-			playIcon.classList.add("xl:inline-block");
-			pauseIcon.classList.add("hidden");
-			pauseIcon.classList.remove("inline-block");
-		} else {
-			wavesurfer.play();
-			grids.classList.add("bg-zinc-900");
-			image.classList.add("hidden");
-			playButton.classList.remove("hidden");
-			playIcon.classList.remove("xl:inline-block");
-			pauseIcon.classList.remove("hidden");
-			pauseIcon.classList.add("inline-block");
-		}
+
+    playButton.addEventListener("click", () => {
+        if (wavesurfer.isPlaying()) {
+            wavesurfer.pause();
+            grids.classList.remove("bg-zinc-900");
+            image.classList.remove("hidden");
+            playButton.classList.add("hidden");
+            playIcon.classList.add("group-hover:inline-block");
+            pauseIcon.classList.add("hidden");
+            pauseIcon.classList.remove("inline-block");
+        } else {
+            wavesurfer.play();
+            grids.classList.add("bg-zinc-900");
+            image.classList.add("hidden");
+            playButton.classList.remove("hidden");
+            playIcon.classList.remove("group-hover:inline-block");
+            pauseIcon.classList.remove("hidden");
+            pauseIcon.classList.add("inline-block");
+        }
+    });
+
+var abrirMenu = document.getElementById('removeTrack-<%= product.id %>');
+  var menu = document.getElementById('youSecure-<%= product.id %>');
+  var background = document.getElementById('background-<%= product.id %>');
+  var closeMenu = document.getElementById('closeMenu-<%= product.id %>')
+
+  abrirMenu.addEventListener('click', function () {
+    menu.classList.remove('hidden');
+    menu.classList.add('flex');
+    background.classList.remove('hidden');
+    background.classList.add('fixed');
+  });
+
+  background.addEventListener('click', function (event) {
+    // Verificar si el clic se realizó fuera del modal
+    if (event.target === background) {
+      menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      background.classList.add('hidden');
+      background.classList.remove('fixed');
+    }
+  });
+
+  closeMenu.addEventListener('click', function () {
+	menu.classList.add('hidden');
+      menu.classList.remove('flex');
+      background.classList.add('hidden');
+      background.classList.remove('fixed');
 	});
+
 </script>
 <% }) %>

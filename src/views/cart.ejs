@@ -1,99 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
-	<%- include('./partials/head', { title : 'Cubeats' }) %>
+<%- include('./partials/head', { title : 'Cubeats' }) %>
 
-	<body
-		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
-	>
-		<%- include("./partials/header") %>
-		<main class="flex-1 grow">
-			<article
-				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start"
-			>
-				<div
-					class="flex flex-col items-start gap-24 max-w-2xl w-full font-semibold xl:text-start"
-				>
-					<p class="text-5xl font-bold pt-14">Pagar</p>
-					<div class="flex flex-col gap-6 w-full items-start font-medium">
-						<div class="flex w-full justify-between">
-							<div class="flex gap-4">
-								<img
-									src="/img/products/classical.jpeg"
-									alt=""
-									class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
-								/>
-								<div class="flex flex-col text-start">
-									<p class="text-lg">Ferbol</p>
-									<p class="text-zinc-400 font-normal">ferbolve</p>
-								</div>
-							</div>
-							<div class="flex gap-2">
-								<p class="text-lg text-zinc-400">$7.99</p>
-								<svg
-									width="23"
-									height="23"
-									viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg"
-									class="fill-zinc-400"
-									data-testid="remove-track"
-								>
-									<path
-										fill-rule="evenodd"
-										clip-rule="evenodd"
-										d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"
-									></path>
-								</svg>
-							</div>
-						</div>
-						<hr class="flex-1 border border-zinc-900 w-full" />
-						<div class="flex w-full justify-between">
-							<div class="flex gap-4 font-medium">
-								<img
-									src="/img/products/classical.jpeg"
-									alt=""
-									class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
-								/>
-								<div class="flex flex-col text-start">
-									<p class="text-lg">ferbolve</p>
-									<p class="text-zinc-400 font-normal">ferbolve</p>
-								</div>
-							</div>
-							<div class="flex gap-2">
-								<p class="text-lg text-zinc-400">$7.99</p>
-								<svg
-									width="23"
-									height="23"
-									viewBox="0 0 24 24"
-									xmlns="http://www.w3.org/2000/svg"
-									class="fill-zinc-400"
-									data-testid="remove-track"
-								>
-									<path
-										fill-rule="evenodd"
-										clip-rule="evenodd"
-										d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"
-									></path>
-								</svg>
-							</div>
-						</div>
-						<hr class="flex-1 border border-zinc-900 w-full" />
+<body class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen">
+  <%- include("./partials/header") %>
+  <main class="flex-1 grow">
+    <article class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start">
+      <div class="flex flex-col items-start gap-24 max-w-2xl w-full font-semibold xl:text-start">
+        <p class="text-5xl font-bold pt-14">Pagar</p>
+        <div id="cartContainer" class="flex flex-col gap-6 w-full items-start font-medium">
+        </div>
+        <div class="flex justify-between text-2xl w-full">
+          <p>Subtotal USD</p>
+          $<p id="total">0</p>
+        </div>
+        <button type="submit" class="py-3 bg-white rounded-sm px-4 text-black self-end my-12">
+          Continuar
+        </button>
+      </div>
+    </article>
+  </main>
+  <%- include('./partials/footer.ejs')%>
+  <script src="https://unpkg.com/wavesurfer.js"></script>
+  <script src="/js/cart.js"></script>
+</body>
 
-						<div class="flex justify-between text-2xl w-full">
-							<p>Subtotal USD</p>
-							<p>$7.99</p>
-						</div>
-						<button
-							type="submit"
-							class="py-3 bg-white rounded-sm px-4 text-black self-end my-12"
-						>
-							Continuar
-						</button>
-					</div>
-				</div>
-			</article>
-		</main>
-		<%- include('./partials/footer.ejs')%>
-		<script src="https://unpkg.com/wavesurfer.js"></script>
-		<script src="/js/cart.js"></script>
-	</body>
 </html>

@@ -62,6 +62,7 @@ module.exports = async (req, res) => {
               }
             )
           };
+          console.log(req.session)
           return res.redirect("/");
         } else {
           const order = await db.Order.create({
@@ -76,6 +77,7 @@ module.exports = async (req, res) => {
               products: []
             };
           }
+          
           return res.redirect("/");
         }
       }

@@ -11,12 +11,23 @@
 				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
 			>
 				<div class="flex flex-col gap-7">
-					<div class="flex flex-col gap-7">
+					<div class="flex items-center gap-7">
 						<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
 							Mis datos
 						</p>
-						<hr class="flex-1 border border-zinc-900 w-full" />
+
+						<p
+							class="font-medium pb-1 w-fit text-zinc-400 hover:text-zinc-200 text-lg"
+						>
+							<%= userDatos.username %>
+						</p>
+						<p
+							class="font-medium pb-1 w-fit text-zinc-400 hover:text-zinc-200 text-lg"
+						>
+							<%= userDatos.email %>
+						</p>
 					</div>
+					<hr class="flex-1 border border-zinc-900 w-full" />
 					<form
 						id="formUpdateProfile"
 						action="/users/profile/update/<%=locals.userLogged.username%>?_method=PUT"

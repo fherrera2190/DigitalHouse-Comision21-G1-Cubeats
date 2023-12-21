@@ -6,108 +6,94 @@
 		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
 	>
 		<%- include("./partials/header") %>
-		<main class="grid place-items-center min-h-screen bg-gradient-to-t from-blue-200 to-indigo-900 p-5">
-			<div>
-			  <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold text-gray-200 mb-5">Made for you</h1>
-			  <section class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-				<!-- CARD 1 -->
-				<div class="bg-gray-900 shadow-lg rounded p-3">
-				  <div class="group relative">
-					<img class="w-full md:w-72 block rounded" src="https://upload.wikimedia.org/wikipedia/en/f/f1/Tycho_-_Epoch.jpg" alt="" />
-					<div class="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-						  <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-						  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-						  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-						</svg>
-					  </button>
+		<main class="flex-1 grow">
+			<article
+				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start"
+			>
+				<div
+					class="flex flex-col items-start gap-24 max-w-2xl w-full font-semibold xl:text-start"
+				>
+					<p class="text-5xl font-bold pt-14">Pagar</p>
+					<div class="flex flex-col gap-6 w-full items-start font-medium">
+						<div class="flex w-full justify-between">
+							<div class="flex gap-4">
+								<img
+									src="/img/products/classical.jpeg"
+									alt=""
+									class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
+								/>
+								<div class="flex flex-col text-start">
+									<p class="text-lg">Ferbol</p>
+									<p class="text-zinc-400 font-normal">ferbolve</p>
+								</div>
+							</div>
+							<div class="flex gap-2">
+								<p class="text-lg text-zinc-400">$7.99</p>
+								<svg
+									width="23"
+									height="23"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									class="fill-zinc-400"
+									data-testid="remove-track"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"
+									></path>
+								</svg>
+							</div>
+						</div>
+						<hr class="flex-1 border border-zinc-900 w-full" />
+						<div class="flex w-full justify-between">
+							<div class="flex gap-4 font-medium">
+								<img
+									src="/img/products/classical.jpeg"
+									alt=""
+									class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
+								/>
+								<div class="flex flex-col text-start">
+									<p class="text-lg">ferbolve</p>
+									<p class="text-zinc-400 font-normal">ferbolve</p>
+								</div>
+							</div>
+							<div class="flex gap-2">
+								<p class="text-lg text-zinc-400">$7.99</p>
+								<svg
+									width="23"
+									height="23"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									class="fill-zinc-400"
+									data-testid="remove-track"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M10.5868 12.0028L4.00444 18.5894L5.4182 20.0041L12.0009 13.4172L18.5831 20.0009L19.9972 18.5865L13.4147 12.0025L19.9983 5.41467L18.5845 4L12.0006 10.5882L5.41406 4.00015L4 5.41452L10.5868 12.0028Z"
+									></path>
+								</svg>
+							</div>
+						</div>
+						<hr class="flex-1 border border-zinc-900 w-full" />
+
+						<div class="flex justify-between text-2xl w-full">
+							<p>Subtotal USD</p>
+							<p>$7.99</p>
+						</div>
+						<button
+							type="submit"
+							class="py-3 bg-white rounded-sm px-4 text-black self-end my-12"
+						>
+							Continuar
+						</button>
 					</div>
-				  </div>
-				  <div class="p-5">
-					<h3 class="text-white text-lg">Epoch</h3>
-					<p class="text-gray-400">Tycho</p>
-				  </div>
 				</div>
-				<!-- END OF CARD 1 -->
-		  
-				<!-- CARD 2 -->
-				<div class="bg-gray-900 shadow-lg rounded p-3">
-				  <div class="group relative">
-					<img class="w-full md:w-72 block rounded" src="https://upload.wikimedia.org/wikipedia/en/c/ca/Tycho_-_Awake.png" alt="" />
-					<div class="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-						  <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-						  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-						  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-						</svg>
-					  </button>
-					</div>
-				  </div>
-				  <div class="p-5">
-					<h3 class="text-white text-lg">Awake</h3>
-					<p class="text-gray-400">Tycho</p>
-				  </div>
-				</div>
-				<!-- END OF CARD 2 -->
-		  
-				<!-- CARD 3 -->
-				<div class="bg-gray-900 shadow-lg rounded p-3">
-				  <div class="group relative">
-					<img class="w-full md:w-72 block rounded" src="https://upload.wikimedia.org/wikipedia/en/1/11/Dive_tycho_album.jpg" alt="" />
-					<div class="absolute bg-black rounded bg-opacity-0 group-hover:bg-opacity-60 w-full h-full top-0 flex items-center group-hover:opacity-100 transition justify-evenly">
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-						  <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
-						  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z" />
-						</svg>
-					  </button>
-		  
-					  <button class="hover:scale-110 text-white opacity-0 transform translate-y-3 group-hover:translate-y-0 group-hover:opacity-100 transition">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
-						  <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z" />
-						</svg>
-					  </button>
-					</div>
-				  </div>
-				  <div class="p-5">
-					<h3 class="text-white text-lg">Dive</h3>
-					<p class="text-gray-400">Tycho</p>
-				  </div>
-				</div>
-				<!-- END OF CARD 3 -->
-			  </section>
-			</div>
-		  </main>
+			</article>
+		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
-		<script src="/js/searchValidator.js"></script>
 		<script src="/js/cart.js"></script>
 	</body>
 </html>

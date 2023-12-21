@@ -8,7 +8,26 @@
 		</a>
 		<div class="flex gap-3 items-center">
 			<% if (locals.userLogged) { %>
-			<div class="flex gap-5 items-center relative">
+			<div class="flex gap-1 items-center relative">
+				<a
+					href="/cart"
+					class="flex gap-2 py-3 px-4 rounded-sm transition-all ease-in-out hover:bg-zinc-800 focus:bg-zinc-800 font-semibold"
+				>
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						class="fill-white"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M2 4H4.80701L6.06367 7.35103L9.06367 15.3508L9.30701 15.9997H10H18H18.693L18.9363 15.3508L21.9363 7.35103L22.443 5.9999H21H7.69299L6.43633 2.64887L6.19299 2H5.5H2V4ZM10.693 13.9997L8.44301 7.9999H19.557L17.307 13.9997H10.693ZM8 20C8 18.8954 8.89543 18 10 18C11.1046 18 12 18.8954 12 20C12 21.1046 11.1046 22 10 22C8.89543 22 8 21.1046 8 20ZM16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20Z"
+						></path>
+					</svg>
+					<p>1</p>
+				</a>
 				<button
 					id="dropdownDefaultButton"
 					type="button"

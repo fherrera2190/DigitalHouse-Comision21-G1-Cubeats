@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
 							include: [
 								{
 									association: "beat",
+									include: ["producer"],
 								},
 							],
 						},
@@ -51,16 +52,16 @@ module.exports = async (req, res) => {
 					req.session.cart = {
 						orderId: order.id,
 						total: order.total,
-						products: order.items.map(
-							({ quantity, beat: { id, name, price } }) => {
-								return {
-									id,
-									name,
-									price,
-									quantity,
-								};
-							}
-						),
+						products: order.items.map(({ quantity, beat }) => {
+							return {
+								id: beat.id,
+								name: beat.name,
+								price: beat.price,
+								image: beat.image,
+								username: beat.producer ? beat.producer.username : "N/A",
+								quantity,
+							};
+						}),
 					};
 					console.log(req.session);
 					return res.redirect("/");

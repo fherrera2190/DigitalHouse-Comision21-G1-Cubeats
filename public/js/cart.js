@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
 	getCart();
-	getTotal();
+	// getTotal();
 });
 
 async function addItemToCart(product) {

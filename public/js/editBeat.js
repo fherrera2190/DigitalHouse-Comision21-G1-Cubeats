@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function descriptionValid(description) {
-		return description.trim().length >= 10 && description.trim().length <= 500;
+		return description.trim().length >= 5 && description.trim().length <= 125;
 	}
 
 	function clearErrorMessage() {
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		clearErrorMessage();
 		const descriptionInput = document.getElementById("description");
 		if (!descriptionValid(descriptionInput.value)) {
-			setErrorMessage("La descripción debe tener entre 10 y 500 caracteres.");
+			setErrorMessage("La descripción debe tener entre 5 y 125 caracteres.");
 		}
 	}
 
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const descriptionInput = document.getElementById("description");
 		if (!descriptionValid(descriptionInput.value)) {
-			setErrorMessage("La descripción debe tener entre 10 y 500 caracteres.");
+			setErrorMessage("La descripción debe tener entre 5 y 500 caracteres.");
 			event.preventDefault();
 		}
 

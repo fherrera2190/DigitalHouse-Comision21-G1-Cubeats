@@ -22,10 +22,41 @@ async function addItemToCart(product) {
 		if (cartQua) {
 			cartQua.innerHTML = result.data.products.length;
 		}
+		if (result.ok) {
+			Toastify({
+				text: result.msg,
+				duration: 3000,
+				newWindow: true,
+				close: false,
+				gravity: "top", // `top` or `bottom`
+				position: "right", // `left`, `center` or `right`
+				stopOnFocus: true, // Prevents dismissing of toast on hover
+				style: {
+					padding: "1em",
+					background: "rgb(24 24 27)",
+					color: "white",
+				},
+				onClick: function () {}, // Callback after click
+			}).showToast();
+		}
 
 		getCart();
 	} catch (error) {
-		console.error("Error adding item to cart:", error);
+		Toastify({
+			text: "Ya existe este producto en tu carrito.",
+			duration: 3000,
+			newWindow: true,
+			close: false,
+			gravity: "top", // `top` or `bottom`
+			position: "right", // `left`, `center` or `right`
+			stopOnFocus: true, // Prevents dismissing of toast on hover
+			style: {
+				padding: "1em",
+				background: "rgb(24 24 27)",
+				color: "white",
+			},
+			onClick: function () {}, // Callback after click
+		}).showToast();
 	}
 }
 

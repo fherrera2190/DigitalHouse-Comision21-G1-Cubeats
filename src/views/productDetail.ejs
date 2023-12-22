@@ -205,7 +205,7 @@
 				>
 					<div class="flex flex-col gap-6">
 						<div class="flex flex-col gap-1">
-							<p class="text-zinc-500 text-sm">Genre</p>
+							<p class="text-zinc-500 text-sm">Genero</p>
 							<a
 								href="/products/search?keywords=<%= product.category.name.toLowerCase() %>"
 								class="hover:underline font-normal"
@@ -213,7 +213,8 @@
 							>
 						</div>
 						<div class="flex flex-col gap-1">
-							<p class="text-zinc-500 text-sm">Produced by</p>
+							<p class="text-zinc-500 text-sm">
+								Producido por</p>
 							<a
 								href="/users/profile/<%= product.producer.dataValues.username.toLowerCase().replace(/\s/g, '') %>"
 								class="hover:underline font-normal"
@@ -221,7 +222,7 @@
 							>
 						</div>
 					</div>
-					<div class="flex flex-col gap-1">
+					<!-- <div class="flex flex-col gap-1">
 						<div class="flex flex-col gap-1">
 							<p class="text-zinc-500 text-sm">Tempo</p>
 							<a
@@ -230,12 +231,13 @@
 								><%= 120 %> BPM</a
 							>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</article>
 		</main>
 		<%- include('./partials/footer.ejs')%>
 		<script src="https://unpkg.com/wavesurfer.js"></script>
 		<script src="/js/likes.js"></script>
+		<script src="/js/cart.js"></script>
 	</body>
 </html>

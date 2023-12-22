@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function descriptionValid(description) {
-		return description.trim().length >= 10 && description.trim().length <= 500;
+		return description.trim().length >= 5 && description.trim().length <= 125;
 	}
 
 	function beatValid(beat) {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.getElementById("description").addEventListener("blur", function () {
 		clearErrorMessage();
 		if (!descriptionValid(this.value)) {
-			setErrorMessage("La descripción debe tener entre 10 y 500 caracteres.");
+			setErrorMessage("La descripción debe tener entre 5 y 125 caracteres.");
 		}
 	});
 
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		if (!descriptionValid(document.getElementById("description").value)) {
-			setErrorMessage("La descripción debe tener entre 10 y 500 caracteres.");
+			setErrorMessage("La descripción debe tener entre 5 y 125 caracteres.");
 			event.preventDefault();
 		}
 

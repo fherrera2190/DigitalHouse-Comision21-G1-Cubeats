@@ -17,6 +17,6 @@ module.exports = [
 		.withMessage("Precio debe ser un número positivo."),
 
 	check("description")
-		.isLength({ min: 10, max: 500 })
-		.withMessage("La descripción tener entre 10 y 500 caracteres."),
+		.isLength({ min: 5, max: 125 })
+		.withMessage("La descripción tener entre 5 y 125 caracteres."),
 ];

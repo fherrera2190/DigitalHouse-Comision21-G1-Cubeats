@@ -30,7 +30,7 @@ module.exports = async (req, res) => {
 		if (array.includes(id)) {
 			return res
 				.status(200)
-				.json({ message: "Ya exite este producto en tu carrito" });
+				.json({ ok: false, message: "Ya exite este producto en tu carrito" });
 		} else {
 			req.session.cart.products.push(newProduct);
 
@@ -46,7 +46,7 @@ module.exports = async (req, res) => {
 		return res.status(200).json({
 			ok: true,
 			data: req.session.cart,
-			msg: "Producto agregado exitosamente",
+			msg: "Producto agregado exitosamente.",
 		});
 	} catch (error) {
 		console.log(error);

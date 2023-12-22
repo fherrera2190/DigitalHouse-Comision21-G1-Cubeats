@@ -1,10 +1,10 @@
 const $ = (id) => document.getElementById(id);
 
 const expresiones = {
-	firs_name: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']{5,50}$/,
-	last_name: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']{5,50}$/,
+	firs_name: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']{3,50}$/,
+	last_name: /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s']{3,50}$/,
 	description:
-		/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s\.,!?¿¡@#$%^&*()_+-=<>;:'"[\]{}|\\/]{20,500}$/,
+		/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ0-9\s\.,!?¿¡@#$%^&*()_+-=<>;:'"[\]{}|\\/]{5,125}$/,
 };
 const validFormatImage = ["image/png", "image/jpg", "image/jpeg"];
 window.addEventListener("load", function () {

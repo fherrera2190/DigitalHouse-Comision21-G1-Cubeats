@@ -152,3 +152,12 @@ async function removeItemToCart(id) {
 	getCart();
 	console.log(result);
 }
+
+async function clearCart() {
+	const response = await fetch(`/api/carts/`, {
+	  method: "delete",
+	});
+	const result = await response.json();
+	getCart();
+  }
+  

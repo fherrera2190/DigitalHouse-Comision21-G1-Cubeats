@@ -46,8 +46,10 @@ module.exports = async (req, res) => {
 		});
 	}
 	if (userFind) {
+		const categories = await db.Category.findAll();
 		return res.render("profile", {
 			products,
+			categories,
 			userDatos,
 		});
 	}

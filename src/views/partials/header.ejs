@@ -78,6 +78,11 @@
 
 					<% } else if (locals.userLogged.role === 2) { %>
 					<a
+						href="/users/profile/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mi perfil</a
+					>
+					<a
 						href="/users/profile/myData/<%= locals.userLogged.username %>"
 						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
 						>Mis datos</a

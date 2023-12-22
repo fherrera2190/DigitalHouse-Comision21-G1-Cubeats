@@ -8,7 +8,7 @@
 		<%- include("./partials/header") %>
 		<main class="flex-1 grow">
 			<article
-				class="flex flex-col gap-8 py-12 px-4 md:px-14 container mx-auto"
+				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
 			>
 				<% if (locals.userLogged && locals.userLogged.role === 3) { %>
 				<div class="flex flex-col gap-7">
@@ -25,6 +25,11 @@
 						</a>
 					</div>
 					<hr class="flex-1 border border-zinc-900 w-full" />
+					<% if (products && products.length > 0) { %> <% } else { %>
+					<p class="font-normal text-gray-300">
+						No has agregado ningún track a tu colección.
+					</p>
+					<% } %>
 				</div>
 				<div
 					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"
@@ -37,6 +42,12 @@
 						Todas mis compras
 					</p>
 					<hr class="flex-1 border border-zinc-900 w-full" />
+					<% if (products && products.length > 0) { %> <% } else { %>
+					<p class="font-normal text-gray-300">
+						Aún no has comprado ningún track.
+					</p>
+
+					<% } %>
 				</div>
 				<div
 					class="flex flex-col items-start gap-7 font-semibold text-zinc-400"

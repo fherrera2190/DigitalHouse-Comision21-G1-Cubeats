@@ -135,8 +135,8 @@ async function getCart() {
 		<hr class="flex-1 border border-zinc-900 w-full" />`;
 		if (checkoutButton) {
 			checkoutButton.disabled = true;
-			checkoutButton.classList.add("bg-zinc-800");
-			checkoutButton.classList.add("text-zinc-700");
+			checkoutButton.classList.add("bg-zinc-700");
+			checkoutButton.classList.add("text-zinc-500");
 		}
 	}
 }
@@ -155,9 +155,8 @@ async function removeItemToCart(id) {
 
 async function clearCart() {
 	const response = await fetch(`/api/carts/`, {
-	  method: "delete",
+		method: "delete",
 	});
 	const result = await response.json();
 	getCart();
-  }
-  
+}

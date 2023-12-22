@@ -94,10 +94,12 @@ async function getCart() {
 			checkoutButton.disabled = false;
 		}
 	} else {
-		container.innerHTML += `<p class="text-xl">No hay productos en tu carrito</p>
+		container.innerHTML += `<p class="text-lg font-normal">No hay productos en tu carrito.</p>
 		<hr class="flex-1 border border-zinc-900 w-full" />`;
 		if (checkoutButton) {
 			checkoutButton.disabled = true;
+			checkoutButton.classList.add("bg-zinc-800");
+			checkoutButton.classList.add("text-zinc-700");
 		}
 	}
 }

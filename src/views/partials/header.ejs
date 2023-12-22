@@ -1,90 +1,148 @@
 <div class="sticky top-0 bg-zinc-950 z-50">
-  <header class="py-2 px-4 md:px-14 container flex items-center justify-between mx-auto">
-    <a href="/" class="flex gap-2 items-center font-normal">
-      <img src="/img/logotransparente.svg" alt="" class="w-10 md:w-5" />
-      <p class="text-xl hidden sm:inline-block">Cubeats</p>
-    </a>
-    <div class="flex gap-3 items-center">
-      <% if (locals.userLogged) { %>
-      <div class="flex gap-1 items-center relative">
+	<header
+		class="py-2 px-4 md:px-14 container flex items-center justify-between mx-auto"
+	>
+		<a href="/" class="flex gap-2 items-center font-normal">
+			<img src="/img/logotransparente.svg" alt="" class="w-10 md:w-5" />
+			<p class="text-xl hidden sm:inline-block">Cubeats</p>
+		</a>
+		<div class="flex gap-3 items-center">
+			<% if (locals.userLogged) { %>
+			<div class="flex gap-1 items-center relative">
+				<a
+					id="cartvisi"
+					href="/cart"
+					class="hidden gap-2 py-3 px-4 rounded-sm transition-all ease-in-out bg-zinc-800 focus:bg-zinc-800 font-semibold text-white"
+				>
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						class="fill-white"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M2 4H4.80701L6.06367 7.35103L9.06367 15.3508L9.30701 15.9997H10H18H18.693L18.9363 15.3508L21.9363 7.35103L22.443 5.9999H21H7.69299L6.43633 2.64887L6.19299 2H5.5H2V4ZM10.693 13.9997L8.44301 7.9999H19.557L17.307 13.9997H10.693ZM8 20C8 18.8954 8.89543 18 10 18C11.1046 18 12 18.8954 12 20C12 21.1046 11.1046 22 10 22C8.89543 22 8 21.1046 8 20ZM16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20Z"
+						></path>
+					</svg>
+					<p id="cartQuantity" class="cartQua">0</p>
+				</a>
 
-        <% if (locals.cart&& locals.cart.products>0) { %>
+				<button
+					id="dropdownDefaultButton"
+					type="button"
+					data-dropdown-toggle="dropdown"
+					class="inline-block p-3 rounded-sm hover:bg-zinc-800 focus:bg-zinc-800 transition-all ease-in-out"
+				>
+					<svg
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						xmlns="http://www.w3.org/2000/svg"
+						fill="var(--pds-color-white, #FFF)"
+						class="src-mainapp-SignedInNav-___NavSecondaryItems__burgerIcon___ZlH-P"
+						aria-label="Navigation menu"
+					>
+						<path
+							fill-rule="evenodd"
+							clip-rule="evenodd"
+							d="M2 4H22V6H2V4ZM2 11H22V13H2V11ZM22 18H2V20H22V18Z"
+						></path>
+					</svg>
+				</button>
 
-        <a href="/cart" class="hidden gap-2 py-3 px-4 rounded-sm transition-all ease-in-out hover:bg-zinc-800 focus:bg-zinc-800 font-semibold">
-          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="fill-white">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4H4.80701L6.06367 7.35103L9.06367 15.3508L9.30701 15.9997H10H18H18.693L18.9363 15.3508L21.9363 7.35103L22.443 5.9999H21H7.69299L6.43633 2.64887L6.19299 2H5.5H2V4ZM10.693 13.9997L8.44301 7.9999H19.557L17.307 13.9997H10.693ZM8 20C8 18.8954 8.89543 18 10 18C11.1046 18 12 18.8954 12 20C12 21.1046 11.1046 22 10 22C8.89543 22 8 21.1046 8 20ZM16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20Z"></path>
-          </svg>
-          <p></p>
-        </a>
-        <% }else{ %>
-			
-			<a href="/cart" class="flex gap-2 py-3 px-4 rounded-sm transition-all ease-in-out hover:bg-zinc-800 focus:bg-zinc-800 font-semibold">
-				<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="fill-white">
-				  <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4H4.80701L6.06367 7.35103L9.06367 15.3508L9.30701 15.9997H10H18H18.693L18.9363 15.3508L21.9363 7.35103L22.443 5.9999H21H7.69299L6.43633 2.64887L6.19299 2H5.5H2V4ZM10.693 13.9997L8.44301 7.9999H19.557L17.307 13.9997H10.693ZM8 20C8 18.8954 8.89543 18 10 18C11.1046 18 12 18.8954 12 20C12 21.1046 11.1046 22 10 22C8.89543 22 8 21.1046 8 20ZM16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20Z"></path>
-				</svg>
-				<p></p>
-			  </a>
-        <% } %>
+				<!-- Dropdown menu -->
+				<div
+					id="dropdown"
+					class="z-[100] hidden rounded-lg bg-zinc-900 shadow-2xl absolute left-auto right-px min-h-full top-full mt-2 w-64 flex-col py-4 px-4 gap-1 text-base"
+				>
+					<button id="toggleDropdown"></button>
+					<% if (locals.userLogged.role === 3) { %>
+					<a
+						href="/users/profile/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mi perfil</a
+					>
+					<a
+						href="/users/profile/myData/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis datos</a
+					>
+					<a
+						href="/users/profile/myTracks/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis track's</a
+					>
 
+					<% } else if (locals.userLogged.role === 2) { %>
+					<a
+						href="/users/profile/myData/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis datos</a
+					>
+					<a
+						href="/users/profile/myTracks/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis compras</a
+					>
 
-        <button id="dropdownDefaultButton" type="button" data-dropdown-toggle="dropdown" class="inline-block p-3 rounded-sm hover:bg-zinc-800 focus:bg-zinc-800 transition-all ease-in-out">
-          <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="var(--pds-color-white, #FFF)" class="src-mainapp-SignedInNav-___NavSecondaryItems__burgerIcon___ZlH-P" aria-label="Navigation menu">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 4H22V6H2V4ZM2 11H22V13H2V11ZM22 18H2V20H22V18Z"></path>
-          </svg>
-        </button>
+					<% } else if (locals.userLogged.role === 1) { %>
+					<a
+						href="/users/profile/myData/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis datos</a
+					>
+					<a
+						href="/users/profile/myTracks/<%= locals.userLogged.username %>"
+						class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg"
+						>Mis track's</a
+					>
+					<% } %>
+					<a
+						href="/users/logout"
+						class="flex justify-between w-full items-center"
+					>
+						<span
+							class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg text-base text-red-400 w-full"
+							>Cerrar sesión</span
+						>
+					</a>
+				</div>
+				<script>
+					document.addEventListener("DOMContentLoaded", function () {
+						const button = document.getElementById("dropdownDefaultButton");
+						const exit = document.getElementById("toggleDropdown");
+						const menu = document.getElementById("dropdown");
 
-        <!-- Dropdown menu -->
-        <div id="dropdown" class="z-[100] hidden rounded-lg bg-zinc-900 shadow-2xl absolute left-auto right-px min-h-full top-full mt-2 w-64 flex-col py-4 px-4 gap-1 text-base">
-          <button id="toggleDropdown"></button>
-          <% if (locals.userLogged.role === 3) { %>
-          <a href="/users/profile/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mi perfil</a>
-          <a href="/users/profile/myData/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis datos</a>
-          <a href="/users/profile/myTracks/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis track's</a>
+						button.addEventListener("click", function (event) {
+							event.stopPropagation();
+							menu.classList.toggle("hidden");
+							menu.classList.add("flex");
+						});
 
-          <% } else if (locals.userLogged.role === 2) { %>
-          <a href="/users/profile/myData/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis datos</a>
-          <a href="/users/profile/myTracks/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis compras</a>
+						exit.addEventListener("click", function () {
+							menu.classList.add("hidden");
+						});
 
-          <% } else if (locals.userLogged.role === 1) { %>
-          <a href="/users/profile/myData/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis datos</a>
-          <a href="/users/profile/myTracks/<%= locals.userLogged.username %>" class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg">Mis track's</a>
-          <% } %>
-          <a href="/users/logout" class="flex justify-between w-full items-center">
-            <span class="inline-block py-2 px-3 hover:bg-zinc-800 transition-all ease-in-out rounded-lg text-base text-red-400 w-full">Cerrar sesión</span>
-          </a>
-        </div>
-        <script>
-          document.addEventListener("DOMContentLoaded", function() {
-            const button = document.getElementById("dropdownDefaultButton");
-            const exit = document.getElementById("toggleDropdown");
-            const menu = document.getElementById("dropdown");
+						document.addEventListener("click", function (event) {
+							const isClickInsideDropdown = menu.contains(event.target);
+							const isClickOnButton = button.contains(event.target);
 
-            button.addEventListener("click", function(event) {
-              event.stopPropagation();
-              menu.classList.toggle("hidden");
-              menu.classList.add("flex");
-            });
-
-            exit.addEventListener("click", function() {
-              menu.classList.add("hidden");
-            });
-
-            document.addEventListener("click", function(event) {
-              const isClickInsideDropdown = menu.contains(event.target);
-              const isClickOnButton = button.contains(event.target);
-
-              if (!isClickInsideDropdown && !isClickOnButton) {
-                menu.classList.add("hidden");
-              }
-            });
-          });
-        </script>
-      </div>
-      <% } else { %>
-      <a href="/users/login" class="py-3 px-3 rounded-sm">Iniciar sesión</a>
-      <a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm">Crear cuenta
-      </a>
-      <% } %>
-    </div>
-  </header>
+							if (!isClickInsideDropdown && !isClickOnButton) {
+								menu.classList.add("hidden");
+							}
+						});
+					});
+				</script>
+			</div>
+			<% } else { %>
+			<a href="/users/login" class="py-3 px-3 rounded-sm">Iniciar sesión</a>
+			<a href="/users/register" class="py-3 px-3 bg-blue-600 rounded-sm"
+				>Crear cuenta
+			</a>
+			<% } %>
+		</div>
+	</header>
 </div>

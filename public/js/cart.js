@@ -1,35 +1,62 @@
 window.addEventListener("load", function () {
-  getCart();
-  getTotal();
+	getCart();
+	getTotal();
 });
 
 async function addItemToCart(product) {
-  console.log(product);
-  const response = await fetch("http://localhost:3000/api/carts/", {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      product: +product,
-    }),
-  });
-  const result = await response.json();
-  console.log(result.data.mesagge);
+	try {
+		const response = await fetch("http://localhost:3000/api/carts/", {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				product: +product,
+			}),
+		});
+		const result = await response.json();
+		console.log(result);
+		console.log(result.data.message);
+
+		const cartQua = document.getElementById("cartQua");
+		if (cartQua) {
+			cartQua.innerHTML = result.data.products.length;
+		}
+
+		getCart();
+	} catch (error) {
+		console.error("Error adding item to cart:", error);
+	}
 }
+
 async function getCart() {
-  const response = await fetch("http://localhost:3000/api/carts/");
-  const result = await response.json();
-  const container = document.getElementById("cartContainer");
-  const total = document.getElementById("total");
-  container.innerHTML=""
-  console.log(result);
-  total.innerHTML = result.data.total;
+	const response = await fetch("http://localhost:3000/api/carts/");
+	const result = await response.json();
+	const container = document.getElementById("cartContainer");
+	const total = document.getElementById("total");
+	const cartQuantity = document.getElementById("cartQuantity");
+	const cartvisi = document.getElementById("cartvisi");
+	const checkoutButton = document.getElementById("checkoutButton");
 
-  if(result.data.products.length >0){
+	if (cartQuantity) {
+		const quantity = result.data.products.length;
+		cartQuantity.innerHTML = quantity;
 
-  result.data.products.forEach((element) => {
-    container.innerHTML += `<div class="flex w-full justify-between">
+		if (quantity > 0) {
+			cartvisi.classList.remove("hidden"); // Mostrar el carrito
+			cartvisi.classList.add("flex");
+		} else {
+			cartvisi.classList.remove("flex");
+			cartvisi.classList.add("hidden"); // Mostrar el carrito
+		}
+	}
+	container.innerHTML = "";
+
+	total.innerHTML = `$${result.data.total}`;
+
+	if (result.data.products.length > 0) {
+		result.data.products.forEach((element) => {
+			container.innerHTML += `<div class="flex w-full justify-between">
   <div class="flex gap-4">
     <img
       src="/img/products/${element.image}"
@@ -41,15 +68,15 @@ async function getCart() {
       <p class="text-zinc-400 font-normal">${element.username}</p>
     </div>
   </div>
-  <div class="flex gap-2">
-    <p class="text-lg text-zinc-400">$${element.price}</p>
+  <div class="flex gap-2 items-start">
+    <p class="text-lg text-white">$${element.price}</p>
     <button onclick="removeItemToCart(${element.id})">
     <svg
         width="23"
         height="23"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
-        class="fill-zinc-400"
+        class="fill-white"
         data-testid="remove-track"
       >
         <path
@@ -62,19 +89,27 @@ async function getCart() {
   </div>
 </div>
 <hr class="flex-1 border border-zinc-900 w-full" />`;
-  });}else{
-    container.innerHTML += `<p>No hay productos en tu carrito</p>`
-  }
+		});
+		if (checkoutButton) {
+			checkoutButton.disabled = false;
+		}
+	} else {
+		container.innerHTML += `<p class="text-xl">No hay productos en tu carrito</p>
+		<hr class="flex-1 border border-zinc-900 w-full" />`;
+		if (checkoutButton) {
+			checkoutButton.disabled = true;
+		}
+	}
 }
 
 async function removeItemToCart(id) {
-  const response = await fetch(
-    `http://localhost:3000/api/carts/item?product=${id}`,
-    {
-      method: "delete",
-    }
-  );
-  const result = await response.json();
-  getCart();
-  console.log(result);
+	const response = await fetch(
+		`http://localhost:3000/api/carts/item?product=${id}`,
+		{
+			method: "delete",
+		}
+	);
+	const result = await response.json();
+	getCart();
+	console.log(result);
 }

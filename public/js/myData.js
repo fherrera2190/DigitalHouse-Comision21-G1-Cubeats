@@ -37,11 +37,11 @@ window.addEventListener("load", function () {
 			divError.classList.add("flex");
 
 			if (!expFirstName)
-				inputError.innerHTML += `<p>Debe ingresar un nuevo nombre valido.</p>`;
+				inputError.innerHTML += `<p>Debe ingresar un nombre, que contenga solo letras.</p>`;
 			if (!expLastName)
-				inputError.innerHTML += `<p>Debe ingresar un nuevo Apellido valido.</p>`;
+				inputError.innerHTML += `<p>Debe ingresar un apellido, que contenga solo letras.</p>`;
 			if (!expDescription)
-				inputError.innerHTML += `<p>Debe ingresar una nueva descripción valida.</p>`;
+				inputError.innerHTML += `<p>Debe ingresar una descripción, que tenga entre 20 y 500 caracteres.</p>`;
 			if (expImage)
 				inputError.innerHTML += `<p>Debe ingresar un formato valido de imagen JPG, JPEG,PNG.`;
 		}

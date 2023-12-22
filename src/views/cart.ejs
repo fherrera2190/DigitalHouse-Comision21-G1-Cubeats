@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-<%- include('./partials/head', { title : 'Cubeats' }) %>
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
 
-<body class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen">
-  <%- include("./partials/header") %>
-  <main class="flex-1 grow">
-    <article class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start">
-      <div class="flex flex-col items-start gap-24 max-w-2xl w-full font-semibold xl:text-start">
-        <p class="text-5xl font-bold pt-14">Pagar</p>
-        <div id="cartContainer" class="flex flex-col gap-6 w-full items-start font-medium">
-        </div>
-        <div class="flex justify-between text-2xl w-full">
-          <p>Subtotal USD</p>
-          $<p id="total">0</p>
-        </div>
-        <button type="submit" class="py-3 bg-white rounded-sm px-4 text-black self-end my-12">
-          Continuar
-        </button>
-      </div>
-    </article>
-  </main>
-  <%- include('./partials/footer.ejs')%>
-  <script src="https://unpkg.com/wavesurfer.js"></script>
-  <script src="/js/cart.js"></script>
-</body>
+	<body
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<form
+				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start"
+			>
+				<div
+					class="flex flex-col items-start gap-24 max-w-2xl w-full font-semibold xl:text-start"
+				>
+					<p class="text-5xl font-bold pt-14">Pagar</p>
+					<div
+						id="cartContainer"
+						class="flex flex-col gap-6 w-full items-start font-medium"
+					></div>
 
+					<div class="flex justify-between text-2xl w-full">
+						<p>Subtotal</p>
+
+						<p id="total"></p>
+					</div>
+					<button
+						type="submit"
+						id="checkoutButton"
+						class="py-3 bg-white rounded-sm px-4 text-black self-end my-12"
+					>
+						Continuar
+					</button>
+				</div>
+			</form>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script src="/js/cart.js"></script>
+	</body>
 </html>

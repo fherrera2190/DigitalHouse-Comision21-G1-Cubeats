@@ -1762,6 +1762,10 @@ video {
   fill: #09090b;
 }
 
+.fill-zinc-50{
+  fill: #fafafa;
+}
+
 .object-contain{
   -o-object-fit: contain;
      object-fit: contain;
@@ -2229,6 +2233,11 @@ video {
   color: rgb(9 9 11 / var(--tw-text-opacity));
 }
 
+.text-zinc-50{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -2460,9 +2469,26 @@ video {
   background-color: rgb(24 24 27 / var(--tw-bg-opacity));
 }
 
+.hover\:fill-red-500:hover{
+  fill: #ef4444;
+}
+
+.hover\:fill-zinc-500:hover{
+  fill: #71717a;
+}
+
+.hover\:fill-zinc-50:hover{
+  fill: #fafafa;
+}
+
 .hover\:text-zinc-200:hover{
   --tw-text-opacity: 1;
   color: rgb(228 228 231 / var(--tw-text-opacity));
+}
+
+.hover\:text-zinc-50:hover{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover{
@@ -2484,6 +2510,16 @@ video {
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
 }
 
+.focus\:text-zinc-300:focus{
+  --tw-text-opacity: 1;
+  color: rgb(212 212 216 / var(--tw-text-opacity));
+}
+
+.focus\:text-zinc-50:focus{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
+}
+
 .focus\:outline-none:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2492,6 +2528,11 @@ video {
 .focus\:ring-blue-500:focus{
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+}
+
+.active\:text-zinc-50:active{
+  --tw-text-opacity: 1;
+  color: rgb(250 250 250 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:block{

@@ -64,12 +64,12 @@ async function getCart() {
       class="w-14 h-14 object-cover block group-hover:hidden transition-all ease-in-out"
     />
     <div class="flex flex-col text-start">
-      <p class="text-lg">${element.name}</p>
-      <p class="text-zinc-400 font-normal">${element.username}</p>
+      <p class="text-base">${element.name}</p>
+      <p class="text-zinc-400 text-sm font-normal">${element.username}</p>
     </div>
   </div>
   <div class="flex gap-2 items-start">
-    <p class="text-lg text-white">$${element.price}</p>
+    <p class="text-base text-white">$${element.price}</p>
     <button onclick="removeItemToCart(${element.id})">
     <svg
         width="23"
@@ -94,7 +94,7 @@ async function getCart() {
 			checkoutButton.disabled = false;
 		}
 	} else {
-		container.innerHTML += `<p class="text-lg font-normal">No hay productos en tu carrito.</p>
+		container.innerHTML += `<p class="text-base font-normal">No hay productos en tu carrito.</p>
 		<hr class="flex-1 border border-zinc-900 w-full" />`;
 		if (checkoutButton) {
 			checkoutButton.disabled = true;

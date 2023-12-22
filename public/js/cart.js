@@ -25,16 +25,19 @@ async function addItemToCart(product) {
 		if (result.ok) {
 			Toastify({
 				text: result.msg,
-				duration: 3000,
+				duration: 1500,
 				newWindow: true,
 				close: false,
 				gravity: "top", // `top` or `bottom`
 				position: "right", // `left`, `center` or `right`
 				stopOnFocus: true, // Prevents dismissing of toast on hover
 				style: {
-					padding: "1em",
-					background: "rgb(24 24 27)",
+					padding: "0.90em",
+					background: "#36ba6f",
+					"box-shadow": " 0 25px 50px -12px rgb(0 0 0 / 0.25)",
 					color: "white",
+					"font-size": "0.90rem",
+					"font-weight": "400",
 				},
 				onClick: function () {}, // Callback after click
 			}).showToast();
@@ -44,16 +47,19 @@ async function addItemToCart(product) {
 	} catch (error) {
 		Toastify({
 			text: "Ya existe este producto en tu carrito.",
-			duration: 3000,
+			duration: 1500,
 			newWindow: true,
 			close: false,
 			gravity: "top", // `top` or `bottom`
 			position: "right", // `left`, `center` or `right`
 			stopOnFocus: true, // Prevents dismissing of toast on hover
 			style: {
-				padding: "1em",
-				background: "rgb(24 24 27)",
+				padding: "0.90em",
+				background: "#ba3636",
+				"box-shadow": " 0 25px 50px -12px rgb(0 0 0 / 0.25)",
 				color: "white",
+				"font-size": "0.90rem",
+				"font-weight": "400",
 			},
 			onClick: function () {}, // Callback after click
 		}).showToast();

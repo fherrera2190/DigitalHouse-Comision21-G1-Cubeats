@@ -39,13 +39,13 @@
 									id="previewImage"
 									src="/img/products/<%= image || 'product.jpg' %>"
 									alt="Image-beat"
-									class="rounded-full w-60 h-60 object-cover"
+									class="rounded-full w-60 h-60 object-cover z-[200]"
 								/>
 								<img
 									id="backgroundImage"
 									src="/img/products/<%= image || 'product.jpg' %>"
 									alt="backgroundImage"
-									class="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover blur-3xl opacity-5 pointer-events-none"
+									class="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover blur-3xl opacity-10 pointer-events-none"
 								/>
 								<input
 									type="file"
@@ -123,6 +123,7 @@
 								id="description"
 								cols="20"
 								rows="5"
+								placeholder="Ingrese alguna descripción."
 								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
 							>
 <%= description %></textarea

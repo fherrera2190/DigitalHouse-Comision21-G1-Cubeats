@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+
+	<body
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<div
+				class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto justify-start"
+			>
+				<div
+					class="flex flex-col items-start gap-12 max-w-2xl w-full font-semibold xl:text-start"
+				>
+					<p class="text-4xl font-bold py-14">Pagar</p>
+					<div
+						id="cartContainer"
+						class="flex flex-col gap-6 w-full items-start font-medium"
+					></div>
+
+					<div class="flex justify-between text-2xl w-full">
+						<p>Subtotal</p>
+						<p id="total"></p>
+					</div>
+					<div class="flex w-full justify-between">
+						<button
+							type="submit"
+							onclick="clearCart()"
+							class="py-3 bg-zinc-700 rounded-sm px-4 text-zinc-500 self-end my-8 font-bold hover:bg-zinc-500 hover:text-zinc-400 transition-all ease-in-out"
+						>
+							Vaciar carrito
+						</button>
+						<button
+							type="submit"
+							id="checkoutButton"
+							class="py-3 bg-zinc-300 rounded-sm px-4 text-black self-end my-8"
+						>
+							Continuar
+						</button>
+					</div>
+				</div>
+			</div>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script src="/js/cart.js"></script>
+	</body>
+</html>

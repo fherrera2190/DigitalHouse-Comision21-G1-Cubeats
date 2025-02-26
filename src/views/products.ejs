@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+
+	<body
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<article
+				class="flex flex-col gap-7 py-2 px-4 md:py-6 md:px-14 container mx-auto"
+			>
+				<div>
+					<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+						Pistas
+					</p>
+				</div>
+				<form
+					action="/products/search"
+					method="GET"
+					id="searchForm"
+					class="flex flex-col gap-4 w-full"
+				>
+					<div class="flex items-center relative">
+						<input
+							type="text"
+							id="search"
+							placeholder="Busca música, géneros o productores"
+							class="pl-12 py-4 bg-zinc-900 flex justify-center items-center gap-4 w-full z-0 truncate"
+							name="keywords"
+						/>
+
+						<i
+							class="fa-solid fa-magnifying-glass absolute left-4 text-zinc-200 text-xl z-40"
+						></i>
+					</div>
+					<div
+						class="hidden items-center gap-4 py-5 bg-orange-600 rounded-sm pl-5 text-black font-normal"
+						id="searchError"
+					>
+						<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+						<span id="input-error" class="error" aria-live="polite">
+							Por favor, ingresa algo en el campo de búsqueda.
+						</span>
+					</div>
+				</form>
+
+				<div
+					class="flex flex-col items-start gap-7 font-semibold text-zinc-300"
+				>
+					<hr class="flex-1 border border-zinc-900 w-full" />
+					<div
+						class="flex flex-col sm:gap-4 justify-between w-full text-zinc-300"
+					>
+						<div class="items-center hidden sm:flex gap-4">
+							<button id="openCategory">
+								<svg
+									width="24"
+									height="24"
+									class="fill-zinc-300 hover:fill-zinc-50 transition-all ease-in-out"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M9 5C10.3062 5 11.4175 5.83481 11.8293 7H20V9H11.8293C11.4175 10.1652 10.3062 11 9 11C7.69378 11 6.58254 10.1652 6.17071 9H4V7H6.17071C6.58254 5.83481 7.69378 5 9 5ZM9 9C9.55228 9 10 8.55228 10 8C10 7.44772 9.55228 7 9 7C8.44772 7 8 7.44772 8 8C8 8.55228 8.44772 9 9 9Z"
+									></path>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M15 19C13.6938 19 12.5825 18.1652 12.1707 17L4 17L4 15L12.1707 15C12.5825 13.8348 13.6938 13 15 13C16.3062 13 17.4175 13.8348 17.8293 15L20 15L20 17L17.8293 17C17.4175 18.1652 16.3062 19 15 19ZM15 15C14.4477 15 14 15.4477 14 16C14 16.5523 14.4477 17 15 17C15.5523 17 16 16.5523 16 16C16 15.4477 15.5523 15 15 15Z"
+									></path>
+								</svg>
+							</button>
+							<button id="buttonTwo" class="hidden">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									class="fill-zinc-50"
+								>
+									<path
+										fill-rule="evenodd"
+										clip-rule="evenodd"
+										d="M11.2672 7.84707L5 14.6417L6.47013 15.9977L12.0022 10L17.5343 15.9977L19.0045 14.6417L12.7373 7.84707L12.0022 7.05013L11.2672 7.84707Z"
+									></path>
+								</svg>
+							</button>
+							<button
+								id="genreCategory"
+								class="hover:text-zinc-50 transition-all ease-in-out"
+							>
+								Géneros
+							</button>
+							<!-- <p class="hover:text-zinc-50 transition-all ease-in-out">
+								Duración
+							</p> -->
+						</div>
+						<div id="dropCategory" class="items-center gap-1 hidden">
+							<% categories.forEach(categorie => { %>
+							<a
+								href="/products/search?keywords=<%= categorie.name.toLowerCase() %>"
+								class="bg-zinc-900 hover:bg-zinc-800 transition-all ease-in-out py-3 px-4"
+								><%= categorie.name %></a
+							>
+
+							<% }) %>
+						</div>
+						<script>
+							document.addEventListener("DOMContentLoaded", function () {
+								const button = document.getElementById("openCategory");
+								const buttonTwo = document.getElementById("buttonTwo");
+								const menu = document.getElementById("dropCategory");
+								const buttonGenre = document.getElementById("genreCategory");
+
+								button.addEventListener("click", function (event) {
+									event.stopPropagation();
+									toggleMenu();
+								});
+
+								buttonTwo.addEventListener("click", function () {
+									toggleMenu();
+								});
+
+								buttonGenre.addEventListener("click", function (event) {
+									event.stopPropagation();
+									toggleMenu();
+								});
+
+								function toggleMenu() {
+									if (menu.classList.contains("hidden")) {
+										// Si el menú está oculto, mostrarlo
+										menu.classList.remove("hidden");
+										menu.classList.add("flex");
+										button.classList.add("hidden");
+										buttonTwo.classList.remove("hidden");
+										buttonGenre.classList.add("text-zinc-50");
+									} else {
+										// Si el menú está visible, ocultarlo
+										menu.classList.remove("flex");
+										menu.classList.add("hidden");
+										buttonTwo.classList.add("hidden");
+										button.classList.remove("hidden");
+										buttonGenre.classList.remove("text-zinc-50");
+									}
+								}
+							});
+						</script>
+					</div>
+				</div>
+			</article>
+			<article
+				class="flex flex-col text-center items-center justify-center gap-5 px-4 py-7 md:py-6 sm:px-14 container mx-auto"
+			>
+				<div class="flex flex-col gap-4 text-zinc-300 w-full relative">
+					<%- include("./partials/cardsProduct") %>
+				</div>
+			</article>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		<script
+			type="text/javascript"
+			src="https://cdn.jsdelivr.net/npm/toastify-js"
+		></script>
+		<script src="/js/searchValidator.js"></script>
+		<script src="/js/cart.js"></script>
+		<script src="/js/likes.js"></script>
+	</body>
+</html>
+<!-- <div
+					id="youSecure-5"
+					class="items-center justify-center z-[100] rounded-lg bg-zinc-900 shadow-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-48 w-80 flex-col px-8 gap-7 py-4 text-white font-medium text-base flex"
+				>
+					<div class="flex flex-col gap-2">
+						<p>¿Estás seguro de que deseas eliminar este track?</p>
+					
+					</div>
+				</div> -->

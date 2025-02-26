@@ -1,0 +1,33 @@
+[
+    {
+        "categoryId:" : 1,
+        "name" : "Rock",
+        "image" : null
+    },
+    {
+        "categoryId:" : 2,
+        "name" : "Jazz",
+        "image" : null
+    },
+    {
+        "categoryId:" : 3,
+        "name" : "Remix",
+        "image" : null
+    },
+    {
+        "categoryId:" : 4,
+        "name" : "Cumbia",
+        "image" : null
+    },
+    {
+        "categoryId:" : 5,
+        "name" : "Clasico",
+        "image" : null
+    },
+    {
+        "categoryId:" : 6,
+        "name" : "Electro",
+        "image" : null
+    }
+    
+]

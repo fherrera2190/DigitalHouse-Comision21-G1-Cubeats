@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'CuBeats' }) %>
+
+	<body class="admin">
+		<!-- Header -->
+		<%- include('./partials/header.ejs') %>
+		<!-- Admin body -->
+		<main id="admin__main">
+			<section class="admin-main__panel">
+				<hr />
+				<div class="admin-main__bar-menu">
+					<h1>Panel admin</h1>
+					<form action="/search" method="GET" class="header-search">
+						<input
+							name="keywords"
+							class="header-search__input"
+							type="text"
+							placeholder="Search product"
+						/>
+						<button type="submit" class="header-search__button">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</form>
+				</div>
+				<hr />
+				<% products.forEach(product=> { %>
+				<div class="product-info">
+					<img
+						src="/img/products/<%=product.dataValues.image ? product.dataValues.image : 'default-image.png' %>"
+						alt=""
+					/>
+					<h3 class="card__title"><%=product.dataValues.name %></h3>
+					<p class="card__description">
+						#<small><%=product.dataValues.category.dataValues.name%></small>
+					</p>
+					<div class="admin-main__menu">
+						<a href="/products/edit/<%=product.dataValues.id %>"
+							><i class="fa-solid fa-pen-to-square"></i
+						></a>
+						<form
+							action="/products/delete/<%=product.dataValues.id %>?_method=DELETE"
+							method="post"
+						>
+							<button class="button-delete" type="submit">
+								<i class="fa-solid fa-trash"></i>
+							</button>
+						</form>
+					</div>
+				</div>
+				<% }) %>
+			</section>
+		</main>
+		<!-- footer -->
+		<%- include('./partials/footer.ejs') %> <%-
+		include('./partials//scripts.ejs') %>
+	</body>
+</html>

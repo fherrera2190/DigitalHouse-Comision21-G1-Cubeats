@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+	<%- include('./partials/head', { title : 'Cubeats' }) %>
+
+	<body
+		class="font-Manrope text-base bg-zinc-950 text-white font-medium flex flex-col min-h-screen"
+	>
+		<%- include("./partials/header") %>
+		<main class="flex-1 grow">
+			<article
+				class="flex flex-col gap-12 py-12 px-4 md:px-14 container mx-auto"
+			>
+				<div class="flex flex-col gap-7">
+					<div class="flex flex-col gap-7">
+						<div class="flex items-center gap-7">
+							<p class="text-xl font-medium pb-1 border-b-2 border-white w-fit">
+								Edita tus track's
+							</p>
+							<a
+								href="/users/profile/myTracks/<%= locals.userLogged.username %>"
+								class="font-medium pb-1 w-fit text-zinc-400 hover:text-zinc-200 text-lg"
+							>
+								Track's
+							</a>
+						</div>
+						<hr class="flex-1 border border-zinc-900 w-full" />
+					</div>
+					<form
+						action="/products/edit/<%= id %>?_method=PUT"
+						method="POST"
+						id="formEditProduct"
+						enctype="multipart/form-data"
+						class="flex flex-col lg:flex-row justify-around px-7 py-12 items-center gap-12 rounded-md font-medium"
+					>
+						<!-- invert -->
+						<div class="flex flex-col items-center gap-12">
+							<div class="flex flex-col gap-8 items-center">
+								<img
+									id="previewImage"
+									src="/img/products/<%= image || 'product.jpg' %>"
+									alt="Image-beat"
+									class="rounded-full w-60 h-60 object-cover z-[200]"
+								/>
+								<img
+									id="backgroundImage"
+									src="/img/products/<%= image || 'product.jpg' %>"
+									alt="backgroundImage"
+									class="absolute top-0 left-0 right-0 bottom-0 w-full h-full object-cover blur-3xl opacity-10 pointer-events-none"
+								/>
+								<input
+									type="file"
+									name="image"
+									id="image"
+									class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
+								/>
+								<script>
+									document
+										.getElementById("image")
+										.addEventListener("input", previewImage);
+
+									function previewImage() {
+										var input = document.getElementById("image");
+										var preview = document.getElementById("previewImage");
+										const preview2 = document.getElementById("backgroundImage");
+
+										if (input.files && input.files[0]) {
+											var reader = new FileReader();
+
+											reader.onload = function (e) {
+												preview.src = e.target.result;
+												preview2.src = e.target.result;
+											};
+
+											reader.readAsDataURL(input.files[0]);
+										}
+									}
+								</script>
+							</div>
+							<div class="flex flex-col gap-8 items-center">
+								<label for="beat">Subir beat</label>
+								<input
+									type="file"
+									name="beat"
+									id="beat"
+									class="rounded-sm placeholder:text-zinc-500 text-zinc-500 transition-all ease-in-out font-normal text-sm w-72 md:w-96"
+								/>
+							</div>
+						</div>
+						<div class="flex flex-col items-stretch w-72 md:w-96 gap-4">
+							<label for="title">Titulo</label>
+							<input
+								type="text"
+								name="title"
+								id="title"
+								value="<%= name %>"
+								placeholder="Ingresa el titulo aquí"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+							/>
+
+							<label for="category">Categoria</label>
+							<select
+								name="category"
+								id="category"
+								class="bg-zinc-800 placeholder:text-zinc-500 text-zinc-300 rounded-sm pl-4 py-4"
+							>
+								<% categories.forEach(item=> { %> <option <%= item.name ===
+								category && 'selected' %> value="<%= item.id %>"><%= item.name
+								%> <% }) %>
+							</select>
+
+							<label for="price">Precio</label>
+							<input
+								type="text"
+								name="price"
+								id="price"
+								placeholder="Ingresa el precio aquí"
+								value="<%= price %>"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+							/>
+							<label for="description">Descripción</label>
+							<textarea
+								name="description"
+								id="description"
+								cols="20"
+								rows="5"
+								placeholder="Ingrese alguna descripción."
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300 min-h-[150px] max-h-[150px] <%= locals.errors && (errors.description && 'is-invalid') %>"
+							>
+<%= description %></textarea
+							>
+							<!-- <label for="price">BPM</label>
+							<input
+								type="text"
+								name="price"
+								id="price"
+								placeholder="Ingresa el precio aquí"
+								value="<%= locals.old && (old.price && old.price ) %>"
+								class="py-4 bg-zinc-800 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-500"
+							/>
+							<label for="category">Licencia</label>
+							<select
+								name="category"
+								id="category"
+								class="bg-zinc-800 placeholder:text-zinc-500 text-zinc-500 rounded-sm pl-4 py-4"
+							>
+								<option value="" selected hidden>
+									Selecciona una categoria
+								</option>
+								<% categories.forEach(category => { %> <option
+								value="<%=category.id %>" <%=locals.old &&
+								(locals.old.category===category.name && 'selected' ) %>>
+								<%=category.name %> <% }) %>
+							</select> -->
+							<!-- invert en light -->
+							<% if (locals.errors && (errors.title || errors.price ||
+							errors.description)) { %>
+							<div
+								class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error"
+							>
+								<i class="fa-solid fa-circle-exclamation text-2xl"></i>
+								<span id="input-error" class="error" aria-live="polite">
+									<% if (errors.title) { %> <%= errors.title.msg %> <% } else if
+									(errors.price) { %> <%= errors.price.msg %> <% } else if
+									(errors.description) { %> <%= errors.description.msg %> <% }
+									%>
+								</span>
+							</div>
+							<% } %>
+							<button
+								type="submit"
+								class="p-4 bg-[#1f2937] hover:bg-slate-700 rounded-sm text-white font-semibold transition-all ease-in-out"
+							>
+								Guardar
+							</button>
+						</div>
+					</form>
+				</div>
+			</article>
+		</main>
+		<%- include('./partials/footer.ejs')%>
+		<script src="https://unpkg.com/wavesurfer.js"></script>
+		
+	</body>
+</html>

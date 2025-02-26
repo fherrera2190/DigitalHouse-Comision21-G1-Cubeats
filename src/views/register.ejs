@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include('./partials/head', { title : 'Cubeats' }) %>
+
+<body class="font-Manrope text-base bg-zinc-950 text-white font-medium">
+  <main class="grid grid-cols-1 xl:grid-cols-[1.35fr,2fr]">
+    <article class="flex flex-col text-center items-center px-4 py-6 xl:py-10 xl:px-16 container mx-auto min-h-screen justify-start z-50">
+      <form action="/users/register" method="POST" class="flex flex-col items-stretch gap-5 max-w-md w-full font-semibold xl:text-start overflow-y-hidden" id="formAdd">
+        <a href="/" class="flex gap-2 items-center font-normal self-center xl:self-start">
+          <img src="/img/logotransparente.svg" alt="" class="w-5" />
+          <p class="text-xl">Cubeats</p>
+        </a>
+        <p class="text-4xl font-bold pt-14">Crear cuenta</p>
+        <p class="text-base text-zinc-500">
+          Ya tienes una cuenta?
+          <a href="/users/login" class="text-white underline">Iniciar sesión</a>
+        </p>
+        <div class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4">
+          <i class="fa-brands fa-google"></i><a href="">Continuar con Google</a>
+        </div>
+        <!-- <div
+						class="py-3 bg-zinc-900 rounded-sm flex justify-center items-center gap-4"
+					>
+						<i class="fa-brands fa-apple text-xl"></i>
+						<a href="">Continuar con Apple</a>
+					</div> -->
+        <div class="flex items-center w-full justify-between">
+          <hr class="flex-1 border border-zinc-900" />
+          <p class="text-zinc-500 px-4">O</p>
+          <hr class="flex-1 border border-zinc-900" />
+        </div>
+
+        <% if (locals.errors && (errors.email || errors.password ||
+          errors.password2)) { %>
+        <div id="error-back" class="flex items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error">
+          <i class="fa-solid fa-circle-exclamation text-2xl"></i>
+          <span id="input-error" class="error" aria-live="polite">
+            <% if (errors.username) { %> <%= errors.username.msg %>
+            <% } else if (errors.email) { %> <%= errors.email.msg %>
+            <% } else if(errors.password) { %> <%= errors.password.msg %>
+            <% } else if(errors.password2) { %>
+            <%= errors.password2.msg %>
+            <% } %>
+          </span>
+        </div>
+        <% }else{ %>
+        <div class="hidden items-center gap-4 py-7 bg-orange-600 rounded-sm pl-5 text-black font-normal orange-error">
+          <i class="fa-solid fa-circle-exclamation text-2xl"></i>
+          <span id="input-error" class="error" aria-live="polite"> </span>
+        </div>
+        <% } %>
+
+					<input
+						type="text"
+						placeholder="Nombre de usuario"
+						id="username"
+						name="username"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.email %>"
+					/>
+					<input
+						type="email"
+						placeholder="Email"
+						id="email"
+						name="email"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.email %>"
+					/>
+					<input
+						type="password"
+						placeholder="Contraseña"
+						id="password"
+						name="password"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+						value="<%= locals.old && old.password %>"
+					/>
+					<input
+						type="password"
+						placeholder="Re-ingresar contraseña"
+						id="password2"
+						name="password2"
+						class="py-4 bg-zinc-900 rounded-sm pl-4 placeholder:text-zinc-500 text-zinc-300"
+					/>
+
+        <ul class="items-center w-full font-medium bg-zinc-900 border border-[#6B7280] rounded-sm sm:flex py-1">
+          <li class="w-full">
+            <div class="flex items-center ps-3">
+              <input id="horizontal-list-radio-license" type="radio" value="2" name="role" class="w-4 h-4 text-blue-600 bg-zinc-500 border-zinc-700 focus:ring-blue-500" checked />
+              <label for="horizontal-list-radio-license" class="w-full py-3 ms-2 font-medium text-zinc-500 dark:text-gray-300">Artista
+              </label>
+            </div>
+          </li>
+          <li class="w-full">
+            <div class="flex items-center ps-3">
+              <input id="horizontal-list-radio-id" type="radio" value="3" name="role" class="w-4 h-4 text-blue-600 bg-zinc-500 border-zinc-700 focus:ring-blue-500" />
+              <label for="horizontal-list-radio-id" class="w-full py-3 ms-2 font-medium text-zinc-500 dark:text-gray-300">Productor</label>
+            </div>
+          </li>
+        </ul>
+
+        <button type="submit" class="py-4 bg-white rounded-sm pl-4 text-black">
+          Continuar
+        </button>
+
+					<div class="text-sm text-zinc-500 flex flex-col gap-4">
+						<p>
+							Al crear una cuenta, aceptas nuestros Términos y Condiciones
+							Generales y has leído y aceptas nuestra Política de Privacidad.
+						</p>
+						<p>
+							Este sitio está protegido por reCAPTCHA y se aplican la Política
+							de Privacidad y las Condiciones del Servicio de Google.
+						</p>
+					</div>
+				</form>
+			</article>
+			<article
+				class="min-h-screen items-center justify-center xl:flex hidden w-[100%]"
+			>
+				<img
+					src="/img/login.jpg"
+					alt=""
+					class="object-cover w-[60%] h-full bg-auto fixed top-0 opacity-70 invert"
+				/>
+			</article>
+		</main>
+		<script src="/js/register.js"></script>
+	</body>
+</html>
